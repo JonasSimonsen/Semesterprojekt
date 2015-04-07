@@ -1,6 +1,6 @@
 package entity;
 
-public class external_user {
+public class User {
 
     int partnerId;
     String userName;
@@ -12,7 +12,7 @@ public class external_user {
     String organization;
     final int type;
 
-    public external_user(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, int type) {
+    public User(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, int type) {
         this.partnerId = partnerId;
         this.userName = userName;
         this.passWord = passWord;

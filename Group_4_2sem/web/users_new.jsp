@@ -16,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>MDF Processing Tool - New User</title>
+        <title>MDF Processing Tool -  New User</title>
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sb-admin.css" rel="stylesheet">
@@ -36,81 +36,8 @@
         <div id="wrapper">
 
             <!-- Navigation -->
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">MDF Processing Tool</a>
-                </div>
-
-
-                <!-- Top Menu Items -->
-                <ul class="nav navbar-right top-nav">
-                    <li class="">
-                        <a href="index.html"><i class="fa fa-user"></i> Poul Preben</a>
-                    </li>
-                </ul>
-
-
-                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        </li>
-
-                        <li>
-                            <a href="index.html"><i class="fa fa-fw fa-bar-chart"></i> Statistics</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#dd-campaigns"><i class="fa fa-fw fa-bullhorn"></i> Campaigns <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="dd-campaigns" class="collapse">
-
-                                <li>
-                                    <a href="">View Campaign</a>
-                                </li>
-
-                                <li>
-                                    <a href="#">New Campaign</a>
-                                </li>
-
-                                <li>
-                                    <a href="#">Edit Campaign</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#dd-users"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="dd-users" class="collapse">
-
-                                <li>
-                                    <a href="#">View Users</a>
-                                </li>
-                                <li>
-                                    <a href="new-user.html">New User</a>
-                                </li>
-                                <li>
-                                    <a href="#">Edit User</a>
-                                </li>
-
-
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-
-
-                <!-- /.navbar-collapse -->
-            </nav>
+            <jsp:include page="includes/nav.jsp"/>
+            <!-- /Navigation -->
 
             <div id="page-wrapper">
 
@@ -124,13 +51,15 @@
                                 <small>Users</small>
                             </h1>
                         </div>
-                    </div> <!-- /.row -->
-
+                    </div> 
+                    <!-- /Page Heading -->
+                    
+                    <!-- Page Content -->
                     <div class="row">
                         <div class="col-md-3">
                             <h3 class="text-info">Create new user</h3>
                             <div class="">
-                                <form>
+                                <form action="user_NewUser">
                                     <!-- USERNAME -->
                                     <div class="form-group">
                                         <label for="username" class="">Username</label>
@@ -178,12 +107,13 @@
                                     </div>
                                     <!-- ORGANIZATION -->
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary" action="submit">Create user</button>
+                                        <button type="submit" class="btn btn-primary">Create user</button>
                                     </div> 
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                    <!-- /Page Content -->
 
 
 
