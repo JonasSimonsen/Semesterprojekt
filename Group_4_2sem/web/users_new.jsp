@@ -1,3 +1,10 @@
+<%-- 
+    Document   : users_new
+    Created on : Apr 7, 2015, 10:11:43 AM
+    Author     : Emil
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +16,11 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>MDF Processing Tool</title>
+        <title>MDF Processing Tool - New User</title>
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/sb-admin.css" rel="stylesheet">
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="css/main.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,102 +121,66 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 MDF Processing Tool
-                                <small>Dashboard</small>
+                                <small>Users</small>
                             </h1>
-
                         </div>
                     </div> <!-- /.row -->
 
                     <div class="row">
-                        
-                        
-                        
-                        
-                        <div class="col-lg-4">
-                            <div class="panel panel-default">
-                                
-                                <div class="panel-heading">
-                                    <h4 class="panel-title"><span class="fa fa-newspaper-o"></span> News</h4>
-                                </div>
-
-                                <div class="panel-body">
-                                    <div class="list-group">
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
+                        <div class="col-md-3">
+                            <h3 class="text-info">Create new user</h3>
+                            <div class="">
+                                <form>
+                                    <!-- USERNAME -->
+                                    <div class="form-group">
+                                        <label for="username" class="">Username</label>
+                                        <input type="text" class="form-control" name="username" required>
                                     </div>
-                                </div>
-
-                                <div class="panel-footer">
-                                    <a href="#" class="text-info">View All <span class="fa fa-arrow-circle-o-right"></span></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4">
-                            <div class="panel panel-default">
-                                
-                                <div class="panel-heading">
-                                    <h4 class="panel-title"><span class="fa fa-globe"></span> Recent Activity</h4>
-                                </div>
-
-                                <div class="panel-body">
-                                    <div class="list-group">
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
-
-                                        <a href="#" class="list-group-item">
-                                            <b>Title</b>
-                                            <p>Excerpt excerpt excerpt</p>
-                                        </a>
+                                    <!-- PASSWORD -->
+                                    <div class="form-group">
+                                        <label for="password" class="">Password</label>
+                                        <input type="password" class="form-control" name="password" required>
                                     </div>
-                                </div>
-
-                                <div class="panel-footer">
-                                    <a href="#" class="text-info">View All <span class="fa fa-arrow-circle-o-right"></span></a>
-                                </div>
-                                
+                                    <!-- FIRST NAME -->
+                                    <div class="form-group">
+                                        <label for="first-name" class="">First name</label>
+                                        <input type="text" class="form-control" name="first-name" required>
+                                    </div>
+                                    <!-- LAST NAME -->
+                                    <div class="form-group">
+                                        <label for="last-name" class="">Last name</label>
+                                        <input type="text" class="form-control" name="last-name" required>
+                                    </div>
+                                    <!-- E-MAIL -->
+                                    <div class="form-group">
+                                        <label for="email" class="">E-mail</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                    <!-- PHONE -->
+                                    <div class="form-group">
+                                        <label for="phone" class="">Phone Number</label>
+                                        <input type="phone" class="form-control" name="phone" required>
+                                    </div>
+                                    <!-- ORGANIZATION -->
+                                    <div class="form-group">
+                                        <label for="organization" class="">Organization/Retailer</label>
+                                        <input type="text" class="form-control" name="organization" required>
+                                    </div>
+                                    <!-- USER TYPE -->
+                                    <div class="form-group">
+                                        <label for="user-type" class="">Type</label>
+                                        <div class="radio">
+                                            <label><input type="radio" name="user-type-internal">Internal User</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="user-type-external">External User</label>
+                                        </div>
+                                    </div>
+                                    <!-- ORGANIZATION -->
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" action="submit">Create user</button>
+                                    </div> 
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -230,3 +200,4 @@
     </body>
 
 </html>
+
