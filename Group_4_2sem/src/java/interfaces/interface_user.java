@@ -11,7 +11,7 @@ package interfaces;
  */
 public interface interface_user {
     
-    void create_User(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, boolean type);
+    void create_User(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, int type);
     
         
     
