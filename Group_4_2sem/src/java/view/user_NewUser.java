@@ -22,18 +22,29 @@ public class user_NewUser extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet user_NewUser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet user_NewUser at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String tempUsername;
+        String tempPassword;
+        String tempFirstName;
+        String tempLastName;
+        String tempEmail;
+        String tempPhoneNumber;
+        String tempOrganization;
+        String tempType;
+        String tempInternalUser;
+        String tempExternalUser;
+        
+        
+        tempUsername = request.getAttribute("username").toString();
+        tempPassword = request.getAttribute("password").toString();
+        tempFirstName = request.getAttribute("first-name").toString();
+        tempLastName = request.getAttribute("last-name").toString();
+        tempEmail = request.getAttribute("email").toString();
+        tempPhoneNumber = request.getAttribute("phone").toString();
+        tempOrganization = request.getAttribute("organization").toString();
+        tempInternalUser = request.getAttribute("internal-user").toString();
+        tempExternalUser = request.getAttribute("external-user").toString();
+        
+        
         }
     }
 
