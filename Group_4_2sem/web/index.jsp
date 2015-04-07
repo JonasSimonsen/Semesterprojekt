@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : Apr 7, 2015, 10:11:24 AM
+    Author     : Emil
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,3 +237,4 @@
     </body>
 
 </html>
+
