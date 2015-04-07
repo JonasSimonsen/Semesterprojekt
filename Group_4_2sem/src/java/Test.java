@@ -9,5 +9,5 @@
  * @author jonassimonsen
  */
 public class Test {
-    
+    String jonas = "JSS";
 }
