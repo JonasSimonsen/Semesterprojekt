@@ -22,6 +22,9 @@ public class user_NewUser extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String message = "Hello World";
+        
         String tempUsername;
         String tempPassword;
         String tempFirstName;
@@ -33,7 +36,6 @@ public class user_NewUser extends HttpServlet {
         String tempInternalUser;
         String tempExternalUser;
         
-        
         tempUsername = request.getAttribute("username").toString();
         tempPassword = request.getAttribute("password").toString();
         tempFirstName = request.getAttribute("first-name").toString();
@@ -44,8 +46,8 @@ public class user_NewUser extends HttpServlet {
         tempInternalUser = request.getAttribute("internal-user").toString();
         tempExternalUser = request.getAttribute("external-user").toString();
         
-        
-        }
+        PrintWriter out = response.getWriter();
+        out.println("<h1>" + message + "</h1>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
