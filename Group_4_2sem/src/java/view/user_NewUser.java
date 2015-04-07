@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import entity.User;
 
 /**
  *
@@ -31,9 +32,9 @@ public class user_NewUser extends HttpServlet {
         String tempFirstName;
         String tempLastName;
         String tempEmail;
-        String tempPhoneNumber;
+        int tempPhoneNumber;
         String tempOrganization;
-        String tempType;
+        int tempType;
         String tempInternalUser;
         String tempExternalUser;
 
@@ -42,11 +43,13 @@ public class user_NewUser extends HttpServlet {
         tempFirstName = request.getParameter("first-name");
         tempLastName = request.getParameter("last-name");
         tempEmail = request.getParameter("email");
-        tempPhoneNumber = request.getParameter("phone");
+        tempPhoneNumber = Integer.parseInt(request.getParameter("phone"));
         tempOrganization = request.getParameter("organization");
-        tempType = request.getParameter("type");
+        tempType = Integer.parseInt(request.getParameter("type"));
         tempInternalUser = request.getParameter("internal-user");
         tempExternalUser = request.getParameter("external-user");
+        
+        User user = new User(12, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, tempType); 
         
 
         RequestDispatcher rd = request.getRequestDispatcher("users_new.jsp");
