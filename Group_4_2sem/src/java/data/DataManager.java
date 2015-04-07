@@ -30,8 +30,8 @@ public class DataManager {
             Class.forName(DatabaseInfo.driver);
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
-            String query = "INSERT INTO USERS (ID,USERNAME,PASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUM,ORGANIZATION,USERTYPE) VALUES (" + ID + ",'" + USERNAME + "','" + PASSWORD + "','" + FIRSTNAME + "','" + LASTNAME + "','" + EMAIL + "'," + PHONENUM + ",'" + ORGANIZATION + "'," + USERTYPE;
-            rs = statement.executeQuery(query);
+            String query = "INSERT INTO USERS (ID,USERNAME,PASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUM,ORGANIZATION,USERTYPE) VALUES (" + ID + ",'" + USERNAME + "','" + PASSWORD + "','" + FIRSTNAME + "','" + LASTNAME + "','" + EMAIL + "'," + PHONENUM + ",'" + ORGANIZATION + "'," + USERTYPE + ")";
+            statement.executeQuery(query);
         } finally {
             statement.close();
             connection.close();
