@@ -63,27 +63,27 @@
                                     <!-- USERNAME -->
                                     <div class="form-group">
                                         <label for="username" class="">Username</label>
-                                        <input type="text" class="form-control" name="username" required>
+                                        <input type="text" class="form-control" name="username" value="Anders" required>
                                     </div>
                                     <!-- PASSWORD -->
                                     <div class="form-group">
                                         <label for="password" class="">Password</label>
-                                        <input type="password" class="form-control" name="password" required>
+                                        <input type="password" class="form-control" name="password" value="lol" required>
                                     </div>
                                     <!-- FIRST NAME -->
                                     <div class="form-group">
                                         <label for="first-name" class="">First name</label>
-                                        <input type="text" class="form-control" name="first-name" required>
+                                        <input type="text" class="form-control" name="first-name" value="Anders" required>
                                     </div>
                                     <!-- LAST NAME -->
                                     <div class="form-group">
                                         <label for="last-name" class="">Last name</label>
-                                        <input type="text" class="form-control" name="last-name" required>
+                                        <input type="text" class="form-control" name="last-name" value="Pedersen" required>
                                     </div>
                                     <!-- E-MAIL -->
                                     <div class="form-group">
                                         <label for="email" class="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" required>
+                                        <input type="email" class="form-control" name="email" value="emil0s@live.dk" required>
                                     </div>
                                     <!-- PHONE -->
                                     <div class="form-group">
