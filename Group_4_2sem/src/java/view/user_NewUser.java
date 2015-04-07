@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entity.User;
+import data.DataManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -25,7 +27,7 @@ public class user_NewUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String message = "Hello World";
+        
 
         String tempUsername;
         String tempPassword;
@@ -34,9 +36,6 @@ public class user_NewUser extends HttpServlet {
         String tempEmail;
         int tempPhoneNumber;
         String tempOrganization;
-        int tempType;
-        String tempInternalUser;
-        String tempExternalUser;
 
         tempUsername = request.getParameter("username");
         tempPassword = request.getParameter("password");
@@ -45,11 +44,15 @@ public class user_NewUser extends HttpServlet {
         tempEmail = request.getParameter("email");
         tempPhoneNumber = Integer.parseInt(request.getParameter("phone"));
         tempOrganization = request.getParameter("organization");
-        tempType = Integer.parseInt(request.getParameter("type"));
-        tempInternalUser = request.getParameter("internal-user");
-        tempExternalUser = request.getParameter("external-user");
         
-        User user = new User(12, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, tempType); 
+        User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, 1); 
+        DataManager dm = new DataManager();
+        
+        try {
+            dm.createNewUser(user);
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("LOL");
+        }
         
 
         RequestDispatcher rd = request.getRequestDispatcher("users_new.jsp");
@@ -68,7 +71,7 @@ public class user_NewUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**
