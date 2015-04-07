@@ -38,6 +38,15 @@ public class user_NewUser extends HttpServlet {
         String tempExternalUser;
 
         tempUsername = request.getParameter("username");
+        tempPassword = request.getParameter("password");
+        tempFirstName = request.getParameter("first-name");
+        tempLastName = request.getParameter("last-name");
+        tempEmail = request.getParameter("email");
+        tempPhoneNumber = request.getParameter("phone");
+        tempOrganization = request.getParameter("organization");
+        tempType = request.getParameter("type");
+        tempInternalUser = request.getParameter("internal-user");
+        tempExternalUser = request.getParameter("external-user");
         
 
         RequestDispatcher rd = request.getRequestDispatcher("users_new.jsp");
