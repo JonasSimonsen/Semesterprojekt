@@ -94,10 +94,24 @@ public class CampaignDAO {
     }
     
     public static ArrayList<Campaign> getCampaign() throws SQLException, ClassNotFoundException{
+        ArrayList<Campaign> getCamp = new ArrayList();
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        
-        return null;
+
+        try {
+            Class.forName(DatabaseInfo.driver);
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
+            statement = connection.createStatement();
+            String query = "SELECT * FROM PARTNERPLAN";
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                getCamp.add(new Campaign(rs.getInt("PLANNO"), rs.getInt("PNO"), rs.getString("COUNTRY"), rs.getString("DESCRIPTION"), rs.getString("AUDIENCE"), rs.getString("CURRENCY"), rs.getInt("COST"), rs.getInt("MDFBUDGET"), rs.getString("STATUS"), rs.getString("QUARTER"), rs.getString("STARTDATE"), rs.getString("ENDDATE"), rs.getString("OBJECTIVE"), rs.getString("POE_REQ")));
+            }
+        } finally {
+            statement.close();
+            connection.close();
+        }
+        return getCamp;
     }
 }

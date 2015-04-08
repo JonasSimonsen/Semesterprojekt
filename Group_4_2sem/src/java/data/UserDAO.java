@@ -77,7 +77,7 @@ public class UserDAO {
             Class.forName(DatabaseInfo.driver);
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
-            String query = "";
+            String query = "SELECT * FROM USERS";
             rs = statement.executeQuery(query);
             while (rs.next()) {
                 getUser.add(new User(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("EMAIL"), rs.getInt("PHONENUM"), rs.getString("ORGANIZATION"), rs.getInt("USERTYPE")));
