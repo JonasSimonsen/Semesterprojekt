@@ -88,7 +88,7 @@ public class User {
         this.organization = organization;
     }
 
-    public int isType() {
+    public int getType() {
         return type;
     }
 }
