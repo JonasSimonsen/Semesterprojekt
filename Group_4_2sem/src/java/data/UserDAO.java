@@ -30,7 +30,7 @@ public class UserDAO {
             Class.forName(DatabaseInfo.driver);
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
-            String query = "INSERT INTO USERS (ID,USERNAME,PASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUM,ORGANIZATION,USERTYPE) VALUES (" + ID + ",'" + USERNAME + "','" + PASSWORD + "','" + FIRSTNAME + "','" + LASTNAME + "','" + EMAIL + "'," + PHONENUM + ",'" + ORGANIZATION + "'," + USERTYPE + ")";
+            String query = "INSERT INTO USERS (ID,USERNAME,PASSWORD,FIRSTNAME,LASTNAME,EMAIL,PHONENUM,ORGANIZATION,USERTYPE) VALUES (user_seq.nextval,'" + USERNAME + "','" + PASSWORD + "','" + FIRSTNAME + "','" + LASTNAME + "','" + EMAIL + "'," + PHONENUM + ",'" + ORGANIZATION + "'," + USERTYPE + ")";
             statement.executeQuery(query);
         } finally {
             statement.close();
