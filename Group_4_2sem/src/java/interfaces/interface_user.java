@@ -7,7 +7,7 @@ package interfaces;
 
 /**
  *
- * @author Emil
+ * @author Sander
  */
 public interface interface_user {
     
