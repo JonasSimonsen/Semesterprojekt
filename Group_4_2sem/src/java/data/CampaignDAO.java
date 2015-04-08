@@ -49,9 +49,14 @@ public class CampaignDAO {
         int PLANNO = camp.getPlanNumber();
         
         try{
-            
+            Class.forName(DatabaseInfo.driver);
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
+            statement = connection.createStatement();
+            String query = "DELETE FROM PARTNERPLAN WHERE PLANNO =" + PLANNO;
+            statement.executeQuery(query);
         } finally {
-            
+            statement.close();
+            connection.close();
         }
     }
     
@@ -59,6 +64,33 @@ public class CampaignDAO {
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
+        int PLANNO, PNO, COST, MDFBUDGET;
+        String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
+        PLANNO = camp.getPlanNumber();
+        PNO = camp.getPartnerNumber();
+        COST = camp.getCost();
+        MDFBUDGET = camp.getMdfBudget();
+        COUNTRY = camp.getCountry();
+        DESCRIPTION = camp.getDescription();
+        AUDIENCE = camp.getAudience();
+        CURRENCY = camp.getCurrency();
+        STATUS = camp.getStatus();
+        QUARTER = camp.getQuarter();
+        STARTDATE = camp.getStartDate();
+        ENDDATE = camp.getEndDate();
+        OBJECTIVE = camp.getObjective();
+        POE_REQ = camp.getPoeRequirement();
+        
+        try{
+            Class.forName(DatabaseInfo.driver);
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
+            statement = connection.createStatement();
+            String query = "UPDATE PARTNERPLAN SET PNO = " + PNO + ", COUNTRY = '" + COUNTRY + "', DESCRIPTION = '" + DESCRIPTION + "', AUDIENCE = '" + AUDIENCE + "', CURRENCY = '" + CURRENCY + "', COST = " + COST + ", MDFBUDGET = " + MDFBUDGET + ", STATUS = '" + STATUS + "', QUARTER = '" + QUARTER + "', STARTDATE = '" + STARTDATE + "', ENDDATE = '" + ENDDATE + "', OBJECTIVE = '" + OBJECTIVE + "', POE_REQ = '" + POE_REQ + "' WHERE PLANNO = " + PLANNO + ";";
+            statement.executeQuery(query);
+        } finally {
+            statement.close();
+            connection.close();
+        }
     }
     
     public static ArrayList<Campaign> getCampaign() throws SQLException, ClassNotFoundException{
