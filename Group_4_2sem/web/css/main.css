@@ -12,3 +12,7 @@ and open the template in the editor.
     float: none;
     margin: 0 auto;
 }
+
+textarea {
+    resize: none;
+}
