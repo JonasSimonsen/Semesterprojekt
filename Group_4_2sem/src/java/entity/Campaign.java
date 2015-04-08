@@ -20,7 +20,7 @@ public class Campaign {
     int cost;
     int mdfBudget;
     String status;
-    String Quarter;
+    String quarter;
     String startDate;
     String endDate;
     String objective;
@@ -37,7 +37,7 @@ public class Campaign {
         this.cost = cost;
         this.mdfBudget = mdfBudget;
         this.status = status;
-        this.Quarter = Quarter;
+        this.quarter = Quarter;
         this.startDate = startDate;
         this.endDate = endDate;
         this.objective = objective;
@@ -117,11 +117,11 @@ public class Campaign {
     }
 
     public String getQuarter() {
-        return Quarter;
+        return quarter;
     }
 
     public void setQuarter(String Quarter) {
-        this.Quarter = Quarter;
+        this.quarter = Quarter;
     }
 
     public String getStartDate() {
