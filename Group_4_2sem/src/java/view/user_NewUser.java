@@ -24,7 +24,8 @@ public class user_NewUser extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+       
+        // Get parameters from form
         tempUsername = request.getParameter("username");
         tempPassword = request.getParameter("password");
         tempFirstName = request.getParameter("first-name");
@@ -32,10 +33,13 @@ public class user_NewUser extends HttpServlet {
         tempEmail = request.getParameter("email");
         tempPhoneNumber = Integer.parseInt(request.getParameter("phone"));
         tempOrganization = request.getParameter("organization");
-
+        
+        // Create new user from requested parameters
         User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, 1);
+        
         UserDAO dm = new UserDAO();
-
+        
+        // Pass user object to the data accessor object
         try {
             dm.createNewUser(user);
         } catch (SQLException | ClassNotFoundException e) {

@@ -45,7 +45,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">New Campaign</a>
+                                    <a href="campaigns_submit.jsp">Submit Campaign</a>
                                 </li>
 
                                 <li>
