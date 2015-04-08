@@ -1,21 +1,18 @@
-
-
 package entity;
 
+public class User {
 
-public class external_user  {
-     
-            int partnerId; 
-            String userName; 
-            String passWord; 
-            String firstName; 
-            String lastName; 
-            String email; 
-            int phoneNum; 
-            String organization; 
-            boolean type;
+    int partnerId;
+    String userName;
+    String passWord;
+    String firstName;
+    String lastName;
+    String email;
+    int phoneNum;
+    String organization;
+    final int type;
 
-    public external_user(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, boolean type) {
+    public User(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, int type) {
         this.partnerId = partnerId;
         this.userName = userName;
         this.passWord = passWord;
@@ -91,16 +88,7 @@ public class external_user  {
         this.organization = organization;
     }
 
-    public boolean isType() {
+    public int isType() {
         return type;
     }
-
-    public void setType(boolean type) {
-        this.type = type;
-    }
-    
-    
-            
-            
-    }
-
+}
