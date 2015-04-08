@@ -13,28 +13,27 @@ public class CampaignDAO {
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        int PLANNO, PNO, COST, MDFBUDGET;
+        int PNO, COST, MDFBUDGET;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
-        PLANNO = camp.getPlanNumber();
         PNO = camp.getPartnerNumber();
         COST = camp.getCost();
-        MDFBUDGET = camp.getMdfBudget();
+        MDFBUDGET = 0;
         COUNTRY = camp.getCountry();
         DESCRIPTION = camp.getDescription();
         AUDIENCE = camp.getAudience();
         CURRENCY = camp.getCurrency();
-        STATUS = camp.getStatus();
+        STATUS = "PENDING";
         QUARTER = camp.getQuarter();
         STARTDATE = camp.getStartDate();
         ENDDATE = camp.getEndDate();
         OBJECTIVE = camp.getObjective();
-        POE_REQ = camp.getPoeRequirement();
+        POE_REQ = null;
         
         try{
             Class.forName(DatabaseInfo.driver);
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
-            String query = "INSERT INTO PARTNERPLAN (PLANNO,PNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (" + PLANNO + "," + PNO + "," + COST + "," + MDFBUDGET + ",'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "','" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
+            String query = "INSERT INTO PARTNERPLAN (PLANNO,PNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (user_seq.nextval," + PNO + "," + COST + "," + MDFBUDGET + ",'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "','" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
             statement.executeQuery(query);
         } finally {
             statement.close();
