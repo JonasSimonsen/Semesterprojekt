@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entity.User;
-import data.DataManager;
+import data.UserDAO;
 import java.sql.SQLException;
 
 /**
@@ -46,7 +46,7 @@ public class user_NewUser extends HttpServlet {
         tempOrganization = request.getParameter("organization");
         
         User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, 1); 
-        DataManager dm = new DataManager();
+        UserDAO dm = new UserDAO();
         
         try {
             dm.createNewUser(user);
