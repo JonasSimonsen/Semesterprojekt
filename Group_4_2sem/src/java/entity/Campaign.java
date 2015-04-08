@@ -27,7 +27,7 @@ public class Campaign {
     String poeRequirement;
     
 
-    public Campaign(int planNumber, int partnerNumber, String country, String description, String audience, String currency, int cost, int mdfBudget, String status, String Quarter, String startDate, String endDate, String objective, String poeRequirement) {
+    public Campaign(int planNumber, int partnerNumber, String country, String description, String audience, String currency, int cost, int mdfBudget, String status, String quarter, String startDate, String endDate, String objective, String poeRequirement) {
         this.planNumber = planNumber;
         this.partnerNumber = partnerNumber;
         this.country = country;
@@ -37,7 +37,7 @@ public class Campaign {
         this.cost = cost;
         this.mdfBudget = mdfBudget;
         this.status = status;
-        this.quarter = Quarter;
+        this.quarter = quarter;
         this.startDate = startDate;
         this.endDate = endDate;
         this.objective = objective;
@@ -120,8 +120,8 @@ public class Campaign {
         return quarter;
     }
 
-    public void setQuarter(String Quarter) {
-        this.quarter = Quarter;
+    public void setQuarter(String quarter) {
+        this.quarter = quarter;
     }
 
     public String getStartDate() {
