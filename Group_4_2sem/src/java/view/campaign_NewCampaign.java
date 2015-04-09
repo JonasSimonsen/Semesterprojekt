@@ -31,7 +31,7 @@ public class campaign_NewCampaign extends HttpServlet {
     private String tempDescription;
     private String tempAudience;
     private String tempCurrency;
-    private int tempCost;
+    private double tempCost;
     private int tempMdfBudget;
     private String tempStatus;
     private String tempQuarter;
@@ -47,7 +47,7 @@ public class campaign_NewCampaign extends HttpServlet {
         tempDescription = request.getParameter("description");
         tempAudience = request.getParameter("audience");
         tempCurrency = request.getParameter("currency");
-        tempCost = Integer.getInteger(request.getParameter("cost"));
+        tempCost = Double.parseDouble(request.getParameter("cost"));
         tempStatus = request.getParameter("status");
         tempQuarter = request.getParameter("quarter");
         tempStartDate = request.getParameter("startdate");
@@ -63,7 +63,7 @@ public class campaign_NewCampaign extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("campaign_new.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("campaigns_submit.jsp");
         rd.forward(request, response);
         
         }
