@@ -43,20 +43,16 @@ public class campaign_NewCampaign extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        tempPlanNumber = Integer.parseInt(request.getParameter("plan-number"));
-        tempPartnerNumber = Integer.parseInt(request.getParameter("partner-number"));
         tempCountry = request.getParameter("country");
         tempDescription = request.getParameter("description");
         tempAudience = request.getParameter("audience");
         tempCurrency = request.getParameter("currency");
         tempCost = Integer.getInteger(request.getParameter("cost"));
-        tempMdfBudget = Integer.getInteger(request.getParameter("mdf-budget"));
         tempStatus = request.getParameter("status");
         tempQuarter = request.getParameter("quarter");
         tempStartDate = request.getParameter("startdate");
         tempEndDate = request.getParameter("enddate");
         tempObjective = request.getParameter("objective");
-        tempPoeRequirement = request.getParameter("poe-requirement");
 
         Campaign campaign = new Campaign(tempPlanNumber, tempPartnerNumber, tempCountry, tempDescription, tempAudience, tempCurrency, tempCost, tempMdfBudget, tempStatus, tempQuarter, tempStartDate, tempEndDate, tempObjective, tempPoeRequirement);
         CampaignDAO cm = new CampaignDAO();
@@ -71,4 +67,42 @@ public class campaign_NewCampaign extends HttpServlet {
         rd.forward(request, response);
         
         }
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
     }
