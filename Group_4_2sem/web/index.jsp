@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Apr 7, 2015, 10:11:24 AM
-    Author     : Emil
+    Author     : Group 04
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,8 +47,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                MDF Processing Tool
-                                <small>Dashboard</small>
+                                DASHBOARD
+                                <small> Allows you to get an overview </small>
                             </h1>
 
                         </div>

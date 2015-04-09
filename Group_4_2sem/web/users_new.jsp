@@ -1,7 +1,7 @@
 <%-- 
     Document   : users_new
     Created on : Apr 7, 2015, 10:11:43 AM
-    Author     : Emil
+    Author     : Group 04
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,8 +47,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                MDF Processing Tool
-                                <small>Users</small>
+                                USER
+                                <small>New user</small>
                             </h1>
                         </div>
                     </div> 
@@ -63,37 +63,37 @@
                                     <!-- USERNAME -->
                                     <div class="form-group">
                                         <label for="username" class="">Username</label>
-                                        <input type="text" class="form-control" name="username" value="Anders" required>
+                                        <input type="text" class="form-control" name="username" placeholder="Donald Dock" required>
                                     </div>
                                     <!-- PASSWORD -->
                                     <div class="form-group">
                                         <label for="password" class="">Password</label>
-                                        <input type="password" class="form-control" name="password" value="lol" required>
+                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
                                     </div>
                                     <!-- FIRST NAME -->
                                     <div class="form-group">
                                         <label for="first-name" class="">First name</label>
-                                        <input type="text" class="form-control" name="first-name" value="Anders" required>
+                                        <input type="text" class="form-control" name="first-name" placeholder="Anders" required>
                                     </div>
                                     <!-- LAST NAME -->
                                     <div class="form-group">
                                         <label for="last-name" class="">Last name</label>
-                                        <input type="text" class="form-control" name="last-name" value="Pedersen" required>
+                                        <input type="text" class="form-control" name="last-name" placeholder="Andersen" required>
                                     </div>
                                     <!-- E-MAIL -->
                                     <div class="form-group">
                                         <label for="email" class="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" value="emil0s@live.dk" required>
+                                        <input type="email" class="form-control" name="email" placeholder="anders@web.dk" required>
                                     </div>
                                     <!-- PHONE -->
                                     <div class="form-group">
                                         <label for="phone" class="">Phone Number</label>
-                                        <input type="phone" class="form-control" name="phone" required>
+                                        <input type="phone" class="form-control" name="phone" placeholder="12345678"required>
                                     </div>
                                     <!-- ORGANIZATION -->
                                     <div class="form-group">
                                         <label for="organization" class="">Organization/Retailer</label>
-                                        <input type="text" class="form-control" name="organization" required>
+                                        <input type="text" class="form-control" name="organization" placeholder="Dell Computer" required>
                                     </div>
                                     <!-- USER TYPE -->
                                     <div class="form-group">

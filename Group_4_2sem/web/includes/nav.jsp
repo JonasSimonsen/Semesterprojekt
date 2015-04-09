@@ -1,7 +1,7 @@
 <%-- 
     Document   : nav
     Created on : Apr 7, 2015, 11:21:10 AM
-    Author     : Emil
+    Author     : Group 04
 --%>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -13,14 +13,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">MDF Processing Tool</a>
+                    <a class="navbar-brand" href="index.jsp">MDF Processing Tool</a>
                 </div>
 
 
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="">
-                        <a href="index.html"><i class="fa fa-user"></i> Poul Preben</a>
+                        <a href="index.jsp"><i class="fa fa-user"></i>Administrator</a>
                     </li>
                 </ul>
 
@@ -29,11 +29,11 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
 
                         <li>
-                            <a href="index.html"><i class="fa fa-fw fa-bar-chart"></i> Statistics</a>
+                            <a href="index.jsp"><i class="fa fa-fw fa-bar-chart"></i> Statistics</a>
                         </li>
 
                         <li>

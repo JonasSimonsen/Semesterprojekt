@@ -1,7 +1,7 @@
 <%-- 
     Document   : campaigns_submit
     Created on : Apr 8, 2015, 12:42:16 PM
-    Author     : Emil
+    Author     : Group 04
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -68,11 +68,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description" class="">Description</label>
-                                    <textarea class="form-control resize-none" name="description" required rows="6"></textarea>
+                                    <textarea class="form-control resize-none" name="description" placeholder="Tell us about your project" required rows="6"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="audience" class="">Audience</label>
-                                    <input type="text" class="form-control" name="audience" required>
+                                    <input type="text" class="form-control" name="audience" placeholder="Who do you what to attack?" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="currency" class="">Currency</label>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="objective" class="">Objective</label>
-                                    <textarea class="form-control" name="objective"  required></textarea>
+                                    <textarea class="form-control" name="objective" placeholder="What are your goal for the campaign?" required></textarea>
                                 </div>
                                 
                                 
