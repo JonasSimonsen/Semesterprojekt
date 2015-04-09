@@ -13,7 +13,8 @@ public class CampaignDAO {
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        int PNO, COST, MDFBUDGET;
+        int PNO, MDFBUDGET;
+        double COST;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
         PNO = camp.getPartnerNumber();
         COST = camp.getCost();
@@ -63,7 +64,8 @@ public class CampaignDAO {
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        int PLANNO, PNO, COST, MDFBUDGET;
+        int PLANNO, PNO, MDFBUDGET;
+        double COST;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
         PLANNO = camp.getPlanNumber();
         PNO = camp.getPartnerNumber();
