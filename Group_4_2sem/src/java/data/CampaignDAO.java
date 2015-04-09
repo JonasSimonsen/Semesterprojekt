@@ -16,7 +16,6 @@ public class CampaignDAO {
         int PNO, MDFBUDGET;
         double COST;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
-        PNO = 5;
         COST = camp.getCost();
         MDFBUDGET = 0;
         COUNTRY = camp.getCountry();
@@ -34,7 +33,7 @@ public class CampaignDAO {
             Class.forName(DatabaseInfo.driver);
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
-            String query = "INSERT INTO PARTNERPLAN (PLANNO,PNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (user_seq.nextval," + PNO + ",'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "'," + COST + "," + MDFBUDGET + ",'" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
+            String query = "INSERT INTO PARTNERPLAN (PLANNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (user_seq.nextval,'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "'," + COST + "," + MDFBUDGET + ",'" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
             statement.executeQuery(query);
         } finally {
             statement.close();
