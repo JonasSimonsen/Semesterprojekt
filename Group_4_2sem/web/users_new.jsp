@@ -68,7 +68,7 @@
                                     <!-- PASSWORD -->
                                     <div class="form-group">
                                         <label for="password" class="">Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                        <input type="password" class="form-control" name="password" placeholder="" required>
                                     </div>
                                     <!-- FIRST NAME -->
                                     <div class="form-group">

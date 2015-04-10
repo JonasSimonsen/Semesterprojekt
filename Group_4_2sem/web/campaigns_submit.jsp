@@ -1,4 +1,4 @@
-<%-- 
+8<%-- 
     Document   : campaigns_submit
     Created on : Apr 8, 2015, 12:42:16 PM
     Author     : Group 04
@@ -48,8 +48,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                MDF Processing Tool
-                                <small>Campaigns</small>
+                                Campaign
+                                <small>Submit campaign</small>
                             </h1>
                         </div>
                     </div> 
