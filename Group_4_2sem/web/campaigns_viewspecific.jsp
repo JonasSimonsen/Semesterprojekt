@@ -59,7 +59,7 @@
                     <!-- Page Content -->
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Information</b>
@@ -76,6 +76,9 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class='row'> 
 
                         <div class="col-md-5">
                             <div class="panel panel-default">
@@ -111,12 +114,12 @@
                                                             <b style='color:red;'>${camp.status}</b>
                                                         </c:when>  
                                                         <c:when test="${camp.status == 'APPROVED'}">
-                                                        <b style='color:green;'>${camp.status}</b>
-                                                    </c:when> 
-                                                    <c:when test="${camp.status == 'IN PROGRESS'}">
-                                                        <b style='color:orange;'>${camp.status}</b>
-                                                    </c:when> 
-                                                </c:choose>
+                                                            <b style='color:green;'>${camp.status}</b>
+                                                        </c:when> 
+                                                        <c:when test="${camp.status == 'IN PROGRESS'}">
+                                                            <b style='color:orange;'>${camp.status}</b>
+                                                        </c:when> 
+                                                    </c:choose>
 
 
                                                 </td>
@@ -138,6 +141,8 @@
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="col-md-3">
                             <div class="panel panel-default">
@@ -165,10 +170,7 @@
                                     </table>  
                                 </div>
                             </div>
-                        </div>
 
-
-                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Feedback</b>
@@ -187,6 +189,11 @@
                                     </p>
                                 </div>
                             </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+
                         </div>
                     </div>
 
