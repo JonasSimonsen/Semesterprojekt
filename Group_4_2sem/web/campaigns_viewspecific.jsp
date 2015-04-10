@@ -104,7 +104,22 @@
                                             </tr>
                                             <tr>
                                                 <td>Status</td>
-                                                <td>${camp.status}</td>
+                                                <td>
+
+                                                    <c:choose>
+                                                        <c:when test="${camp.status == 'PENDING'}">
+                                                            <b style='color:red;'>${camp.status}</b>
+                                                        </c:when>  
+                                                        <c:when test="${camp.status == 'APPROVED'}">
+                                                        <b style='color:green;'>${camp.status}</b>
+                                                    </c:when> 
+                                                    <c:when test="${camp.status == 'IN PROGRESS'}">
+                                                        <b style='color:orange;'>${camp.status}</b>
+                                                    </c:when> 
+                                                </c:choose>
+
+
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Quarter</td>
