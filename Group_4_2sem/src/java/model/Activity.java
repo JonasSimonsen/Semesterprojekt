@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 public class Activity {
     String comments, date;

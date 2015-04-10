@@ -1,6 +1,6 @@
 package data;
 
-import entity.Activity;
+import model.Activity;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

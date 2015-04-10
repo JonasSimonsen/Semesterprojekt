@@ -3,7 +3,7 @@
 package control;
 
 import interfaces.interface_user;
-import entity.User;
+import model.User;
 import java.sql.SQLException;
 
 

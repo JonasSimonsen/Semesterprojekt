@@ -1,6 +1,6 @@
 package data;
 
-import entity.Partner;
+import model.Partner;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
