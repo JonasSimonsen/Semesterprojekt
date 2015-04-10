@@ -59,7 +59,22 @@
                     <!-- Page Content -->
                     <div class="row">
                         
-                        <p>${camp}</p>
+                        <p>Plan No. ${camp.planNumber} </p>
+                        <p>Parter No. ${camp.partnerNumber} </p>
+                        <p>Country ${camp.country} </p>
+                        <p>Description ${camp.description} </p>
+                        <p>Audience ${camp.audience} </p>
+                        <p>Currency ${camp.currency} </p>
+                        <p>Cost ${camp.cost} </p>
+                        <p>Budget ${camp.mdfBudget} </p>
+                        <p>Status ${camp.status} </p>
+                         <p>Quarter ${camp.quarter} </p>
+                          <p>Start Date ${camp.startDate} </p>
+                           <p>End Date ${camp.endDate} </p>
+                            <p>Objective ${camp.objective} </p>
+                            <p>POE Requirement? ${camp.poeRequirement} </p>
+                        
+                        
                         
                     </div> 
                     <!-- /Page Content -->

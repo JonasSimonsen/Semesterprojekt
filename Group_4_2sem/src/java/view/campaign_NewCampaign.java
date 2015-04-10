@@ -50,8 +50,8 @@ public class campaign_NewCampaign extends HttpServlet {
         tempCost = Double.parseDouble(request.getParameter("cost"));
         tempStatus = request.getParameter("status");
         tempQuarter = request.getParameter("quarter");
-        tempStartDate = request.getParameter("startdate");
-        tempEndDate = request.getParameter("enddate");
+        tempStartDate = request.getParameter("start-date");
+        tempEndDate = request.getParameter("end-date");
         tempObjective = request.getParameter("objective");
 
         Campaign campaign = new Campaign(tempPlanNumber, tempPartnerNumber, tempCountry, tempDescription, tempAudience, tempCurrency, tempCost, tempMdfBudget, tempStatus, tempQuarter, tempStartDate, tempEndDate, tempObjective, tempPoeRequirement);

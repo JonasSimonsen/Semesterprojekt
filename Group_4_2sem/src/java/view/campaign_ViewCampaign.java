@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Campaign;
 
 /**
@@ -35,6 +36,10 @@ public class campaign_ViewCampaign extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession s = request.getSession();
+        s.setMaxInactiveInterval(30*60);
+        
         PLANNO = Integer.parseInt(request.getParameter("id"));
         Campaign campaign = null;
         CampaignDAO cm = new CampaignDAO();
@@ -43,10 +48,12 @@ public class campaign_ViewCampaign extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            request.setAttribute("part", campaign);
+            s.setAttribute("camp", campaign);
+            s.setAttribute("audience", campaign.getAudience());
+            
         }
         
-        System.out.println("");
+        
         
         RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
         rd.forward(request, response);

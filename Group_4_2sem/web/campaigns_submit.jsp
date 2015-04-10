@@ -103,11 +103,11 @@
                                 
                                 <div class="form-group">
                                     <label for="start-date" class="">Start date</label>
-                                    <input type="date" class="form-control" name="start-date" placeholder="YYYY-MM-DD" required>
+                                    <input type="text" class="form-control" name="start-date" placeholder="YYYY-MM-DD" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="end-date" class="">End date</label>
-                                    <input type="date" class="form-control" name="end-date" placeholder="YYYY-MM-DD" required>
+                                    <input type="text" class="form-control" name="end-date" placeholder="YYYY-MM-DD" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="objective" class="">Objective</label>
