@@ -5,6 +5,7 @@
  */
 package view;
 
+import data.CampaignDAO;
 import data.DatabaseInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Campaign;
 
 /**
  *
@@ -29,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "campaign_ViewCampaign", urlPatterns = {"/campaign_ViewCampaign"})
 public class campaign_ViewCampaign extends HttpServlet {
 
+    private int PLANNO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,7 +43,14 @@ public class campaign_ViewCampaign extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        PLANNO = Integer.getInteger(request.getParameter("id"));
+        Campaign campaign;
+        CampaignDAO cm = new CampaignDAO();
+        try {
+            campaign = cm.getSpecificCampaign(PLANNO);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
