@@ -62,7 +62,7 @@
                             <form action="campaign_ViewCampaign">
                                 <div class="input-group">
                                     
-                                    <input type="text" class="form-control" placeholder="Enter campaign ID...">
+                                    <input type="text" class="form-control" name="id" placeholder="Enter campaign ID...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="submit">Go!</button>
                                     </span>
