@@ -59,10 +59,10 @@
                     <!-- Page Content -->
                     <div class="row">
 
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <b>Financial Details</b>
+                                    <b>Information</b>
                                 </div>
                                 <div class="panel-body">
                                     <p><b>Description</b><br>
@@ -151,15 +151,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <div class="row">
-
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <b>POE Requirement</b>
+                                    <b>Feedback</b>
                                 </div>
                                 <div class="panel-body">
                                     <p>
@@ -176,6 +173,12 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+
+                    <div class="row">
+
+
 
 
 
