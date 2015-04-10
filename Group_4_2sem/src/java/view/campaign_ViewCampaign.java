@@ -6,17 +6,8 @@
 package view;
 
 import data.CampaignDAO;
-import data.DatabaseInfo;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import javax.persistence.Table;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,21 +57,16 @@ public class campaign_ViewCampaign extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String planno=request.getParameter("id");
-        try {
-            Class.forName(DatabaseInfo.driver);
-                    Connection con=DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);               
-                    PreparedStatement ps=con.prepareStatement("select * from PARTNERPLAN where PLANNO=?");
-                     
-                    RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
-                    rd.forward(request, response);
- 
-              }catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-                }
-       }
+    }
     
+        /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -96,5 +82,4 @@ public class campaign_ViewCampaign extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
