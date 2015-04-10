@@ -12,7 +12,7 @@ public class CampaignDAO {
     public void submitNewCampaign(Campaign camp) throws SQLException, ClassNotFoundException{
         Statement statement = null;
         Connection connection = null;
-        int PNO;
+        int PNO = 0;
         double COST, MDFBUDGET;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
         COST = camp.getCost();
@@ -32,7 +32,7 @@ public class CampaignDAO {
             Class.forName(DatabaseInfo.driver);
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
-            String query = "INSERT INTO PARTNERPLAN (PLANNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (user_seq.nextval,'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "'," + COST + "," + MDFBUDGET + ",'" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
+            String query = "INSERT INTO PARTNERPLAN (PLANNO,PNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (user_seq.nextval," + PNO + ",'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "'," + COST + "," + MDFBUDGET + ",'" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
             statement.executeQuery(query);
         } finally {
             statement.close();
