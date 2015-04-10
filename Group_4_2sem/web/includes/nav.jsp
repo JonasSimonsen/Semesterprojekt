@@ -41,7 +41,7 @@
                             <ul id="dd-campaigns" class="collapse">
 
                                 <li>
-                                    <a href="">View Campaign</a>
+                                    <a href="campaigns_search.jsp">Search Campaign</a>
                                 </li>
 
                                 <li>
