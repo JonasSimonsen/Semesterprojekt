@@ -20,7 +20,7 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="">
-                        <a href="index.jsp"><i class="fa fa-user"></i>Administrator</a>
+                        <a href="index.jsp"><i class="fa fa-user"></i> Administrator</a>
                     </li>
                 </ul>
 
