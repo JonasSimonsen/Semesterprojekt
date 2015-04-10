@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import data.*;
 import interfaces.*;
 import control.*;
 import org.junit.After;
@@ -39,6 +40,12 @@ public class DatabaseInputTests {
     @Test
     public void testCampaignEntry(){
     
+    }
+    
+    @Test
+    public void testGetCampaign(){
+        CampaignDAO cm = new CampaignDAO();
+        
     }
 
     // TODO add test methods here.

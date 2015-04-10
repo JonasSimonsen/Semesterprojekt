@@ -136,15 +136,17 @@ public class CampaignDAO {
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        Campaign campaign;
+        Campaign campaign = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
             statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
             String query = "SELECT * FROM PARTNERPLAN WHERE PLANNO = " + planno;// Finder alle informationer i den column hvor PLANNO matcher int'en som er passeret ind i metoden
             rs = statement.executeQuery(query);
+            while (rs.next()){
             campaign = new Campaign(rs.getInt("PLANNO"), rs.getInt("PNO"), rs.getString("COUNTRY"), rs.getString("DESCRIPTION"), rs.getString("AUDIENCE"), rs.getString("CURRENCY"), rs.getInt("COST"), rs.getInt("MDFBUDGET"), rs.getString("STATUS"), rs.getString("QUARTER"), rs.getString("STARTDATE"), rs.getString("ENDDATE"), rs.getString("OBJECTIVE"), rs.getString("POE_REQ"));
-        } finally {
+            }
+            } finally {
             statement.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
         }
