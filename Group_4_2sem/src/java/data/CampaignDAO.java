@@ -10,11 +10,10 @@ import java.util.ArrayList;
 
 public class CampaignDAO {
     public void submitNewCampaign(Campaign camp) throws SQLException, ClassNotFoundException{
-        ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        int PNO, MDFBUDGET;
-        double COST;
+        int PNO;
+        double COST, MDFBUDGET;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
         COST = camp.getCost();
         MDFBUDGET = 0;
@@ -42,7 +41,6 @@ public class CampaignDAO {
         
     }
     public void deleteCampaign(Campaign camp) throws SQLException, ClassNotFoundException{
-        ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
         int PLANNO = camp.getPlanNumber();
@@ -60,11 +58,10 @@ public class CampaignDAO {
     }
     
     public void editCampaign(Campaign camp) throws SQLException, ClassNotFoundException{
-        ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;
-        int PLANNO, PNO, MDFBUDGET;
-        double COST;
+        int PLANNO, PNO;
+        double COST, MDFBUDGET;
         String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
         PLANNO = camp.getPlanNumber();
         PNO = camp.getPartnerNumber();
@@ -86,6 +83,23 @@ public class CampaignDAO {
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
             statement = connection.createStatement();
             String query = "UPDATE PARTNERPLAN SET PNO = " + PNO + ", COUNTRY = '" + COUNTRY + "', DESCRIPTION = '" + DESCRIPTION + "', AUDIENCE = '" + AUDIENCE + "', CURRENCY = '" + CURRENCY + "', COST = " + COST + ", MDFBUDGET = " + MDFBUDGET + ", STATUS = '" + STATUS + "', QUARTER = '" + QUARTER + "', STARTDATE = '" + STARTDATE + "', ENDDATE = '" + ENDDATE + "', OBJECTIVE = '" + OBJECTIVE + "', POE_REQ = '" + POE_REQ + "' WHERE PLANNO = " + PLANNO + ";";
+            statement.executeQuery(query);
+        } finally {
+            statement.close();
+            connection.close();
+        }
+    }
+    
+    public void submitBudget(Campaign camp) throws SQLException, ClassNotFoundException{
+        Statement statement = null;
+        Connection connection = null;
+        double MDFBUDGET = camp.getMdfBudget();
+        
+        try{
+            Class.forName(DatabaseInfo.driver);
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);
+            statement = connection.createStatement();
+            String query = "UPDATE PARTNERPLAN SET MDFBUDGET = " + MDFBUDGET;
             statement.executeQuery(query);
         } finally {
             statement.close();
