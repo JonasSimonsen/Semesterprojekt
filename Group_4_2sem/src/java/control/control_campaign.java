@@ -2,7 +2,7 @@
 
 package control;
 
-import entity.Campaign;
+import model.Campaign;
 import interfaces.interface_campaign;
 
 

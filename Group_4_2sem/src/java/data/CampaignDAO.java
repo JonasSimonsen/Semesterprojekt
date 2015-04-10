@@ -1,6 +1,6 @@
 package data;
 
-import entity.Campaign;
+import model.Campaign;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

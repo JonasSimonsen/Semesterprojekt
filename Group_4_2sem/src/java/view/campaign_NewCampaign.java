@@ -6,7 +6,7 @@
 package view;
 
 import data.CampaignDAO;
-import entity.Campaign;
+import model.Campaign;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
