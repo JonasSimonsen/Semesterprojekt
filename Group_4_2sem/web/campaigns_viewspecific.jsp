@@ -50,32 +50,136 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 CAMPAIGNS
-                                <small>Specific Campaign</small>
+                                <small>Campaign No. ${camp.planNumber}</small>
                             </h1>
                         </div>
                     </div> 
                     <!-- /Page Heading -->
-                    
+
                     <!-- Page Content -->
                     <div class="row">
-                        
-                        <p>Plan No. ${camp.planNumber} </p>
-                        <p>Parter No. ${camp.partnerNumber} </p>
-                        <p>Country ${camp.country} </p>
-                        <p>Description ${camp.description} </p>
-                        <p>Audience ${camp.audience} </p>
-                        <p>Currency ${camp.currency} </p>
-                        <p>Cost ${camp.cost} </p>
-                        <p>Budget ${camp.mdfBudget} </p>
-                        <p>Status ${camp.status} </p>
-                         <p>Quarter ${camp.quarter} </p>
-                          <p>Start Date ${camp.startDate} </p>
-                           <p>End Date ${camp.endDate} </p>
-                            <p>Objective ${camp.objective} </p>
-                            <p>POE Requirement? ${camp.poeRequirement} </p>
-                        
-                        
-                        
+
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Financial Details</b>
+                                </div>
+                                <div class="panel-body">
+                                    <p><b>Description</b><br>
+                                        ${camp.description}</p>
+
+                                    <p><b>Objective</b><br>
+                                        ${camp.objective}</p>
+
+                                    <p><b>Audience</b><br>
+                                        ${camp.audience}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Campagin Details</b>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>Campaign No.</td>
+                                                <td>${camp.planNumber}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Partner No.</td>
+                                                <td>${camp.partnerNumber}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Country</td>
+                                                <td>${camp.country}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Audience</td>
+                                                <td>${camp.audience}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status</td>
+                                                <td>${camp.status}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quarter</td>
+                                                <td>${camp.quarter}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Start Date</td>
+                                                <td>${camp.startDate}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>End Date</td>
+                                                <td>${camp.endDate}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>  
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Financial Details</b>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>Currency</td>
+                                                <td>${camp.currency}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Requested Budget</td>
+                                                <td>${camp.cost}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Provided Budget</td>
+                                                <td>${camp.mdfBudget}</td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>POE Requirement</b>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        <c:choose>
+                                            <c:when test="${camp.poeRequirement == 'null'}">
+                                                Sorry, requirements have not yet been made.
+                                            </c:when>  
+                                            <c:otherwise>
+                                                ${camp.poeRequirement}
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                     </div> 
                     <!-- /Page Content -->
 
