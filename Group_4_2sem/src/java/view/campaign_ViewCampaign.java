@@ -55,16 +55,12 @@ public class campaign_ViewCampaign extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        PrintWriter out = response.getWriter();
-        String planno=request.getParameter("Planno");
+
+        String planno=request.getParameter("id");
         try {
             Class.forName(DatabaseInfo.driver);
-                     Connection con=DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);               
-                     PreparedStatement ps=con.prepareStatement("select * from PARTNERPLAN where PLANNO=?");
-                     
-                     
+                    Connection con=DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);               
+                    PreparedStatement ps=con.prepareStatement("select * from PARTNERPLAN where PLANNO=?");
                      
                     RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
                     rd.forward(request, response);
