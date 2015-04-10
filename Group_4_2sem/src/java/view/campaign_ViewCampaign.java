@@ -8,6 +8,7 @@ package view;
 import data.CampaignDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,14 +35,21 @@ public class campaign_ViewCampaign extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PLANNO = Integer.getInteger(request.getParameter("id"));
-        Campaign campaign;
+        PLANNO = Integer.parseInt(request.getParameter("id"));
+        Campaign campaign = null;
         CampaignDAO cm = new CampaignDAO();
         try {
             campaign = cm.getSpecificCampaign(PLANNO);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            request.setAttribute("part", campaign);
         }
+        
+        System.out.println("");
+        
+        RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
+        rd.forward(request, response);
         
     }
 
@@ -57,6 +65,7 @@ public class campaign_ViewCampaign extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
     
         /**
