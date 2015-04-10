@@ -32,7 +32,7 @@ public class CampaignDAO {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
             statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "INSERT INTO PARTNERPLAN (PLANNO,PNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (user_seq.nextval," + PNO + ",'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "'," + COST + "," + MDFBUDGET + ",'" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
+            String query = "INSERT INTO PARTNERPLAN (PLANNO,PNO,COUNTRY,DESCRIPTION,AUDIENCE,CURRENCY,COST,MDFBUDGET,STATUS,QUARTER,STARTDATE,ENDDATE,OBJECTIVE,POE_REQ) VALUES (plan_seq.nextval," + PNO + ",'" + COUNTRY + "','" + DESCRIPTION + "','" + AUDIENCE + "','" + CURRENCY + "'," + COST + "," + MDFBUDGET + ",'" + STATUS + "','" + QUARTER + "','" + STARTDATE + "','" + ENDDATE + "','" + OBJECTIVE + "','" + POE_REQ + "')";
             // Tilføjer en ny column til PARTNERPLAN med alle campaign informationerne
             statement.executeQuery(query);
         } finally {
