@@ -16,3 +16,7 @@ and open the template in the editor.
 textarea {
     resize: none;
 }
+
+.label {
+    padding-top: 10px !important;
+}

@@ -63,37 +63,37 @@
                                     <!-- USERNAME -->
                                     <div class="form-group">
                                         <label for="username" class="">Username</label>
-                                        <input type="text" class="form-control" name="username" placeholder="Donald Dock" required>
+                                        <input type="text" class="form-control" name="username" placeholder="" required>
                                     </div>
                                     <!-- PASSWORD -->
                                     <div class="form-group">
                                         <label for="password" class="">Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="" required>
+                                        <input type="password" class="form-control" name="password" placeholder="" required>
                                     </div>
                                     <!-- FIRST NAME -->
                                     <div class="form-group">
                                         <label for="first-name" class="">First name</label>
-                                        <input type="text" class="form-control" name="first-name" placeholder="Anders" required>
+                                        <input type="text" class="form-control" name="first-name" placeholder="" required>
                                     </div>
                                     <!-- LAST NAME -->
                                     <div class="form-group">
                                         <label for="last-name" class="">Last name</label>
-                                        <input type="text" class="form-control" name="last-name" placeholder="Andersen" required>
+                                        <input type="text" class="form-control" name="last-name" placeholder="" required>
                                     </div>
                                     <!-- E-MAIL -->
                                     <div class="form-group">
                                         <label for="email" class="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" placeholder="anders@web.dk" required>
+                                        <input type="email" class="form-control" name="email" placeholder="" required>
                                     </div>
                                     <!-- PHONE -->
                                     <div class="form-group">
                                         <label for="phone" class="">Phone Number</label>
-                                        <input type="phone" class="form-control" name="phone" placeholder="12345678"required>
+                                        <input type="phone" class="form-control" name="phone" placeholder=""required>
                                     </div>
                                     <!-- ORGANIZATION -->
                                     <div class="form-group">
                                         <label for="organization" class="">Organization/Retailer</label>
-                                        <input type="text" class="form-control" name="organization" placeholder="Dell Computer" required>
+                                        <input type="text" class="form-control" name="organization" placeholder="" required>
                                     </div>
                                     <!-- USER TYPE -->
                                     <div class="form-group">

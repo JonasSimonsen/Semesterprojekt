@@ -49,8 +49,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                CAMPAIGNS
-                                <small>Campaign No. ${camp.planNumber}</small>
+                                CAMPAIGN
+                                <small>#${camp.planNumber}</small>
                             </h1>
                         </div>
                     </div> 
@@ -84,6 +84,17 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Campagin Details</b>
+                                    <c:choose>
+                                        <c:when test="${camp.status == 'PENDING'}">
+                                            <span class="badge pull-right" style="background-color: #D9534F">${camp.status}</span>
+                                        </c:when>  
+                                        <c:when test="${camp.status == 'APPROVED'}">
+                                            <span class="badge pull-right" style="background-color: #5CB85C">${camp.status}</span>
+                                        </c:when> 
+                                        <c:when test="${camp.status == 'IN PROGRESS'}">
+                                            <span class="badge pull-right" style="background-color: #F0AD4E">${camp.status}</span>
+                                        </c:when> 
+                                    </c:choose>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-bordered">
@@ -105,25 +116,7 @@
                                                 <td>Audience</td>
                                                 <td>${camp.audience}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Status</td>
-                                                <td>
 
-                                                    <c:choose>
-                                                        <c:when test="${camp.status == 'PENDING'}">
-                                                            <b style='color:red;'>${camp.status}</b>
-                                                        </c:when>  
-                                                        <c:when test="${camp.status == 'APPROVED'}">
-                                                            <b style='color:green;'>${camp.status}</b>
-                                                        </c:when> 
-                                                        <c:when test="${camp.status == 'IN PROGRESS'}">
-                                                            <b style='color:orange;'>${camp.status}</b>
-                                                        </c:when> 
-                                                    </c:choose>
-
-
-                                                </td>
-                                            </tr>
                                             <tr>
                                                 <td>Quarter</td>
                                                 <td>${camp.quarter}</td>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,12 +57,12 @@
 
                     <!-- Page Content -->
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-4">
-                            <h3 class="text-info text-center">Search for campaign</h3>
+                        <div class="col-md-4">
+                            <h3 class="text-info">Search for campaign</h3>
 
                             <form action="campaign_ViewCampaign">
                                 <div class="input-group">
-                                    
+
                                     <input type="text" class="form-control" name="id" placeholder="Enter campaign ID...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="submit">Go!</button>
@@ -69,9 +70,62 @@
                                 </div>
                             </form>
 
+                            <h3 class="text-info">List all campaigns</h3>
+
+                            <form action="campaign_ViewAll">
+                                <div class="input-group">
+
+                                    <button class="btn btn-default" type="submit">Get Campaign List</button>
+
+                                </div>
+                            </form>
 
                         </div>
-                    </div> 
+                    </div>
+
+                    <div class="row" style="margin-top: 40px;">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+
+                                    <c:forEach var="p" items="${campList}">
+
+
+                                        <tr>
+                                            <td class="col-md-10">
+                                                <b>#${p.planNumber}</b>
+                                            </td>
+                                            <td class="col-md-1 text-center">
+                                                <c:choose>
+                                                    <c:when test="${p.status == 'PENDING'}">
+                                                        <span class="" style="color: #D9534F"><b>${p.status}</b></span>
+                                                    </c:when>  
+                                                    <c:when test="${p.status == 'APPROVED'}">
+                                                        <span class="" style="color: #5CB85C"><b>${p.status}</b></span>
+                                                    </c:when> 
+                                                    <c:when test="${p.status == 'IN PROGRESS'}">
+                                                        <span class="" style="color: #F0AD4E"><b>${p.status}</b></span>
+                                                    </c:when> 
+                                                </c:choose>
+                                            </td>
+                                            <td class="col-md-1">
+                                                <form action="campaign_ViewCampaign">
+                                                    <input type="hidden" name="id" value="${p.planNumber}">
+                                                    <button type="submit" class="btn btn-link">View Campaign</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+
+
+
+
+                                    </c:forEach>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
                     <!-- /Page Content -->
 
 
