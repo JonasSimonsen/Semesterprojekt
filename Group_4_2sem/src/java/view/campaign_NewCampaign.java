@@ -115,38 +115,38 @@ public class campaign_NewCampaign extends HttpServlet {
         tempVenueName = request.getParameter("venue_name");
         tempVenueAddress = request.getParameter("venue_address");
     
-        tempFaceToFaceEvent = Integer.parseInt(request.getParameter("face_to_face"));
-        tempTradeshow = Integer.parseInt(request.getParameter("tradeshow"));
-        tempMultitouchCampaign = Integer.parseInt(request.getParameter("multitouch"));
-        tempDoorOpenerCampaign = Integer.parseInt(request.getParameter("door_opener"));
-        tempThirdPartyCampaign = Integer.parseInt(request.getParameter("third_party"));
-        tempDirectMail = Integer.parseInt(request.getParameter("direct_mail"));
-        tempBlitzCampaign = Integer.parseInt(request.getParameter("blitz"));
+        tempFaceToFaceEvent = (Integer.parseInt(request.getParameter("face_to_face")) == 1) ? 1 : 0;
+        tempTradeshow = (Integer.parseInt(request.getParameter("tradeshow")) == 1) ? 1 : 0;
+        tempMultitouchCampaign = (Integer.parseInt(request.getParameter("multitouch")) == 1) ? 1 : 0;
+        tempDoorOpenerCampaign = (Integer.parseInt(request.getParameter("door_opener")) == 1) ? 1 : 0;
+        tempThirdPartyCampaign = (Integer.parseInt(request.getParameter("third_party")) == 1) ? 1 : 0;
+        tempDirectMail = (Integer.parseInt(request.getParameter("direct_mail")) == 1) ? 1 : 0;
+        tempBlitzCampaign = (Integer.parseInt(request.getParameter("blitz")) == 1) ? 1 : 0;
         tempProgramDescription = request.getParameter("program_desc");
     
-        tempDellStorageSC4000Series = Integer.parseInt(request.getParameter("storage_sc4000"));
-        tempDellStoragePS4210Series = Integer.parseInt(request.getParameter("storage_ps4210"));
-        tempDellStorageSolution = Integer.parseInt(request.getParameter("storage_solutions"));
-        tempFlashAtThePriceOfDisk = Integer.parseInt(request.getParameter("storage_flash"));
-        tempFluidCacheForSAN = Integer.parseInt(request.getParameter("storage_fluidcache"));
-        tempDateProtection = Integer.parseInt(request.getParameter("storage_data_protection"));
-        tempTheLastGenerationOfDellPowerEdgeServers = Integer.parseInt(request.getParameter("server_newgen"));
-        tempWindowsServer2003Migration = Integer.parseInt(request.getParameter("server_win2003"));
-        tempX86ServerTransition = Integer.parseInt(request.getParameter("server_x86"));
-        tempPowerEdgeVRTX = Integer.parseInt(request.getParameter("server_vrtx"));
-        tempSoftwareDefinedNetworking = Integer.parseInt(request.getParameter("networking_sdn"));
-        tempUserCentricNetworking = Integer.parseInt(request.getParameter("networking_user_centric"));
-        tempCloudClientComputing = Integer.parseInt(request.getParameter("solutions_cloud"));
-        tempConvergedInfrastructureHardware = Integer.parseInt(request.getParameter("solutions_converged"));
-        tempDellConvergedBladeDataCenter = Integer.parseInt(request.getParameter("solutions_blade"));
-        tempOptimizedEnteprise = Integer.parseInt(request.getParameter("solutions_futureready"));
-        tempPowerEdgeFXArchitecture = Integer.parseInt(request.getParameter("solutions_poweredge"));
-        tempSoftwareDefinedStorage = Integer.parseInt(request.getParameter("solutions_sds"));
+        tempDellStorageSC4000Series = (Integer.parseInt(request.getParameter("storage_sc4000")) == 1) ? 1 : 0;
+        tempDellStoragePS4210Series = (Integer.parseInt(request.getParameter("storage_ps4210")) == 1) ? 1 : 0;
+        tempDellStorageSolution = (Integer.parseInt(request.getParameter("storage_solutions")) == 1) ? 1 : 0;
+        tempFlashAtThePriceOfDisk = (Integer.parseInt(request.getParameter("storage_flash")) == 1) ? 1 : 0;
+        tempFluidCacheForSAN = (Integer.parseInt(request.getParameter("storage_fluid_cache")) == 1) ? 1 : 0;
+        tempDateProtection = (Integer.parseInt(request.getParameter("storage_data_protection")) == 1) ? 1 : 0;
+        tempTheLastGenerationOfDellPowerEdgeServers = (Integer.parseInt(request.getParameter("server_newgen")) == 1) ? 1 : 0;
+        tempWindowsServer2003Migration = (Integer.parseInt(request.getParameter("server_win2003")) == 1) ? 1 : 0;
+        tempX86ServerTransition = (Integer.parseInt(request.getParameter("server_x86")) == 1) ? 1 : 0;
+        tempPowerEdgeVRTX = (Integer.parseInt(request.getParameter("server_vrtx")) == 1) ? 1 : 0;
+        tempSoftwareDefinedNetworking =(Integer.parseInt(request.getParameter("networking_sdn")) == 1) ? 1 : 0;
+        tempUserCentricNetworking = (Integer.parseInt(request.getParameter("networking_user_centric")) == 1) ? 1 : 0;
+        tempCloudClientComputing = (Integer.parseInt(request.getParameter("solutions_cloud")) == 1) ? 1 : 0;
+        tempConvergedInfrastructureHardware = (Integer.parseInt(request.getParameter("solutions_converged")) == 1) ? 1 : 0;
+        tempDellConvergedBladeDataCenter = (Integer.parseInt(request.getParameter("solutions_blade")) == 1) ? 1 : 0;
+        tempOptimizedEnteprise = (Integer.parseInt(request.getParameter("solutions_futureready")) == 1) ? 1 : 0;
+        tempPowerEdgeFXArchitecture = (Integer.parseInt(request.getParameter("solutions_powereedge")) == 1) ? 1 : 0;
+        tempSoftwareDefinedStorage = (Integer.parseInt(request.getParameter("solutions_sds")) == 1) ? 1 : 0;
         tempIsThereASoftwareComponentToYourCampaign = request.getParameter("campaign_component");
     
-        tempSMB = Integer.parseInt(request.getParameter("target_smb"));
-        tempLE = Integer.parseInt(request.getParameter("target_le"));
-        tempPUB = Integer.parseInt(request.getParameter("target_pub"));
+        tempSMB = (Integer.parseInt(request.getParameter("target_smb")) == 1) ? 1 : 0;
+        tempLE = (Integer.parseInt(request.getParameter("target_le")) == 1) ? 1 : 0;
+        tempPUB = (Integer.parseInt(request.getParameter("target_pub")) == 1) ? 1 : 0;
     
         tempTotalProjectedCostOfProgram = Double.parseDouble(request.getParameter("cost"));
         tempTotalMDFRequestingFromDell = Double.parseDouble(request.getParameter("mdf_req"));
@@ -169,6 +169,7 @@ public class campaign_NewCampaign extends HttpServlet {
 //        tempObjective = request.getParameter("objective");
 
 //        Campaign campaign = new Campaign(tempPlanNumber, tempPartnerNumber, tempCountry, tempDescription, tempAudience, tempCurrency, tempCost, tempMdfBudget, tempStatus, tempQuarter, tempStartDate, tempEndDate, tempObjective, tempPoeRequirement);
+       
         Campaign2 campaign = new Campaign2(tempPlanNumber, tempSubmitDate, tempContactName, tempCompanyName, tempAddress, tempEmail, tempPhone, tempProgramDate, tempStartTime, tempEndTime, tempEstimatedOfAttendess, tempVenueName, tempVenueAddress, tempFaceToFaceEvent, tempTradeshow, tempMultitouchCampaign, tempDoorOpenerCampaign, tempThirdPartyCampaign, tempDirectMail, tempBlitzCampaign, tempProgramDescription, tempDellStorageSC4000Series, tempDellStoragePS4210Series, tempDellStorageSolution, tempFlashAtThePriceOfDisk, tempFluidCacheForSAN, tempDateProtection, tempTheLastGenerationOfDellPowerEdgeServers, tempWindowsServer2003Migration, tempX86ServerTransition, tempPowerEdgeVRTX, tempSoftwareDefinedNetworking, tempUserCentricNetworking, tempCloudClientComputing, tempConvergedInfrastructureHardware, tempDellConvergedBladeDataCenter, tempOptimizedEnteprise, tempPowerEdgeFXArchitecture, tempSoftwareDefinedStorage, tempIsThereASoftwareComponentToYourCampaign, tempSMB, tempLE, tempPUB, tempTotalProjectedCostOfProgram, tempTotalMDFRequestingFromDell, tempPreferredMethodOfReimbursement, tempParticipatingTechnologyPartner, tempTotalTechnologyPartner, tempEstimatedOfOpportunitues, tempEstimatedRevenueFromProgram, "NOT READY");
         CampaignDAO cm = new CampaignDAO();
 
