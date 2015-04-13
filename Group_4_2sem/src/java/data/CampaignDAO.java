@@ -26,7 +26,7 @@ public class CampaignDAO {
             prep.setString(5, camp.getCurrency());
             prep.setDouble(6, camp.getCost());
             prep.setDouble(7, camp.getMdfBudget());                             // Sætter ?-tegnene i queryen til de givne variabler fra Campaign objektet.
-            prep.setString(8, camp.getStatus());
+            prep.setString(8, "PENDING");
             prep.setString(9, camp.getQuarter());
             prep.setString(10, camp.getStartDate());
             prep.setString(11, camp.getEndDate());
@@ -49,7 +49,7 @@ public class CampaignDAO {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
             statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "DELETE FROM PARTNERPLAN WHERE PLANNO =" + PLANNO;   // Sletter column hvor PLANNO passer til den indtastede PLANNO
+            String query = "DELETE FROM PARTNERPLAN WHERE PLANNO = " + PLANNO;  // Sletter column hvor PLANNO passer til den indtastede PLANNO
             statement.executeQuery(query);
         } finally {
             statement.close();                                                  // Lukker forbindelsen til databasen
