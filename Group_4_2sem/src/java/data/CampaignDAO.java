@@ -172,44 +172,45 @@ public class CampaignDAO {
         }
     }
 
-    public static ArrayList<Campaign> getCampaigns() throws SQLException, ClassNotFoundException {
-        ArrayList<Campaign> getCamp = new ArrayList();
+    public static ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
+        ArrayList<Campaign2> getCamp = new ArrayList();
         ResultSet rs = null;
-        Statement statement = null;
+        PreparedStatement prep = null;
         Connection connection = null;
 
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
             String query = "SELECT * FROM PARTNERPLAN";                         // Finder alle informationer
-            rs = statement.executeQuery(query);
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            rs = prep.executeQuery();
             while (rs.next()) {
-                getCamp.add(new Campaign(rs.getInt("PLANNO"), rs.getInt("PNO"), rs.getString("COUNTRY"), rs.getString("DESCRIPTION"), rs.getString("AUDIENCE"), rs.getString("CURRENCY"), rs.getInt("COST"), rs.getInt("MDFBUDGET"), rs.getString("STATUS"), rs.getString("QUARTER"), rs.getString("STARTDATE"), rs.getString("ENDDATE"), rs.getString("OBJECTIVE"), rs.getString("POE_REQ")));
+                getCamp.add(new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS")));
             }
         } finally {
-            statement.close();                                                  // Lukker forbindelsen til databasen
+            prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
         }
         return getCamp;
     }
 
-    public static Campaign getSpecificCampaign(int planno) throws SQLException, ClassNotFoundException {
+    public static Campaign2 getSpecificCampaign(int planno) throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
-        Statement statement = null;
+        PreparedStatement prep = null;
         Connection connection = null;
-        Campaign campaign = null;
+        Campaign2 campaign = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "SELECT * FROM PARTNERPLAN WHERE PLANNO = " + planno;// Finder alle informationer i den column hvor PLANNO matcher int'en som er passeret ind i metoden
-            rs = statement.executeQuery(query);
+            String query = "SELECT * FROM CAMPAIGN WHERE PLANNO = ?";        // Finder alle informationer i den column hvor PLANNO matcher int'en som er passeret ind i metoden
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            prep.setInt(1, planno);
+            rs = prep.executeQuery();
             while (rs.next()) {
-                campaign = new Campaign(rs.getInt("PLANNO"), rs.getInt("PNO"), rs.getString("COUNTRY"), rs.getString("DESCRIPTION"), rs.getString("AUDIENCE"), rs.getString("CURRENCY"), rs.getInt("COST"), rs.getInt("MDFBUDGET"), rs.getString("STATUS"), rs.getString("QUARTER"), rs.getString("STARTDATE"), rs.getString("ENDDATE"), rs.getString("OBJECTIVE"), rs.getString("POE_REQ"));
+                campaign = new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS"));
             }
         } finally {
-            statement.close();                                                  // Lukker forbindelsen til databasen
+            prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
         }
         return campaign;

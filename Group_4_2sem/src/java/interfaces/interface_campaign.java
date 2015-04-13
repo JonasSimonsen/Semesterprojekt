@@ -1,7 +1,9 @@
 package interfaces;
 
+import model.Campaign2;
+
 public interface interface_campaign {
     
-    public void submitCampaign(int planNumber, int partnerNumber, String country, String description, String audience, String currency, int cost, int mdfBudget, String status, String Quarter, String startDate, String endDate, String objective, String poeRequirement);
+    public void submitCampaign(Campaign2 campaign);
     
 }
