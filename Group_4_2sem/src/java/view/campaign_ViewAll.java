@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Campaign;
+import model.Campaign2;
 
 /**
  *
@@ -41,9 +42,9 @@ public class campaign_ViewAll extends HttpServlet {
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30*60);
         
-        Campaign campaign = null;
+        Campaign2 campaign = null;
         CampaignDAO cdao = new CampaignDAO();
-        ArrayList<Campaign> campaignList = new ArrayList<Campaign>();
+        ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
         
         try {
             campaignList = cdao.getCampaigns();

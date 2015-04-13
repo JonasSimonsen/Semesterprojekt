@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Campaign;
+import model.Campaign2;
 
 /**
  *
@@ -41,7 +41,7 @@ public class campaign_ViewCampaign extends HttpServlet {
         s.setMaxInactiveInterval(30*60);
         
         PLANNO = Integer.parseInt(request.getParameter("id"));
-        Campaign campaign = null;
+        Campaign2 campaign = null;
         CampaignDAO cm = new CampaignDAO();
         try {
             campaign = cm.getSpecificCampaign(PLANNO);
@@ -49,7 +49,6 @@ public class campaign_ViewCampaign extends HttpServlet {
             e.printStackTrace();
         } finally {
             s.setAttribute("camp", campaign);
-            s.setAttribute("audience", campaign.getAudience());
             
         }
         

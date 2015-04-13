@@ -181,7 +181,7 @@ public class CampaignDAO {
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "SELECT * FROM PARTNERPLAN";                         // Finder alle informationer
+            String query = "SELECT * FROM CAMPAIGN";                         // Finder alle informationer
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             rs = prep.executeQuery();
             while (rs.next()) {

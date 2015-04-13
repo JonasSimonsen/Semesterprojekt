@@ -50,7 +50,7 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 CAMPAIGN
-                                <small>#${camp.planNumber}</small>
+                                <small>#${camp.plan_number}</small>
                             </h1>
                         </div>
                     </div> 
@@ -66,13 +66,13 @@
                                 </div>
                                 <div class="panel-body">
                                     <p><b>Description</b><br>
-                                        ${camp.description}</p>
+                                        </p>
 
                                     <p><b>Objective</b><br>
-                                        ${camp.objective}</p>
+                                        </p>
 
                                     <p><b>Audience</b><br>
-                                        ${camp.audience}</p>
+                                        </p>
                                 </div>
                             </div>
                         </div>
@@ -101,33 +101,33 @@
                                         <tbody>
                                             <tr>
                                                 <td>Campaign No.</td>
-                                                <td>${camp.planNumber}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Partner No.</td>
-                                                <td>${camp.partnerNumber}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Country</td>
-                                                <td>${camp.country}</td>
+                                                <td></td>
                                             </tr>
 
                                             <tr>
                                                 <td>Audience</td>
-                                                <td>${camp.audience}</td>
+                                                <td></td>
                                             </tr>
 
                                             <tr>
                                                 <td>Quarter</td>
-                                                <td>${camp.quarter}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Start Date</td>
-                                                <td>${camp.startDate}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>End Date</td>
-                                                <td>${camp.endDate}</td>
+                                                <td></td>
                                             </tr>
                                         </tbody>
                                     </table>  
@@ -147,15 +147,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>Currency</td>
-                                                <td>${camp.currency}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Requested Budget</td>
-                                                <td>${camp.cost}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Provided Budget</td>
-                                                <td>${camp.mdfBudget}</td>
+                                                <td></td>
                                             </tr>
 
 
@@ -170,14 +170,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <p>
-                                        <c:choose>
-                                            <c:when test="${camp.poeRequirement == 'null'}">
-                                                Sorry, requirements have not yet been made.
-                                            </c:when>  
-                                            <c:otherwise>
-                                                ${camp.poeRequirement}
-                                            </c:otherwise>
-                                        </c:choose>
+                                        
 
                                     </p>
                                 </div>

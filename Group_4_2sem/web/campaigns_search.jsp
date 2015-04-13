@@ -90,10 +90,10 @@
                                 <tbody>
                                     <c:forEach var="p" items="${campList}">
                                         <tr>
-                                            <td class="col-md-2 text-center"><b>#${p.planNumber}</b></td>
-                                            <td class="col-md-2 text-center">${p.startDate}</td>
-                                            <td class="col-md-2 text-center">${p.endDate}</td>
-                                            <td class="col-md-2 text-center">${p.quarter}</td>
+                                            <td class="col-md-2 text-center"><b>#${p.plan_number}</b></td>
+                                            <td class="col-md-2 text-center">${p.contact_name}</td>
+                                            <td class="col-md-2 text-center">${p.company_name}</td>
+                                            <td class="col-md-2 text-center">${p.submit_date}</td>
                                             <td class="col-md-2 text-center">
                                                 <c:choose>
                                                     <c:when test="${p.status == 'PENDING'}">
@@ -109,7 +109,7 @@
                                             </td>
                                             <td class="col-md-2 text-center">
                                                 <form action="campaign_ViewCampaign">
-                                                    <input type="hidden" name="id" value="${p.planNumber}">
+                                                    <input type="hidden" name="id" value="${p.plan_number}">
                                                     <button type="submit" class="btn btn-link">View Campaign</button>
                                                 </form>
                                             </td>

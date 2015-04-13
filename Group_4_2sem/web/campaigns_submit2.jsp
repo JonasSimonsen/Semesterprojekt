@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="start_time">Start Time:</label>
-                                    <input class="form-control" type="text" name="start_time" placeholder="YYYY-MM-DD" required>
+                                    <input class="form-control" type="text" name="start_time" placeholder="12:00 pm" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="end_time">End Time:</label>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="attendum">Estimated # of attendees</label>
-                                    <input class="form-control" type="text" name="attendum" placeholder="12:00 pm" required>
+                                    <input class="form-control" type="text" name="attendum" placeholder="1" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="venue_name">Venue Name</label>
@@ -258,7 +258,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="reimbursement">Preferred method of reimbursement (AMEX or check/EFT)</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" name="reimbursement" required>
                                         <option selected value="">Select payment method</option>
                                         <option value="American Express">American Express</option>
                                         <option value="Check">Check</option>
