@@ -35,7 +35,7 @@ public class CampaignDAO {
             prep.setString(13, camp.getPoeRequirement());
             prep.executeQuery();
         } finally {
-            prep.close();                                                  // Lukker forbindelsen til databasen
+            prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
         }
 
@@ -46,7 +46,8 @@ public class CampaignDAO {
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "INSERT INTO CAMPAIGN (CAMPNO,SUBMITDATE,CONTACTNAME,COMPNAME,COMPADDR,CONTACTEMAIL,CONTACTPHONE,PROGRAMDATE,STARTTIME,ENDTIME,ATTENDNUM,VENUE,VENUEADDR,FTOF,TRADESHOW,MULTIT,DOOROPEN,THIRDPARTY,DIRECTMAIL,BLITZ,PROGDESC,SC4000,PS4210,STORAGESOL,FLASH,FLUIDCAC,DATAPROT,NEWGEN,WIN2003,X86SERV,VRTX,SDN,USERCENT,CLOUD,CONVERG,BLADEDATA,FUTUREIT,POWEREDGE,SDS,CAMPAIGNCOM,SMB,LE,PUB,COST,MDFREQ,REIMB,PARTNERS,MDFCONTR,OPPORTU,ESTREVENUE,STATUS) VALUES (plan_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO CAMPAIGN (CAMPNO,SUBMITDATE,CONTACTNAME,COMPNAME,COMPADDR,CONTACTEMAIL,CONTACTPHONE,PROGRAMDATE,STARTTIME,ENDTIME,ATTENDNUM,VENUE,VENUEADDR,FTOF,TRADESHOW,MULTIT,DOOROPEN,THIRDPART,DIRECTMAIL,BLITZ,PROGDESC,SC4000,PS4210,STORAGESOL,FLASH,FLUIDCAC,DATAPROT,NEWGEN,WIN2003,X86SERV,VRTX,SDN,USERCENT,CLOUD,CONVERG,BLADEDATA,FUTUREIT,POWEREDGE,SDS,CAMPAIGNCOM,SMB,LE,PUB,COST,MDFREQ,REIMB,PARTNERS,MDFCONTR,OPPORTU,ESTREVENUE,STATUS) VALUES (plan_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            prep = connection.prepareStatement(query);                           // Opretter forbindelse til til databasen for statement
             prep.setString(1, camp.getSubmit_date());
             prep.setString(2, camp.getContact_name());
             prep.setString(3, camp.getCompany_name());
