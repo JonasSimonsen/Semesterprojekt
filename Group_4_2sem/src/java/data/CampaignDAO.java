@@ -39,20 +39,33 @@ public class CampaignDAO {
         }
 
     }
-
-    public void deleteCampaign(Campaign camp) throws SQLException, ClassNotFoundException {
-        Statement statement = null;
+        public void submitNewCampaignV2(Campaign camp) throws SQLException, ClassNotFoundException {
+        PreparedStatement prep = null;
         Connection connection = null;
-        int PLANNO = camp.getPlanNumber();                                      // Variable som henter value fra Campaign objektet passeret igennem servletten.
-
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "DELETE FROM PARTNERPLAN WHERE PLANNO = " + PLANNO;  // Sletter column hvor PLANNO passer til den indtastede PLANNO
-            statement.executeQuery(query);
+            String query = "INSERT INTO CAMPAIGN (CAMPNO,SUBMITDATE,CONTACTNAME,COMPNAME,COMPADDR,CONTACTEMAIL,CONTACTPHONE,PROGRAMDATE,STARTTIME,ENDTIME,ATTENDNUM,VENUE,VENUEADDR,FTOF,TRADESHOW,MULTIT,DOOROPEN,THIRDPARTY,DIRECTMAIL,BLITZ,PROGDESC,SC4000,PS4210,STORAGESOL,FLASH,FLUIDCAC,DATAPROT,NEWGEN,WIN2003,X86SERV,VRTX,SDN,USERCENT,CLOUD,CONVERG,BLADEDATA,FUTUREIT,POWEREDGE,SDS,CAMPAIGNCOM,SMB,LE,PUB,COST,MDFREQ,REIMB,PARTNERS,MDFCONTR,OPPORTU,ESTREVENUE,STATUS) VALUES (plan_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            
+            prep.executeQuery();
         } finally {
-            statement.close();                                                  // Lukker forbindelsen til databasen
+            prep.close();                                                  // Lukker forbindelsen til databasen
+            connection.close();
+        }
+
+    }
+    public void deleteCampaign(Campaign camp) throws SQLException, ClassNotFoundException {
+        PreparedStatement prep = null;
+        Connection connection = null;
+        try {
+            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
+            String query = "DELETE FROM PARTNERPLAN WHERE PLANNO = ?";          // Sletter column hvor PLANNO passer til den indtastede PLANNO
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            prep.setInt(1, camp.getPlanNumber());
+            prep.executeQuery();
+        } finally {
+            prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
         }
     }
@@ -91,20 +104,19 @@ public class CampaignDAO {
         }
     }
 
-    public void submitBudget(Campaign camp) throws SQLException, ClassNotFoundException {
-        Statement statement = null;
+    public void submitBudget(Campaign camp, double budget) throws SQLException, ClassNotFoundException {
+        PreparedStatement prep = null;
         Connection connection = null;
-        int PLANNO = camp.getPlanNumber();
-        double MDFBUDGET = camp.getMdfBudget();
-
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "UPDATE PARTNERPLAN SET MDFBUDGET = " + MDFBUDGET + " WHERE PLANNO = " + PLANNO; // Opdaterer MDF Budget 
-            statement.executeQuery(query);
+            String query = "UPDATE PARTNERPLAN SET MDFBUDGET = ? WHERE PLANNO = ?"; // Opdaterer MDF Budget 
+            prep.setDouble(1, budget);
+            prep.setInt(2, camp.getPlanNumber());
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            prep.executeQuery();
         } finally {
-            statement.close();                                                  // Lukker forbindelsen til databasen
+            prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
         }
     }
