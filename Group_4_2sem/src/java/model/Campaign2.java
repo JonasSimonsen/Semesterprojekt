@@ -61,8 +61,9 @@ public class Campaign2 {
     private double mdf_contr;
     private int opportunities;
     private double est_renevue;
+    private String status;
 
-    public Campaign2(int plan_number, String submit_date, String contact_name, String company_name, String company_address, String contact_email, String contact_phone, String program_date, String start_time, String end_time, int attendum, String venue_name, String venue_address, int face_to_face, int tradeshow, int multitouch, int door_opener, int third_party, int direct_mail, int blitz, String program_desc, int storage_sc4000, int storage_ps4210, int storage_solutions, int storage_flash, int storage_fluidcache, int storage_data_protection, int server_newgen, int server_win2003, int server_x86, int server_vrtx, int networking_sdn, int networking_user_centric, int solutions_cloud, int solutions_converged, int solutions_blade, int solutions_futureready, int solutions_poweredge, int solutions_sds, String campaign_component, int target_smb, int target_le, int target_pub, double cost, double mdf_req, String reimbursement, String partners, double mdf_contr, int opportunities, double est_renevue) {
+    public Campaign2(int plan_number, String submit_date, String contact_name, String company_name, String company_address, String contact_email, String contact_phone, String program_date, String start_time, String end_time, int attendum, String venue_name, String venue_address, int face_to_face, int tradeshow, int multitouch, int door_opener, int third_party, int direct_mail, int blitz, String program_desc, int storage_sc4000, int storage_ps4210, int storage_solutions, int storage_flash, int storage_fluidcache, int storage_data_protection, int server_newgen, int server_win2003, int server_x86, int server_vrtx, int networking_sdn, int networking_user_centric, int solutions_cloud, int solutions_converged, int solutions_blade, int solutions_futureready, int solutions_poweredge, int solutions_sds, String campaign_component, int target_smb, int target_le, int target_pub, double cost, double mdf_req, String reimbursement, String partners, double mdf_contr, int opportunities, double est_renevue, String status) {
         this.plan_number = plan_number;
         this.submit_date = submit_date;
         this.contact_name = contact_name;
@@ -113,6 +114,7 @@ public class Campaign2 {
         this.mdf_contr = mdf_contr;
         this.opportunities = opportunities;
         this.est_renevue = est_renevue;
+        this.status = status;
     }
 
     public int getPlan_number() {
@@ -514,5 +516,15 @@ public class Campaign2 {
     public void setEst_renevue(double est_renevue) {
         this.est_renevue = est_renevue;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
     
 }
