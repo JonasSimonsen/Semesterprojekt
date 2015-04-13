@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import model.Campaign2;
 
 public class CampaignDAO {
 
@@ -39,14 +40,63 @@ public class CampaignDAO {
         }
 
     }
-        public void submitNewCampaignV2(Campaign camp) throws SQLException, ClassNotFoundException {
+        public void submitNewCampaignV2(Campaign2 camp) throws SQLException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
             String query = "INSERT INTO CAMPAIGN (CAMPNO,SUBMITDATE,CONTACTNAME,COMPNAME,COMPADDR,CONTACTEMAIL,CONTACTPHONE,PROGRAMDATE,STARTTIME,ENDTIME,ATTENDNUM,VENUE,VENUEADDR,FTOF,TRADESHOW,MULTIT,DOOROPEN,THIRDPARTY,DIRECTMAIL,BLITZ,PROGDESC,SC4000,PS4210,STORAGESOL,FLASH,FLUIDCAC,DATAPROT,NEWGEN,WIN2003,X86SERV,VRTX,SDN,USERCENT,CLOUD,CONVERG,BLADEDATA,FUTUREIT,POWEREDGE,SDS,CAMPAIGNCOM,SMB,LE,PUB,COST,MDFREQ,REIMB,PARTNERS,MDFCONTR,OPPORTU,ESTREVENUE,STATUS) VALUES (plan_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            
+            prep.setString(1, camp.getSubmit_date());
+            prep.setString(2, camp.getContact_name());
+            prep.setString(3, camp.getCompany_name());
+            prep.setString(4, camp.getCompany_address());
+            prep.setString(5, camp.getContact_email());
+            prep.setString(6, camp.getContact_phone());
+            prep.setString(7, camp.getProgram_date());
+            prep.setString(8, camp.getStart_time());
+            prep.setString(9, camp.getEnd_time());
+            prep.setInt(10, camp.getAttendum());
+            prep.setString(11, camp.getVenue_name());
+            prep.setString(12, camp.getVenue_address());
+            prep.setInt(13, camp.getFace_to_face());
+            prep.setInt(14, camp.getTradeshow());
+            prep.setInt(15, camp.getMultitouch());
+            prep.setInt(16, camp.getDoor_opener());
+            prep.setInt(17, camp.getThird_party());
+            prep.setInt(18, camp.getDirect_mail());
+            prep.setInt(19, camp.getBlitz());
+            prep.setString(20, camp.getProgram_desc());
+            prep.setInt(21, camp.getStorage_sc4000());
+            prep.setInt(22, camp.getStorage_ps4210());
+            prep.setInt(23, camp.getStorage_solutions());
+            prep.setInt(24, camp.getStorage_flash());
+            prep.setInt(25, camp.getStorage_fluidcache());
+            prep.setInt(26, camp.getStorage_data_protection());
+            prep.setInt(27, camp.getServer_newgen());
+            prep.setInt(28, camp.getServer_win2003());
+            prep.setInt(29, camp.getServer_x86());
+            prep.setInt(30, camp.getServer_vrtx());
+            prep.setInt(31, camp.getNetworking_sdn());
+            prep.setInt(32, camp.getNetworking_user_centric());
+            prep.setInt(33, camp.getSolutions_cloud());
+            prep.setInt(34, camp.getSolutions_converged());
+            prep.setInt(35, camp.getSolutions_blade());
+            prep.setInt(36, camp.getSolutions_futureready());
+            prep.setInt(37, camp.getSolutions_poweredge());
+            prep.setInt(38, camp.getSolutions_sds());
+            prep.setString(39, camp.getCampaign_component());
+            prep.setInt(40, camp.getTarget_smb());
+            prep.setInt(41, camp.getTarget_le());
+            prep.setInt(42, camp.getTarget_pub());
+            prep.setDouble(43, camp.getCost());
+            prep.setDouble(44, camp.getMdf_req());
+            prep.setString(45, camp.getReimbursement());
+            prep.setString(46, camp.getPartners());
+            prep.setDouble(47, camp.getMdf_contr());
+            prep.setInt(48, camp.getOpportunities());
+            prep.setDouble(49, camp.getEst_renevue());
+            prep.setString(50, "PENDING");
             prep.executeQuery();
         } finally {
             prep.close();                                                  // Lukker forbindelsen til databasen
