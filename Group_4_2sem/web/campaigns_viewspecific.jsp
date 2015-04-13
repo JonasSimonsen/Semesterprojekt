@@ -166,7 +166,7 @@
 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <b>Feedback</b>
+                                    <b>Proof of Execution</b>
                                 </div>
                                 <div class="panel-body">
                                     <p>
