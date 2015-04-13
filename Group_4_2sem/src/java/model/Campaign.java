@@ -46,6 +46,10 @@ public class Campaign {
         this.poeRequirement = poeRequirement;
     }
 
+    public Campaign(String tempContactName, String tempCompanyName, String tempAddress, String tempEmail, String tempPhone, String tempProgramDate, String tempStartTime, String tempEndTime, int tempEstimatedOfAttendess, String tempVenueName, String tempVenueAddress, int tempFaceToFaceEvent, int tempTradeshow) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getPlanNumber() {
         return planNumber;
     }
