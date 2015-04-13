@@ -194,7 +194,7 @@ public class CampaignDAO {
         return getCamp;
     }
 
-    public static Campaign2 getSpecificCampaign(int planno) throws SQLException, ClassNotFoundException {
+    public static Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
@@ -202,9 +202,9 @@ public class CampaignDAO {
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "SELECT * FROM CAMPAIGN WHERE PLANNO = ?";        // Finder alle informationer i den column hvor PLANNO matcher int'en som er passeret ind i metoden
+            String query = "SELECT * FROM CAMPAIGN WHERE CAMPNO = ?";        // Finder alle informationer i den column hvor PLANNO matcher int'en som er passeret ind i metoden
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
-            prep.setInt(1, planno);
+            prep.setInt(1, campno);
             rs = prep.executeQuery();
             while (rs.next()) {
                 campaign = new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS"));
