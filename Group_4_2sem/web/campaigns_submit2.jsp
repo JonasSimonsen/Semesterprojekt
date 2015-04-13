@@ -281,16 +281,19 @@
                                     <label for="est_renevue">Estimated revenue from program</label>
                                     <input class="form-control" type="text" name="est_renevue" placeholder="" required>
                                 </div>
-                                
+
                                 <hr>
-                                
+
+                                <p>Following the completion of this form, please submit your full MDF request to your Enterprise Field
+                                    Marketing Manager for consideration and review. You may expect a response within 48 - 72 hours, provided all necessary details have been supplied.</p>
+
                                 <div class="form-group">
                                     <br>
                                     <div class="checkbox">
                                         <label><input type="checkbox" name="terms" value="" required>I have read and accepted the <a href="#">Terms and Conditions</a> required to proceed.</label>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Submit Campaign</button>
                                 </div> 
