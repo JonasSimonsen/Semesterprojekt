@@ -155,15 +155,15 @@ public class CampaignDAO {
         }
     }
 
-    public void submitBudget(Campaign camp, double budget) throws SQLException, ClassNotFoundException {
+    public void submitBudget(int campno, double budget) throws SQLException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "UPDATE PARTNERPLAN SET MDFBUDGET = ? WHERE PLANNO = ?"; // Opdaterer MDF Budget 
+            String query = "UPDATE CAMPAIGN SET MDFBUDGET = ? WHERE CAMPNO = ?"; // Opdaterer MDF Budget 
             prep.setDouble(1, budget);
-            prep.setInt(2, camp.getPlanNumber());
+            prep.setInt(2, campno);
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             prep.executeQuery();
         } finally {
