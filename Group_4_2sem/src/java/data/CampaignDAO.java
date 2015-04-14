@@ -155,7 +155,7 @@ public class CampaignDAO {
         }
     }
 
-    public void submitBudget(int campno, double budget) throws SQLException, ClassNotFoundException {
+    public void approveBudget(int campno, double budget) throws SQLException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {

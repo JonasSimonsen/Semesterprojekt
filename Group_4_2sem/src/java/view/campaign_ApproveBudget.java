@@ -41,7 +41,7 @@ public class campaign_ApproveBudget extends HttpServlet {
         CampaignDAO cm = new CampaignDAO();
         
         try {
-            cm.submitBudget(CAMPNO, BUDGET);
+            cm.approveBudget(CAMPNO, BUDGET);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
