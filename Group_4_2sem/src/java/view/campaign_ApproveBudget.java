@@ -37,7 +37,7 @@ public class campaign_ApproveBudget extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
-        
+        STATUS = "APPROVED";
         CampaignDAO cm = new CampaignDAO();
         
         try {
