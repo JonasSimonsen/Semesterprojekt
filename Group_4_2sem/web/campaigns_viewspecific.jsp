@@ -176,10 +176,29 @@
                                                 <td>Provided Budget</td>
                                                 <td></td>
                                             </tr>
-
-
                                         </tbody>
                                     </table>  
+
+                                    <form action="campaign_ApproveBudget">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" value="${camp.plan_number}">
+                                            <input type="text" name="" class="form-control" placeholder="Amount to approve">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-success" type="submit">
+                                                Approve 
+                                            </button> 
+                                        </div>
+
+
+
+
+
+                                    </form>
+
+
+
                                 </div>
                             </div> 
                         </div>
@@ -294,12 +313,12 @@
                                             <hr>
                                         </c:when>
                                     </c:choose>
-                                        <c:choose>
-                                            <c:when test="${camp.campaign_component != null}">
-                                                <p><b>Software component</b></p>
-                                                <p>${camp.campaign_component}</p>
-                                            </c:when>
-                                        </c:choose>
+                                    <c:choose>
+                                        <c:when test="${camp.campaign_component != null}">
+                                            <p><b>Software component</b></p>
+                                            <p>${camp.campaign_component}</p>
+                                        </c:when>
+                                    </c:choose>
                                 </div>
                             </div> 
                         </div>
