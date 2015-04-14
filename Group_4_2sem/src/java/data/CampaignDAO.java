@@ -162,9 +162,26 @@ public class CampaignDAO {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
             String query = "UPDATE CAMPAIGN SET MDFBUDGET = ? WHERE CAMPNO = ?"; // Opdaterer MDF Budget 
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             prep.setDouble(1, budget);
             prep.setInt(2, campno);
+            prep.executeQuery();
+        } finally {
+            prep.close();                                                       // Lukker forbindelsen til databasen
+            connection.close();
+        }
+    }
+    
+        public void budgetStatus(String status, int campno) throws SQLException, ClassNotFoundException {
+        PreparedStatement prep = null;
+        Connection connection = null;
+        try {
+            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
+            String query = "UPDATE CAMPAIGN SET STATUS = ? WHERE CAMPNO = ?"; // Opdaterer MDF Budget 
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            prep.setString(1, status);
+            prep.setInt(2, campno);
             prep.executeQuery();
         } finally {
             prep.close();                                                       // Lukker forbindelsen til databasen

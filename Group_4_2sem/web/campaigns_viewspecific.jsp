@@ -182,7 +182,7 @@
                                     <form action="campaign_ApproveBudget">
                                         <div class="form-group">
                                             <input type="hidden" name="id" value="${camp.plan_number}">
-                                            <input type="text" name="" class="form-control" placeholder="Amount to approve">
+                                            <input type="text" name="budget_submit" class="form-control" placeholder="Amount to approve">
                                         </div>
 
                                         <div class="form-group">

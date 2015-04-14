@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class campaign_ApproveBudget extends HttpServlet {
 
     private int CAMPNO;
-    private double BUDGET;
+    private String STATUS;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,12 +36,12 @@ public class campaign_ApproveBudget extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CAMPNO = Integer.parseInt(request.getParameter(""));
-        BUDGET = Double.parseDouble(request.getParameter(""));
+        CAMPNO = Integer.parseInt(request.getParameter("id"));
+        
         CampaignDAO cm = new CampaignDAO();
         
         try {
-            cm.approveBudget(CAMPNO, BUDGET);
+            cm.budgetStatus(STATUS, CAMPNO);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
