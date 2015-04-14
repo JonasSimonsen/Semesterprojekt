@@ -34,47 +34,38 @@ public class UserDAO {
         }
     }
 
-    public void deleteUser(User user) throws SQLException, ClassNotFoundException {
-        Statement statement = null;
-        Connection connection = null;
-        int ID, PHONENUM, USERTYPE;
-        String USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ORGANIZATION;
-        ID = user.getPartnerId();
-        PHONENUM = user.getPhoneNum();
-        USERTYPE = user.getType();
-        USERNAME = user.getUserName();
-        PASSWORD = user.getPassWord();
-        FIRSTNAME = user.getFirstName();
-        LASTNAME = user.getLastName();
-        EMAIL = user.getEmail();
-        ORGANIZATION = user.getOrganization();                                  // Variabler som henter values fra User objektet passeret igennem servletten.
+    public void deleteUser(String name) throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = null;
+        Connection connection = null;                             
 
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "DELETE FROM USERS WHERE ID=" + ID;                  // Sletter den column hvor ID'et matcher det ID som er passeret ind i metoden.
-            statement.executeQuery(query);
+            String query = "DELETE FROM USERS WHERE USERNAME=?";                      // Sletter den column hvor ID'et matcher det ID som er passeret ind i metoden.
+            statement = connection.prepareStatement(query);                     // Opretter forbindelse til til databasen for statement
+            statement.setString(1, name);
+            statement.executeQuery();
         } finally {
             statement.close();                                                  // Lukker forbindelser
             connection.close();
         }
     }
 
-    public static ArrayList<User> getUserInfo() throws SQLException, ClassNotFoundException {
-        ArrayList<User> getUser = new ArrayList();                              // Opretter ArrayList til at sende tilbage igennem metoden.
+    public static User getUserInfo(String name) throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         Connection connection = null;
+        User getUser = null;
 
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til databasen for statement
-            String query = "SELECT * FROM USERS";                               // Henter alle informationer gemt i USERS table i databasen
-            rs = statement.executeQuery(query);
+            String query = "SELECT * FROM USERS WHERE USERNAME = ?";                               // Henter alle informationer gemt i USERS table i databasen
+            statement = connection.prepareStatement(query);                           // Opretter forbindelse til databasen for statement
+            statement.setString(1, name);
+            rs = statement.executeQuery();
             while (rs.next()) {
-                getUser.add(new User(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("EMAIL"), rs.getInt("PHONENUM"), rs.getString("ORGANIZATION"), rs.getInt("USERTYPE")));
+                getUser = new User(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("EMAIL"), rs.getInt("PHONENUM"), rs.getString("ORGANIZATION"), rs.getInt("USERTYPE"));
                 // Fylder Arraylisten med User objekter fra databasen
             }
         } finally {
