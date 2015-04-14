@@ -1,8 +1,8 @@
 package model;
 
 public class Partner {
-    int PNO;
-    String partnerName;
+    private int PNO;
+    private String partnerName;
     
     public Partner (int PNO, String partnerName){
         this.PNO = PNO;

@@ -2,15 +2,15 @@ package model;
 
 public class User {
 
-    int partnerId;
-    String userName;
-    String passWord;
-    String firstName;
-    String lastName;
-    String email;
-    int phoneNum;
-    String organization;
-    final int type;
+    private int partnerId;
+    private String userName;
+    private String passWord;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private int phoneNum;
+    private String organization;
+    private final int type;
 
     public User(int partnerId, String userName, String passWord, String firstName, String lastName, String email, int phoneNum, String organization, int type) {
         this.partnerId = partnerId;

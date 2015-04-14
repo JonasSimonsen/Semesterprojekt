@@ -1,8 +1,8 @@
 package model;
 
 public class Activity {
-    String comments, date;
-    int planNo, ID;
+    private String comments, date;
+    private int planNo, ID;
     
     public Activity (String comments, int planNo, String date, int ID){
         this.comments = comments;
