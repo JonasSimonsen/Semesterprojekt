@@ -71,7 +71,7 @@
                             <h3 class="text-info">List all campaigns</h3>          
                             <form action="campaign_ViewAll">
                                 <div class="input-group">
-                                    <button class="btn btn-default" type="submit">Get Campaign List</button>
+                                    <button class="btn btn-default" type="submit">Refresh List</button>
                                 </div>
                             </form>
                         </div>
@@ -82,20 +82,22 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <th class="text-center">Campaign No.</th>
-                                <th class="text-center">Start Date</th>
-                                <th class="text-center">End Date</th>
-                                <th class="text-center">Quarter</th>
+                                <th class="text-center">Partner Name</th>
+                                <th class="text-center">Company Name</th>
+                                <th class="text-center">Submission Date</th>
+                                <th class="text-center">Campaign Date</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Link</th>
                                 </thead>
                                 <tbody>
                                     <c:forEach var="p" items="${campList}">
                                         <tr>
-                                            <td class="col-md-2 text-center"><b>#${p.plan_number}</b></td>
+                                            <td class="col-md-1 text-center"><b>#${p.plan_number}</b></td>
                                             <td class="col-md-2 text-center">${p.contact_name}</td>
                                             <td class="col-md-2 text-center">${p.company_name}</td>
                                             <td class="col-md-2 text-center">${p.submit_date}</td>
-                                            <td class="col-md-2 text-center">
+                                            <td class="col-md-2 text-center">${p.submit_date}</td>
+                                            <td class="col-md-1 text-center">
                                                 <c:choose>
                                                     <c:when test="${p.status == 'PENDING'}">
                                                         <span class="" style="color: #D9534F"><b>${p.status}</b></span>
