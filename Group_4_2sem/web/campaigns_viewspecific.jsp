@@ -384,17 +384,33 @@
                                         </tbody>
                                     </table> 
 
-                                    <form action="campaign_ApproveBudget">
-                                        <div class="form-group">
-                                            <input type="hidden" name="id" value="${camp.plan_number}">
-                                        </div>
+                                    <div class="col-xs-6">
+                                        <form action="campaign_ApproveBudget">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                            </div>
 
-                                        <div class="form-group">
-                                            <button class="btn btn-success" type="submit">
-                                                Approve 
-                                            </button> 
-                                        </div>
-                                    </form>
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-success" type="submit">
+                                                    Approve Budget
+                                                </button> 
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <form action="campaign_DisapproveBudget">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-danger" type="submit">
+                                                    Disapprove Budget
+                                                </button> 
+                                            </div>
+                                        </form>    
+                                    </div>
                                 </div>
                             </div> 
                         </div>
@@ -405,7 +421,7 @@
                                     <b>Proof of Execution</b>
                                 </div>
                                 <div class="panel-body">
-                                    <form action="campaign_SavePOE" enctype='multipart/form-data'>
+                                    <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
                                         <div class="form-group">
                                             <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
                                         </div>              
