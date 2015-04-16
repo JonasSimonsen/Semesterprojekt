@@ -49,7 +49,7 @@ public class DatabaseInputTests {
     @Test
     public void testCampaignEntry() throws SQLException, ClassNotFoundException{
         CampaignDAO cm = new CampaignDAO();
-        Campaign2 camp = new Campaign2(1,"","SATAN","HELL LLC","","","","","","",5,"","",0,0,0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"",0,0,0,0.0,0.0,"","",0.0,0,0.0,"");
+        Campaign2 camp = new Campaign2(1,"","SATAN","HELL LLC","","","","","","",5,"","",0,0,0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"",0,0,0,0.0,0.0,"","",0.0,0,0.0,"",0);
         cm.submitNewCampaignV2(camp);
         camp = getSpecificCampaignV2("SATAN");
         assertEquals("HELL LLC", camp.getCompany_name());
