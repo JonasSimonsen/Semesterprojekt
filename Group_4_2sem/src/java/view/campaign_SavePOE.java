@@ -48,7 +48,7 @@ public class campaign_SavePOE extends HttpServlet {
         InputStream inputStream = null; // input stream of the upload file
          
         // obtains the upload file part in this multipart request
-        Part filePart = request.getPart("photo");
+        Part filePart = request.getPart("fIlE_UpLoAd-N1C3-F1Le-4-h4X");
         if (filePart != null) {
             // prints out some information for debugging
             System.out.println(filePart.getName());

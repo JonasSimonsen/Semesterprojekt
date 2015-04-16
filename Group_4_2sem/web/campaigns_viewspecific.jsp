@@ -405,7 +405,7 @@
                                     <b>Proof of Execution</b>
                                 </div>
                                 <div class="panel-body">
-                                    <form action="campaign_SavePOE">
+                                    <form action="campaign_SavePOE" enctype='multipart/form-data'>
                                         <div class="form-group">
                                             <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
                                         </div>              
