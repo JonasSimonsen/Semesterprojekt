@@ -24,10 +24,7 @@ import static org.junit.Assert.*;
  * @author ZARDOZ
  */
 public class DatabaseInputTests {
-    
-    private interface_campaign campInterface;
-    private interface_user userInterface;
-    
+
     public DatabaseInputTests() {
     }
     
