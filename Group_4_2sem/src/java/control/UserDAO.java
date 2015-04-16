@@ -1,5 +1,6 @@
 package control;
 
+import interfaces.Interface_UserDAO;
 import model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,8 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class UserDAO {
+public class UserDAO implements Interface_UserDAO {
 
+    @Override
     public void createNewUser(User user) throws SQLException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -34,6 +36,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public void deleteUser(String name) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = null;
         Connection connection = null;                             

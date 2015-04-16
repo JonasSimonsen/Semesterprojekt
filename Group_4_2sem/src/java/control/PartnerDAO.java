@@ -1,5 +1,6 @@
 package control;
 
+import interfaces.Interface_PartnerDAO;
 import model.Partner;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class PartnerDAO {
+public class PartnerDAO implements Interface_PartnerDAO {
+    @Override
     public void createNewPartner(Partner partner) throws SQLException, ClassNotFoundException{
         Statement statement = null;
         Connection connection = null;
