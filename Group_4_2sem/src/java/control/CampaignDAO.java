@@ -1,4 +1,4 @@
-package data;
+package control;
 
 import model.Campaign;
 import java.sql.Connection;

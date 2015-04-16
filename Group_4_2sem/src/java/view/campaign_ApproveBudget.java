@@ -5,7 +5,7 @@
  */
 package view;
 
-import data.CampaignDAO;
+import control.CampaignDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

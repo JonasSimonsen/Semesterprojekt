@@ -1,4 +1,4 @@
-package data;
+package control;
 
 import model.Partner;
 import java.sql.Connection;

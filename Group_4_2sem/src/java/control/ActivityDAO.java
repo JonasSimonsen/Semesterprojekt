@@ -1,4 +1,4 @@
-package data;
+package control;
 
 import model.Activity;
 import java.sql.Connection;

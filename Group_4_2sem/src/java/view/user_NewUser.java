@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.User;
-import data.UserDAO;
+import control.UserDAO;
 import java.sql.SQLException;
 
 @WebServlet(name = "user_NewUser", urlPatterns = {"/user_NewUser"})

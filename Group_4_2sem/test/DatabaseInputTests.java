@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 
-import data.*;
+import control.UserDAO;
+import control.CampaignDAO;
 import interfaces.*;
 import control.*;
-import static data.CampaignDAO.getSpecificCampaign;
-import static data.CampaignDAO.getSpecificCampaignV2;
-import static data.UserDAO.getUserInfo;
+import static control.CampaignDAO.getSpecificCampaign;
+import static control.CampaignDAO.getSpecificCampaignV2;
+import static control.UserDAO.getUserInfo;
 import java.sql.SQLException;
 import model.Campaign2;
 import model.User;
