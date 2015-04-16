@@ -104,9 +104,8 @@ public class campaign_SavePOE extends HttpServlet {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
 
-            Campaign2 camp;
-            camp = CampaignDAO.getSpecificCampaign(Integer.parseInt(request.getParameter("id")));
-            int PLANNO = camp.getPlan_number();
+            
+            int PLANNO = Integer.parseInt(request.getParameter("id"));
 
             // constructs SQL statement
             String query = "INSERT INTO CAMPSTORAGE (ZIPNO, ZIPFILE) values (?, ?, (SELECT CAMPNO FROM CAMPAIGN WHERE CAMPNO=?))";
