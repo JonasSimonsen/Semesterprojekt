@@ -25,6 +25,7 @@ public class campaign_ApproveBudget extends HttpServlet {
 
     private int CAMPNO;
     private String STATUS;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,7 +40,7 @@ public class campaign_ApproveBudget extends HttpServlet {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
         STATUS = "APPROVED";
         CampaignDAO cm = new CampaignDAO();
-        
+
         try {
             cm.budgetStatus(STATUS, CAMPNO);
         } catch (SQLException | ClassNotFoundException e) {

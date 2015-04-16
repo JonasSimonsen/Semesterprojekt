@@ -38,29 +38,28 @@ public class campaign_ViewAll extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         HttpSession s = request.getSession();
-        s.setMaxInactiveInterval(30*60);
-        
+        s.setMaxInactiveInterval(30 * 60);
+
         Campaign2 campaign = null;
         CampaignDAO cdao = new CampaignDAO();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
-        
+
         try {
             campaignList = cdao.getCampaigns();
-            
+
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             s.setAttribute("campList", campaignList);
         }
-        
+
         RequestDispatcher rd = request.getRequestDispatcher("campaigns_search.jsp");
         rd.forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

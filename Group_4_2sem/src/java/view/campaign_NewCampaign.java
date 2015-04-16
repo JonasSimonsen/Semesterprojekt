@@ -24,8 +24,7 @@ import model.Campaign2;
  */
 @WebServlet(name = "campaign_NewCampaign", urlPatterns = {"/campaign_NewCampaign"})
 public class campaign_NewCampaign extends HttpServlet {
-    
-    
+
     private int tempPlanNumber = 1;
     private String tempSubmitDate;
     private String tempContactName;
@@ -33,14 +32,14 @@ public class campaign_NewCampaign extends HttpServlet {
     private String tempAddress;
     private String tempEmail;
     private String tempPhone;
-    
+
     private String tempProgramDate;
     private String tempStartTime;
     private String tempEndTime;
     private int tempEstimatedOfAttendess;
     private String tempVenueName;
     private String tempVenueAddress;
-    
+
     private int tempFaceToFaceEvent;
     private int tempTradeshow;
     private int tempMultitouchCampaign;
@@ -49,7 +48,7 @@ public class campaign_NewCampaign extends HttpServlet {
     private int tempDirectMail;
     private int tempBlitzCampaign;
     private String tempProgramDescription;
-    
+
     private int tempDellStorageSC4000Series;
     private int tempDellStoragePS4210Series;
     private int tempDellStorageSolution;
@@ -69,11 +68,11 @@ public class campaign_NewCampaign extends HttpServlet {
     private int tempPowerEdgeFXArchitecture;
     private int tempSoftwareDefinedStorage;
     private String tempIsThereASoftwareComponentToYourCampaign;
-    
+
     private int tempSMB;
     private int tempLE;
     private int tempPUB;
-    
+
     private double tempTotalProjectedCostOfProgram;
     private double tempTotalMDFRequestingFromDell;
     private String tempPreferredMethodOfReimbursement;
@@ -81,25 +80,10 @@ public class campaign_NewCampaign extends HttpServlet {
     private double tempTotalTechnologyPartner;
     private int tempEstimatedOfOpportunitues;
     private int tempEstimatedRevenueFromProgram;
-    
-//    private int tempPlanNumber;
-//    private int tempPartnerNumber;
-//    private String tempCountry;
-//    private String tempDescription;
-//    private String tempAudience;
-//    private String tempCurrency;
-//    private double tempCost;
-//    private int tempMdfBudget;
-//    private String tempStatus;
-//    private String tempQuarter;
-//    private String tempStartDate;
-//    private String tempEndDate;
-//    private String tempObjective;
-//    private String tempPoeRequirement;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //tempPlanNumber = Integer.parseInt(request.getParameter("plan_number"));
         tempSubmitDate = request.getParameter("submit_date");
         tempContactName = request.getParameter("contact_name");
@@ -107,14 +91,14 @@ public class campaign_NewCampaign extends HttpServlet {
         tempAddress = request.getParameter("company_address");
         tempEmail = request.getParameter("contact_email");
         tempPhone = request.getParameter("contact_phone");
-    
+
         tempProgramDate = request.getParameter("program_date");
         tempStartTime = request.getParameter("start_time");
         tempEndTime = request.getParameter("end_time");
         tempEstimatedOfAttendess = Integer.parseInt(request.getParameter("attendum"));
         tempVenueName = request.getParameter("venue_name");
         tempVenueAddress = request.getParameter("venue_address");
-        
+
         tempFaceToFaceEvent = (request.getParameter("face_to_face") == null) ? 0 : 1;
         System.out.println(tempFaceToFaceEvent);
         tempTradeshow = (request.getParameter("tradeshow") == null) ? 0 : 1;
@@ -124,7 +108,7 @@ public class campaign_NewCampaign extends HttpServlet {
         tempDirectMail = (request.getParameter("direct_mail") == null) ? 0 : 1;
         tempBlitzCampaign = (request.getParameter("blitz") == null) ? 0 : 1;
         tempProgramDescription = request.getParameter("program_desc");
-    
+
         tempDellStorageSC4000Series = (request.getParameter("storage_sc4000") == null) ? 0 : 1;
         tempDellStoragePS4210Series = (request.getParameter("storage_ps4210") == null) ? 0 : 1;
         tempDellStorageSolution = (request.getParameter("storage_solutions") == null) ? 0 : 1;
@@ -135,7 +119,7 @@ public class campaign_NewCampaign extends HttpServlet {
         tempWindowsServer2003Migration = (request.getParameter("server_win2003") == null) ? 0 : 1;
         tempX86ServerTransition = (request.getParameter("server_x86") == null) ? 0 : 1;
         tempPowerEdgeVRTX = (request.getParameter("server_vrtx") == null) ? 0 : 1;
-        tempSoftwareDefinedNetworking =(request.getParameter("networking_sdn") == null) ? 0 : 1;
+        tempSoftwareDefinedNetworking = (request.getParameter("networking_sdn") == null) ? 0 : 1;
         tempUserCentricNetworking = (request.getParameter("networking_user_centric") == null) ? 0 : 1;
         tempCloudClientComputing = (request.getParameter("solutions_cloud") == null) ? 0 : 1;
         tempConvergedInfrastructureHardware = (request.getParameter("solutions_converged") == null) ? 0 : 1;
@@ -144,11 +128,11 @@ public class campaign_NewCampaign extends HttpServlet {
         tempPowerEdgeFXArchitecture = (request.getParameter("solutions_powereedge") == null) ? 0 : 1;
         tempSoftwareDefinedStorage = (request.getParameter("solutions_sds") == null) ? 0 : 1;
         tempIsThereASoftwareComponentToYourCampaign = request.getParameter("campaign_component");
-    
+
         tempSMB = (request.getParameter("target_smb") == null) ? 0 : 1;
         tempLE = (request.getParameter("target_le") == null) ? 0 : 1;
         tempPUB = (request.getParameter("target_pub") == null) ? 0 : 1;
-    
+
         tempTotalProjectedCostOfProgram = Double.parseDouble(request.getParameter("cost"));
         tempTotalMDFRequestingFromDell = Double.parseDouble(request.getParameter("mdf_req"));
         tempPreferredMethodOfReimbursement = request.getParameter("reimbursement");
@@ -156,21 +140,7 @@ public class campaign_NewCampaign extends HttpServlet {
         tempTotalTechnologyPartner = Double.parseDouble(request.getParameter("mdf_contr"));
         tempEstimatedOfOpportunitues = Integer.parseInt(request.getParameter("opportunities"));
         tempEstimatedRevenueFromProgram = Integer.parseInt(request.getParameter("est_renevue"));
-        
-        
-//        tempCountry = request.getParameter("country");
-//        tempDescription = request.getParameter("description");
-//        tempAudience = request.getParameter("audience");
-//        tempCurrency = request.getParameter("currency");
-//        tempCost = Double.parseDouble(request.getParameter("cost"));
-//        tempStatus = request.getParameter("status");
-//        tempQuarter = request.getParameter("quarter");
-//        tempStartDate = request.getParameter("start-date");
-//        tempEndDate = request.getParameter("end-date");
-//        tempObjective = request.getParameter("objective");
 
-//        Campaign campaign = new Campaign(tempPlanNumber, tempPartnerNumber, tempCountry, tempDescription, tempAudience, tempCurrency, tempCost, tempMdfBudget, tempStatus, tempQuarter, tempStartDate, tempEndDate, tempObjective, tempPoeRequirement);
-       
         Campaign2 campaign = new Campaign2(tempPlanNumber, tempSubmitDate, tempContactName, tempCompanyName, tempAddress, tempEmail, tempPhone, tempProgramDate, tempStartTime, tempEndTime, tempEstimatedOfAttendess, tempVenueName, tempVenueAddress, tempFaceToFaceEvent, tempTradeshow, tempMultitouchCampaign, tempDoorOpenerCampaign, tempThirdPartyCampaign, tempDirectMail, tempBlitzCampaign, tempProgramDescription, tempDellStorageSC4000Series, tempDellStoragePS4210Series, tempDellStorageSolution, tempFlashAtThePriceOfDisk, tempFluidCacheForSAN, tempDateProtection, tempTheLastGenerationOfDellPowerEdgeServers, tempWindowsServer2003Migration, tempX86ServerTransition, tempPowerEdgeVRTX, tempSoftwareDefinedNetworking, tempUserCentricNetworking, tempCloudClientComputing, tempConvergedInfrastructureHardware, tempDellConvergedBladeDataCenter, tempOptimizedEnteprise, tempPowerEdgeFXArchitecture, tempSoftwareDefinedStorage, tempIsThereASoftwareComponentToYourCampaign, tempSMB, tempLE, tempPUB, tempTotalProjectedCostOfProgram, tempTotalMDFRequestingFromDell, tempPreferredMethodOfReimbursement, tempParticipatingTechnologyPartner, tempTotalTechnologyPartner, tempEstimatedOfOpportunitues, tempEstimatedRevenueFromProgram, "NOT READY");
         CampaignDAO cm = new CampaignDAO();
 
@@ -182,8 +152,9 @@ public class campaign_NewCampaign extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher("campaigns_submit.jsp");
         rd.forward(request, response);
-        
-        }
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -222,4 +193,4 @@ public class campaign_NewCampaign extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    }
+}

@@ -25,6 +25,7 @@ import model.Campaign2;
 public class campaign_ViewCampaign extends HttpServlet {
 
     private int PLANNO;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,10 +37,10 @@ public class campaign_ViewCampaign extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession s = request.getSession();
-        s.setMaxInactiveInterval(30*60);
-        
+        s.setMaxInactiveInterval(30 * 60);
+
         PLANNO = Integer.parseInt(request.getParameter("id"));
         Campaign2 campaign = null;
         CampaignDAO cm = new CampaignDAO();
@@ -49,14 +50,12 @@ public class campaign_ViewCampaign extends HttpServlet {
             e.printStackTrace();
         } finally {
             s.setAttribute("camp", campaign);
-            
+
         }
-        
-        
-        
+
         RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
         rd.forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,8 +72,8 @@ public class campaign_ViewCampaign extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
-        /**
+
+    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
