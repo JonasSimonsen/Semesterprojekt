@@ -423,7 +423,7 @@
                                 <div class="panel-body">
                                     <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
                                         <div class="form-group">
-                                            <input type="hidden" name="id">
+                                            <input type="hidden" name="id" value="${camp.plan_number}">
                                             <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
                                         </div>              
                                         <div class="form-group">
