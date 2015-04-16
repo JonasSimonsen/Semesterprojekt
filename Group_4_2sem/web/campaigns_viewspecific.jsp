@@ -399,6 +399,25 @@
                             </div> 
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Proof of Execution</b>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="campaign_SavePOE">
+                                        <div class="form-group">
+                                            <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
+                                        </div>              
+                                        <div class="form-group">
+                                            <button class="btn btn-info" type="submit">Upload</button>
+                                        </div>  
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
 
 
