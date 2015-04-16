@@ -38,7 +38,7 @@ public class campaign_InProgressBudget extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
-        STATUS = "In Progress";
+        STATUS = "IN PROGRESS";
         CampaignDAO cm = new CampaignDAO();
 
         try {
