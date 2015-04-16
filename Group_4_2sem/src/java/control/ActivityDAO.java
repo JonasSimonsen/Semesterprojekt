@@ -1,5 +1,6 @@
 package control;
 
+import interfaces.Interface_ActivityDAO;
 import model.Activity;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ActivityDAO {
+public class ActivityDAO implements Interface_ActivityDAO {
+    @Override
     public void createNewActivity(Activity activity) throws SQLException, ClassNotFoundException{
         Statement statement = null;
         Connection connection = null;
