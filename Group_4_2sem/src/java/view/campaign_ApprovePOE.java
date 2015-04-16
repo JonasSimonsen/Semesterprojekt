@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author jonassimonsen
  */
 @WebServlet(name = "campaign_ApproveBudget", urlPatterns = {"/campaign_ApproveBudget"})
-public class campaign_ApproveBudget extends HttpServlet {
+public class campaign_ApprovePOE extends HttpServlet {
 
     private int CAMPNO;
     private String STATUS;
@@ -38,7 +38,7 @@ public class campaign_ApproveBudget extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
-        STATUS = "IN PROGRESS";
+        STATUS = "APPROVED";
         CampaignDAO cm = new CampaignDAO();
 
         try {
