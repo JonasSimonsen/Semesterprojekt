@@ -17,6 +17,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -29,10 +31,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ZARDOZ
  */
-
 @WebServlet(name = "campaign_LoadPOE", urlPatterns = {"/campaign_LoadPOE"})
-@MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
 public class campaign_LoadPOE extends HttpServlet {
+
+    private static final int BUFFER_SIZE = 4096;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,6 +48,22 @@ public class campaign_LoadPOE extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
         // get upload id from URL's parameters
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+// get upload id from URL's parameters
         int uploadId = Integer.parseInt(request.getParameter("id"));
          
         Connection connection = null; // connection to the database
@@ -56,14 +74,14 @@ public class campaign_LoadPOE extends HttpServlet {
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
  
             // queries the database
-            String sql = "SELECT * FROM CAMPSTORAGE WHERE ZIP = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
+            String query = "SELECT * FROM CAMPSTORAGE WHERE CAMPNO = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, uploadId);
  
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 // gets file name and file blob data
-                String fileName = result.getString("file_name");
+                String fileName = result.getString("ZIPNO");
                 Blob blob = result.getBlob("file_data");
                 InputStream inputStream = blob.getBinaryStream();
                 int fileLength = inputStream.available();
@@ -107,6 +125,8 @@ public class campaign_LoadPOE extends HttpServlet {
         } catch (IOException ex) {
             ex.printStackTrace();
             response.getWriter().print("IO Error: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(campaign_LoadPOE.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (connection != null) {
                 // closes the database connection
@@ -117,21 +137,6 @@ public class campaign_LoadPOE extends HttpServlet {
                 }
             }          
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -145,7 +150,11 @@ public class campaign_LoadPOE extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(campaign_LoadPOE.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
