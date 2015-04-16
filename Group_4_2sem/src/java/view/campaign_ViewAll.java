@@ -21,7 +21,7 @@ import model.Campaign2;
 
 /**
  *
- * @author Emil
+ * @author jonassimonsen
  */
 @WebServlet(name = "campaign_ViewAll", urlPatterns = {"/campaign_ViewAll"})
 public class campaign_ViewAll extends HttpServlet {

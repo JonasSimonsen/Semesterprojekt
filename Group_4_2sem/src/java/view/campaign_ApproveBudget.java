@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ZARDOZ
+ * @author jonassimonsen
  */
 @WebServlet(name = "campaign_ApproveBudget", urlPatterns = {"/campaign_ApproveBudget"})
 public class campaign_ApproveBudget extends HttpServlet {
