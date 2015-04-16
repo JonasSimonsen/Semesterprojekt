@@ -108,11 +108,10 @@ public class campaign_SavePOE extends HttpServlet {
             int PLANNO = Integer.parseInt(request.getParameter("id"));
 
             // constructs SQL statement
-            String query = "INSERT INTO CAMPSTORAGE (ZIPNO, ZIPFILE, CAMPNO) values (?, ?, (SELECT CAMPNO FROM CAMPAIGN WHERE CAMPNO=?))";
+            String query = "INSERT INTO CAMPSTORAGE (ZIPNO, ZIPFILE, CAMPNO) values (user_seq.nextval, ?, (SELECT CAMPNO FROM CAMPAIGN WHERE CAMPNO=?))";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, ZIPNO);
-            statement.setBlob(2, inputStream);
-            statement.setInt(3, PLANNO);
+            statement.setBlob(1, inputStream);
+            statement.setInt(2, PLANNO);
 
             // sends the statement to the database server
             int row = statement.executeUpdate();
