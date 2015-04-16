@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.CampaignDAO;
 import control.DatabaseInfo;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import static jdk.nashorn.internal.objects.NativeError.getFileName;
+import model.Campaign2;
 
 /**
  *
@@ -44,7 +45,7 @@ public class campaign_SavePOE extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
         // gets values of text fields
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -82,7 +83,7 @@ public class campaign_SavePOE extends HttpServlet {
         String fileName = filePart.getSubmittedFileName();
         InputStream fileContent = filePart.getInputStream();
         int ZIPNO = 0;
-         
+
         InputStream inputStream = null; // input stream of the upload file
 
         if (filePart != null) {
@@ -90,26 +91,30 @@ public class campaign_SavePOE extends HttpServlet {
             System.out.println(filePart.getName());
             System.out.println(filePart.getSize());
             System.out.println(filePart.getContentType());
-             
+
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         }
-         
+
         Connection connection = null; // connection to the database
         String message = null;  // message will be sent back to client
-         
+
         try {
             // connects to the database
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
- 
+
+            Campaign2 camp;
+            camp = CampaignDAO.getSpecificCampaign(Integer.parseInt(request.getParameter("id")));
+            int PLANNO = camp.getPlan_number();
+
             // constructs SQL statement
             String query = "INSERT INTO CAMPSTORAGE (ZIPNO, ZIPFILE) values (?, ?, (SELECT CAMPNO FROM CAMPAIGN WHERE CAMPNO=?))";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, ZIPNO);
             statement.setBlob(2, inputStream);
-            statement.setInt(3, );
-            
+            statement.setInt(3, PLANNO);
+
             // sends the statement to the database server
             int row = statement.executeUpdate();
             if (row > 0) {
@@ -131,7 +136,7 @@ public class campaign_SavePOE extends HttpServlet {
             }
             // sets the message in request scope
             request.setAttribute("Message", message);
-             
+
             RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
             rd.forward(request, response);
         }
