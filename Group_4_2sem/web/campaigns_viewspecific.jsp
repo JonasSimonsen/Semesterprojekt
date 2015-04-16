@@ -111,106 +111,7 @@
                                     </table>  
                                 </div>
                             </div>
-                        </div>
 
-
-
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <b>Program Overview</b>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td>Program Date</td>
-                                                <td class="text-right">${camp.program_date}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Start Time</td>
-                                                <td class="text-right">${camp.start_time}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>End Time</td>
-                                                <td class="text-right">${camp.end_time}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estimated # of attendees:</td>
-                                                <td class="text-right">${camp.attendum}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Venue Name</td>
-                                                <td class="text-right">${camp.venue_name}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Venue Address</td>
-                                                <td class="text-right">${camp.venue_address}</td>
-                                            </tr>
-
-
-                                        </tbody>
-                                    </table>  
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <b>Financial Details</b>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td>Currency</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Requested Budget</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Provided Budget</td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>  
-
-                                    <form action="campaign_ApproveBudget">
-                                        <div class="form-group">
-                                            <input type="hidden" name="id" value="${camp.plan_number}">
-                                            <input type="text" name="budget_submit" class="form-control" placeholder="Amount to approve">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <button class="btn btn-success" type="submit">
-                                                Approve 
-                                            </button> 
-                                        </div>
-
-
-
-
-
-                                    </form>
-
-
-
-                                </div>
-                            </div> 
-                        </div>
-
-                    </div>
-
-
-                    <div class="row">
-
-
-
-                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Dell enterprise products to be discussed</b>
@@ -323,7 +224,49 @@
                             </div> 
                         </div>
 
+
+
                         <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Program Overview</b>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>Program Date</td>
+                                                <td class="text-right">${camp.program_date}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Start Time</td>
+                                                <td class="text-right">${camp.start_time}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>End Time</td>
+                                                <td class="text-right">${camp.end_time}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estimated # of attendees:</td>
+                                                <td class="text-right">${camp.attendum}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Venue Name</td>
+                                                <td class="text-right">${camp.venue_name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Venue Address</td>
+                                                <td class="text-right">${camp.venue_address}</td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>  
+                                </div>
+
+
+                            </div>
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Type of lead generating program</b>
@@ -365,7 +308,115 @@
                                     </c:choose>
                                 </div>
                             </div> 
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Target Audience</b>
+
+                                </div>
+                                <div class="panel-body">
+                                    <c:choose>
+                                        <c:when test="${camp.target_smb == 1 || camp.target_le == 1 || camp.target_pub == 1}">
+
+                                            <c:choose>
+                                                <c:when test="${camp.target_smb == 1}">
+                                                    <p>SMB (Small & Medium Business)</p>
+                                                </c:when>
+                                                <c:when test="${camp.target_le == 1}">
+                                                    <p>LE (Large Enterprise, LEA & G500)</p>
+                                                </c:when>
+                                                <c:when test="${camp.target_pub == 1}">
+                                                    <p>PUB (Public, Federal, Education and Healthcare</p>
+                                                </c:when>
+                                            </c:choose>
+                                            <hr>
+                                        </c:when>
+                                    </c:choose>
+
+                                </div>
+                            </div> 
                         </div>
+
+
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <b>Additional Details</b>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>Total projected cost</td>
+                                                <td>${camp.cost}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total MDF requesting</td>
+                                                <td>${camp.mdf_req}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Method of reimbursement</td>
+                                                <td>${camp.reimbursement}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>  
+
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>Participating Technology Partners</td>
+                                                <td>${camp.partners}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total Technology Partners MDF contribution</td>
+                                                <td>${camp.mdf_contr}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estimated # of opportunities</td>
+                                                <td>${camp.opportunities}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estimated revenue from program</td>
+                                                <td>${camp.est_renevue}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table> 
+
+                                    <form action="campaign_ApproveBudget">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" value="${camp.plan_number}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-success" type="submit">
+                                                Approve 
+                                            </button> 
+                                        </div>
+                                    </form>
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+
+
+                        <div class="col-md-4">
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                        </div>
+
+
+
+
 
                     </div> 
                     <!-- /Page Content -->
