@@ -167,6 +167,24 @@ public class CampaignDAO implements Interface_CampaignDAO {
             connection.close();
         }
     }
+        
+        @Override
+        public void updatePOEStatus(int campno, int poe_status) throws SQLException, ClassNotFoundException {
+        PreparedStatement prep = null;
+        Connection connection = null;
+        try {
+            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
+            String query = "UPDATE CAMPAIGN SET HASPOE = ? WHERE CAMPNO = ?"; // Opdaterer MDF Budget 
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            prep.setInt(1, poe_status);
+            prep.setInt(2, campno);
+            prep.executeQuery();
+        } finally {
+            prep.close();                                                       // Lukker forbindelsen til databasen
+            connection.close();
+        }
+    }
 
     public static ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> getCamp = new ArrayList();
