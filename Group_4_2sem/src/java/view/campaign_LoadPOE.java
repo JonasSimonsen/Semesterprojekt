@@ -65,7 +65,6 @@ public class campaign_LoadPOE extends HttpServlet {
         int uploadId = Integer.parseInt(request.getParameter("id"));
          
         Connection connection = null; // connection to the database
-         String filePath = "C:/" + uploadId + ".zip";
  
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
