@@ -421,6 +421,9 @@
                                     <b>Proof of Execution</b>
                                 </div>
                                 <div class="panel-body">
+                                    
+                                    <c:if test="${camp.has_poe != 1}">
+                                    
                                     <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
                                         <div class="form-group">
                                             <input type="hidden" name="id" value="${camp.plan_number}">
@@ -430,6 +433,22 @@
                                             <button class="btn btn-info" type="submit">Upload</button>
                                         </div>  
                                     </form>
+                                            
+                                    </c:if>        
+                                            
+                                    <hr>
+                                    <c:if test="${camp.has_poe == 1}">
+
+                                        <form action="campaign_LoadPOE">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                                <button class="btn btn-primary" action="submit">Load POE</button>
+                                            </div>
+                                        </form>
+
+                                    </c:if>
+
+
                                 </div>
 
                             </div>

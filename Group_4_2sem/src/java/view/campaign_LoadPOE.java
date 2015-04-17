@@ -130,12 +130,9 @@ public class campaign_LoadPOE extends HttpServlet {
                 // closes the database connection
                 try {
                     connection.close();
-                    CampaignDAO cdao = new CampaignDAO();
-                    cdao.updatePOEStatus(uploadId, 1);
+                    System.out.println("===== POE STATUS UPDATED ======");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                } catch (ClassNotFoundException cnfe) {
-                    cnfe.printStackTrace();
                 }
             }          
         }

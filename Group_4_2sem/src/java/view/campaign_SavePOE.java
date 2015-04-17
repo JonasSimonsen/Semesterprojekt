@@ -78,7 +78,7 @@ public class campaign_SavePOE extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+        int CAMPNO = Integer.parseInt(request.getParameter("id")); // Retrieves <input type="text" name="description">
         Part filePart = request.getPart("fIlE_UpLoAd-N1C3-F1Le-4-h4X"); // Retrieves <input type="file" name="file">
         String fileName = filePart.getSubmittedFileName();
         InputStream fileContent = filePart.getInputStream();
@@ -127,9 +127,13 @@ public class campaign_SavePOE extends HttpServlet {
             if (connection != null) {
                 // closes the database connection
                 try {
+                    CampaignDAO cdao = new CampaignDAO();
+                    cdao.updatePOEStatus(1, CAMPNO);
                     connection.close();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
+                } catch (ClassNotFoundException cx) {
+                    cx.printStackTrace();
                 }
             }
             // sets the message in request scope
