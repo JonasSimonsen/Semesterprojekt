@@ -51,7 +51,10 @@
                             <h1 class="page-header">
                                 CAMPAIGN
                                 <small>#${camp.plan_number}</small>
+
                             </h1>
+
+
                         </div>
                     </div> 
                     <!-- /Page Heading -->
@@ -63,17 +66,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Partner Details</b>
-                                    <c:choose>
-                                        <c:when test="${camp.status == 'PENDING'}">
-                                            <span class="badge pull-right" style="background-color: #D9534F">${camp.status}</span>
-                                        </c:when>  
-                                        <c:when test="${camp.status == 'APPROVED'}">
-                                            <span class="badge pull-right" style="background-color: #5CB85C">${camp.status}</span>
-                                        </c:when> 
-                                        <c:when test="${camp.status == 'IN PROGRESS'}">
-                                            <span class="badge pull-right" style="background-color: #F0AD4E">${camp.status}</span>
-                                        </c:when> 
-                                    </c:choose>
+
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-bordered">
@@ -342,6 +335,23 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <b>Additional Details</b>
+                                    <c:choose>
+                                        <c:when test="${camp.status == 'PENDING'}">
+                                            <span class="badge pull-right" style="background-color: #D9534F">${camp.status}</span>
+                                        </c:when>  
+                                        <c:when test="${camp.status == 'POE APPROVED'}">
+                                            <span class="badge pull-right" style="background-color: #5CB85C">${camp.status}</span>
+                                        </c:when> 
+                                        <c:when test="${camp.status == 'BUDGET APPROVED'}">
+                                            <span class="badge pull-right" style="background-color: #ff9900">${camp.status}</span>
+                                        </c:when>
+                                        <c:when test="${camp.status == 'BUDGET DISAPPROVED'}">
+                                            <span class="badge pull-right" style="background-color: #D9534F">${camp.status}</span>
+                                        </c:when>
+                                        <c:when test="${camp.status == 'POE DISAPPROVED'}">
+                                            <span class="badge pull-right" style="background-color: #D9534F">${camp.status}</span>
+                                        </c:when>     
+                                    </c:choose>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-bordered">
@@ -384,33 +394,9 @@
                                         </tbody>
                                     </table> 
 
-                                    <div class="col-xs-6">
-                                        <form action="campaign_ApproveBudget">
-                                            <div class="form-group">
-                                                <input type="hidden" name="id" value="${camp.plan_number}">
-                                            </div>
 
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-success" type="submit">
-                                                    Approve Budget
-                                                </button> 
-                                            </div>
-                                        </form>
-                                    </div>
 
-                                    <div class="col-xs-6">
-                                        <form action="campaign_DisapproveBudget">
-                                            <div class="form-group">
-                                                <input type="hidden" name="id" value="${camp.plan_number}">
-                                            </div>
 
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-danger" type="submit">
-                                                    Disapprove Budget
-                                                </button> 
-                                            </div>
-                                        </form>    
-                                    </div>
                                 </div>
                             </div> 
                         </div>
@@ -421,28 +407,28 @@
                                     <b>Proof of Execution</b>
                                 </div>
                                 <div class="panel-body">
-                                    
+
                                     <c:if test="${camp.has_poe != 1}">
-                                    
-                                    <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
-                                        <div class="form-group">
-                                            <input type="hidden" name="id" value="${camp.plan_number}">
-                                            <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
-                                        </div>              
-                                        <div class="form-group">
-                                            <button class="btn btn-info" type="submit">Upload</button>
-                                        </div>  
-                                    </form>
-                                            
+
+                                        <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                                <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
+                                            </div>              
+                                            <div class="form-group">
+                                                <button class="btn btn-default" type="submit">Upload</button>
+                                            </div>  
+                                        </form>
+
                                     </c:if>        
-                                            
+
                                     <hr>
                                     <c:if test="${camp.has_poe == 1}">
 
                                         <form action="campaign_LoadPOE">
                                             <div class="form-group">
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
-                                                <button class="btn btn-primary" action="submit">Load POE</button>
+                                                <button class="btn btn-default" action="submit">Load POE</button>
                                             </div>
                                         </form>
 
@@ -458,11 +444,68 @@
 
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <b>Admin Panel</b>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-xs-3">
+                                        <form action="campaign_ApproveBudget">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                            </div>
 
-                        </div>
-                        <div class="col-md-4">
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-default" type="submit">
+                                                    Approve Budget
+                                                </button> 
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <form action="campaign_DisapproveBudget">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                            </div>
 
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-default" type="submit">
+                                                    Disapprove Budget
+                                                </button> 
+                                            </div>
+                                        </form>    
+                                    </div>
+
+                                    <div class="col-xs-3">
+                                        <form action="campaign_ApprovePOE">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-default" type="submit">
+                                                    Approve POE
+                                                </button> 
+                                            </div>
+                                        </form>    
+                                    </div>
+
+                                    <div class="col-xs-3">
+                                        <form action="campaign_DisapprovePOE">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${camp.plan_number}">
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-default" type="submit">
+                                                    Disapprove POE
+                                                </button> 
+                                            </div>
+                                        </form>    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div> 
                     <!-- /Page Content -->

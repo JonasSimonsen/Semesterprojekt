@@ -101,14 +101,20 @@
                                                 <c:choose>
                                                     <c:when test="${p.status == 'PENDING'}">
                                                         <span class="" style="color: #D9534F"><b>${p.status}</b></span>
-                                                            </c:when>  
-                                                            <c:when test="${p.status == 'APPROVED'}">
+                                                    </c:when>  
+                                                    <c:when test="${p.status == 'POE APPROVED'}">
                                                         <span class="" style="color: #5CB85C"><b>${p.status}</b></span>
-                                                            </c:when> 
-                                                            <c:when test="${p.status == 'IN PROGRESS'}">
-                                                        <span class="" style="color: #F0AD4E"><b>${p.status}</b></span>
-                                                            </c:when> 
-                                                        </c:choose>
+                                                    </c:when> 
+                                                    <c:when test="${p.status == 'BUDGET APPROVED'}">
+                                                        <span class="" style="color: #ff9900"><b>${p.status}</b></span>
+                                                    </c:when>
+                                                    <c:when test="${p.status == 'BUDGET DISAPPROVED'}">
+                                                        <span class="" style="color: #D9534F"><b>${p.status}</b></span>
+                                                    </c:when>
+                                                    <c:when test="${p.status == 'POE DISAPPROVED'}">
+                                                        <span class="" style="color: #D9534F"><b>${p.status}</b></span>
+                                                    </c:when>     
+                                                </c:choose>
                                             </td>
                                             <td class="col-md-2 text-center">
                                                 <form action="campaign_ViewCampaign">
@@ -122,7 +128,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                     <!-- /Page Content -->
                 </div> <!-- /.container-fluid -->
             </div> <!-- /#page-wrapper -->

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jonassimonsen
  */
-@WebServlet(name = "campaign_ApproveBudget", urlPatterns = {"/campaign_ApproveBudget"})
+@WebServlet(name = "campaign_ApprovePOE", urlPatterns = {"/campaign_ApprovePOE"})
 public class campaign_ApprovePOE extends HttpServlet {
 
     private int CAMPNO;
