@@ -7,6 +7,7 @@ package view;
 
 import control.CampaignDAO;
 import control.DatabaseInfo;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -45,7 +46,6 @@ public class campaign_LoadPOE extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
-        // get upload id from URL's parameters
 
     }
 
@@ -65,76 +65,39 @@ public class campaign_LoadPOE extends HttpServlet {
         int uploadId = Integer.parseInt(request.getParameter("id"));
          
         Connection connection = null; // connection to the database
-         
+         String filePath = "C:/" + uploadId + ".zip";
+ 
         try {
-            // connects to the database
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
  
-            // queries the database
-            String query = "SELECT * FROM CAMPSTORAGE WHERE CAMPNO = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+            String sql = "SELECT ZIPFILE FROM CAMPSTORAGE WHERE CAMPNO=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, uploadId);
  
             ResultSet result = statement.executeQuery();
             if (result.next()) {
-                // gets file name and file blob data
-                String fileName = result.getString("ZIPNO");
-                Blob blob = result.getBlob("file_data");
+                Blob blob = result.getBlob("ZIPFILE");
                 InputStream inputStream = blob.getBinaryStream();
-                int fileLength = inputStream.available();
-                 
-                System.out.println("fileLength = " + fileLength);
+                OutputStream outputStream = new FileOutputStream(filePath);
  
-                ServletContext context = getServletContext();
- 
-                // sets MIME type for the file download
-                String mimeType = context.getMimeType(fileName);
-                if (mimeType == null) {        
-                    mimeType = "application/octet-stream";
-                }              
-                 
-                // set content properties and header attributes for the response
-                response.setContentType(mimeType);
-                response.setContentLength(fileLength);
-                String headerKey = "Content-Disposition";
-                String headerValue = String.format("attachment; filename=\"%s\"", fileName);
-                response.setHeader(headerKey, headerValue);
- 
-                // writes the file to the client
-                OutputStream outStream = response.getOutputStream();
-                 
-                byte[] buffer = new byte[BUFFER_SIZE];
                 int bytesRead = -1;
-                 
+                byte[] buffer = new byte[BUFFER_SIZE];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outStream.write(buffer, 0, bytesRead);
+                    outputStream.write(buffer, 0, bytesRead);
                 }
-                 
+ 
                 inputStream.close();
-                outStream.close();             
-            } else {
-                // no file found
-                response.getWriter().print("File not found for the id: " + uploadId);  
+                outputStream.close();
+                System.out.println("File saved");
             }
+            connection.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
-            response.getWriter().print("SQL Error: " + ex.getMessage());
         } catch (IOException ex) {
             ex.printStackTrace();
-            response.getWriter().print("IO Error: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(campaign_LoadPOE.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (connection != null) {
-                // closes the database connection
-                try {
-                    connection.close();
-                    System.out.println("===== POE STATUS UPDATED ======");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }          
         }
     }
 
