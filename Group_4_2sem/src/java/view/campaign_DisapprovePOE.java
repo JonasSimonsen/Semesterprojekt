@@ -38,7 +38,7 @@ public class campaign_DisapprovePOE extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
-        STATUS = "DISAPPROVED POE";
+        STATUS = "DECLINED";
         CampaignDAO cm = new CampaignDAO();
 
         try {

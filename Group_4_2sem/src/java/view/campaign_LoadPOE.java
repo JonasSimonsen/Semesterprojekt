@@ -5,12 +5,11 @@
  */
 package view;
 
-import static com.sun.org.apache.xerces.internal.xinclude.XIncludeHandler.BUFFER_SIZE;
+import control.CampaignDAO;
 import control.DatabaseInfo;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -132,8 +130,12 @@ public class campaign_LoadPOE extends HttpServlet {
                 // closes the database connection
                 try {
                     connection.close();
+                    CampaignDAO cdao = new CampaignDAO();
+                    cdao.updatePOEStatus(uploadId, 1);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
+                } catch (ClassNotFoundException cnfe) {
+                    cnfe.printStackTrace();
                 }
             }          
         }
