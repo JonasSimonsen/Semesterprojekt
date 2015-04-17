@@ -74,13 +74,26 @@ public class campaign_LoadPOE extends HttpServlet {
             String sql = "SELECT ZIPFILE FROM CAMPSTORAGE WHERE CAMPNO=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, uploadId);
- 
+            ;
             ResultSet result = statement.executeQuery();
             if (result.next()) {
+                String fileName = "test.zip";
                 Blob blob = result.getBlob("ZIPFILE");
                 InputStream inputStream = blob.getBinaryStream();
-                OutputStream outputStream = new FileOutputStream(filePath);
- 
+
+                ServletContext context = getServletContext();
+                
+                String mimeType = context.getMimeType(fileName);
+                if (mimeType == null) {        
+                    mimeType = "application/octet-stream";
+                }      
+                response.setContentType(mimeType);
+                String headerKey = "Content-Disposition";
+                String headerValue = String.format("attachment; filename=\"%s\"", fileName);
+                response.setHeader(headerKey, headerValue);
+                
+                OutputStream outputStream = response.getOutputStream();
+                                
                 int bytesRead = -1;
                 byte[] buffer = new byte[BUFFER_SIZE];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
