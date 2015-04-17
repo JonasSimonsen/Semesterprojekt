@@ -444,13 +444,13 @@
 
 
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-12">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <b>Admin Panel</b>
                                 </div>
                                 <div class="panel-body">
-                                    <div class="col-xs-3">
+                                    <div class="col-md-3">
                                         <form action="campaign_ApproveBudget">
                                             <div class="form-group">
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
@@ -463,7 +463,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-md-3">
                                         <form action="campaign_DisapproveBudget">
                                             <div class="form-group">
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
@@ -477,7 +477,7 @@
                                         </form>    
                                     </div>
 
-                                    <div class="col-xs-3">
+                                    <div class="col-md-3">
                                         <form action="campaign_ApprovePOE">
                                             <div class="form-group">
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
@@ -491,7 +491,7 @@
                                         </form>    
                                     </div>
 
-                                    <div class="col-xs-3">
+                                    <div class="col-md-3">
                                         <form action="campaign_DisapprovePOE">
                                             <div class="form-group">
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
