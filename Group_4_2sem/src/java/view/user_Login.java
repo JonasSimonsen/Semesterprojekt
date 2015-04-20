@@ -7,6 +7,7 @@ package view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,14 +33,20 @@ public class user_Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
-        
-        
-        RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
-        rd.forward(request, response);
-        
+
+        if (UserDAO.getUser(UN, PW)) {
+            RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
+            rd.forward(request, response);
+
+        } else {
+            out.print("Sorry username or password error");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.include(request, response);
+
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
