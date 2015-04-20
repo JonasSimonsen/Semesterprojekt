@@ -37,7 +37,7 @@
                     
                     <img src="img/MDF-processing-tool-logo.png" class="img-responsive center-block"/>
                     
-                    <form action="user_Login">
+                    <form action="user_Login" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" name="username" placeholder="Username">
                         </div>
