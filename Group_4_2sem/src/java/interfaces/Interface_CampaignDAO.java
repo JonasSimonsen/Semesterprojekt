@@ -16,7 +16,7 @@ import model.Campaign2;
  */
 public interface Interface_CampaignDAO {
     
-    public void submitNewCampaignV2(Campaign2 camp) throws SQLException, ClassNotFoundException;
+    public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException;
     public void deleteCampaign(String name) throws SQLException, ClassNotFoundException;
     public void editCampaign(Campaign camp) throws SQLException, ClassNotFoundException;
     public void approveBudget(int campno, double budget) throws SQLException, ClassNotFoundException;
