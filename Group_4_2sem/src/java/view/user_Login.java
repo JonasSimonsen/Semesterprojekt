@@ -33,7 +33,11 @@ public class user_Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        RequestDispatcher rd = request.getRequestDispatcher("int-dashboard.jsp");
+        String UN = request.getParameter("username");
+        String PW = request.getParameter("password");
+        
+        
+        RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
         rd.forward(request, response);
         
     }
