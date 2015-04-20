@@ -9,6 +9,9 @@ import control.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Emil
+ * @author jonassimonsen
  */
 @WebServlet(name = "user_Login", urlPatterns = {"/user_Login"})
 public class user_Login extends HttpServlet {
@@ -38,15 +41,22 @@ public class user_Login extends HttpServlet {
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
         UserDAO cm = new UserDAO();
-        if (cm.getUser(UN, PW)) {
-            RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
-            rd.forward(request, response);
-
-        } else {
-            out.print("Sorry username or password error");
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-            rd.include(request, response);
-
+        
+        try {
+            if (cm.getUser(UN, PW)) {
+                RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
+                rd.forward(request, response);
+                
+            } else {
+                out.print("Sorry username or password error");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.include(request, response);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
