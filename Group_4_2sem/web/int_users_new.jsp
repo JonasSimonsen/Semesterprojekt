@@ -99,10 +99,10 @@
                                     <div class="form-group">
                                         <label for="user-type" class="">Type</label>
                                         <div class="radio">
-                                            <label><input type="radio" name="user-type-internal">Internal User</label>
+                                            <label><input type="radio" name="user-type-internal" value="1">Internal User</label>
                                         </div>
                                         <div class="radio">
-                                            <label><input type="radio" name="user-type-external">External User</label>
+                                            <label><input type="radio" name="user-type-external" value="1">External User</label>
                                         </div>
                                     </div>
                                     <!-- ORGANIZATION -->

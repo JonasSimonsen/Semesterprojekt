@@ -21,6 +21,8 @@ public class user_NewUser extends HttpServlet {
     private String tempEmail;
     private int tempPhoneNumber;
     private String tempOrganization;
+    private String tempInternal, tempExternal;
+    private int type;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,9 +35,18 @@ public class user_NewUser extends HttpServlet {
         tempEmail = request.getParameter("email");
         tempPhoneNumber = Integer.parseInt(request.getParameter("phone"));
         tempOrganization = request.getParameter("organization");
+        tempInternal = request.getParameter("user-type-internal");
+        tempExternal = request.getParameter("user-type-external");
+        
+        if (tempInternal == "1") {
+            type = 1;
+        } else if (tempExternal == "1") {
+            type = 0;
+        }
+        
 
         // Create new user from requested parameters
-        User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, 1);
+        User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, type);
 
         UserDAO dm = new UserDAO();
 
