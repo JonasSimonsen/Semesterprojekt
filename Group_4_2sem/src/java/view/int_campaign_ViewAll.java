@@ -24,7 +24,7 @@ import model.Campaign2;
  * @author jonassimonsen
  */
 @WebServlet(name = "campaign_ViewAll", urlPatterns = {"/campaign_ViewAll"})
-public class campaign_ViewAll extends HttpServlet {
+public class int_campaign_ViewAll extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
