@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,9 +39,13 @@ public class user_Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        HttpSession s = request.getSession();
+        s.setMaxInactiveInterval(30 * 60);
+        
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
         UserDAO cm = new UserDAO();
+        s.setAttribute("username", UN);
         
         try {
             if (cm.getUser(UN, PW)) {

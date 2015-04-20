@@ -36,7 +36,7 @@
         <div id="wrapper">
 
             <!-- Navigation -->
-            <jsp:include page="includes/nav.jsp"/>
+            <jsp:include page="includes/int_nav.jsp"/>
             <!-- /Navigation -->
 
             <div id="page-wrapper">
