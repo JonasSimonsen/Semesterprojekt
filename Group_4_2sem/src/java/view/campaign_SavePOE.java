@@ -139,7 +139,7 @@ public class campaign_SavePOE extends HttpServlet {
             // sets the message in request scope
             request.setAttribute("Message", message);
 
-            RequestDispatcher rd = request.getRequestDispatcher("campaigns_viewspecific.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("int_campaigns_viewspecific.jsp");
             rd.forward(request, response);
         }
     }

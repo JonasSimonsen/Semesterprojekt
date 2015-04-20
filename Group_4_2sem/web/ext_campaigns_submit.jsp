@@ -37,7 +37,7 @@
         <div id="wrapper">
 
             <!-- Navigation -->
-            <jsp:include page="includes/nav.jsp"/>
+            <jsp:include page="includes/ext_nav.jsp"/>
             <!-- /Navigation -->
 
             <div id="page-wrapper">
@@ -290,7 +290,7 @@
                                 <div class="form-group">
                                     <br>
                                     <div class="checkbox">
-                                        <label><input type="checkbox" name="terms" value="" required>I have read and accepted the <a href="#">Terms and Conditions</a> required to proceed.</label>
+                                        <label><input type="checkbox" name="terms" value="" required>I have read and accepted the <a href="ext_terms.jsp">Terms and Conditions</a> required to proceed.</label>
                                     </div>
                                 </div>
 

@@ -38,7 +38,7 @@
         <div id="wrapper">
 
             <!-- Navigation -->
-            <jsp:include page="includes/nav.jsp"/>
+            <jsp:include page="includes/ext_nav.jsp"/>
             <!-- /Navigation -->
 
             <div id="page-wrapper">
@@ -443,71 +443,7 @@
                     </div>
 
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-danger">
-                                <div class="panel-heading">
-                                    <b>Admin Panel</b>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-3">
-                                        <form action="campaign_ApproveBudget">
-                                            <div class="form-group">
-                                                <input type="hidden" name="id" value="${camp.plan_number}">
-                                            </div>
-
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-default" type="submit">
-                                                    Approve Budget
-                                                </button> 
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <form action="campaign_DisapproveBudget">
-                                            <div class="form-group">
-                                                <input type="hidden" name="id" value="${camp.plan_number}">
-                                            </div>
-
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-default" type="submit">
-                                                    Disapprove Budget
-                                                </button> 
-                                            </div>
-                                        </form>    
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <form action="campaign_ApprovePOE">
-                                            <div class="form-group">
-                                                <input type="hidden" name="id" value="${camp.plan_number}">
-                                            </div>
-
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-default" type="submit">
-                                                    Approve POE
-                                                </button> 
-                                            </div>
-                                        </form>    
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <form action="campaign_DisapprovePOE">
-                                            <div class="form-group">
-                                                <input type="hidden" name="id" value="${camp.plan_number}">
-                                            </div>
-
-                                            <div class="form-group text-center">
-                                                <button class="btn btn-default" type="submit">
-                                                    Disapprove POE
-                                                </button> 
-                                            </div>
-                                        </form>    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
+                     
                     <!-- /Page Content -->
 
 

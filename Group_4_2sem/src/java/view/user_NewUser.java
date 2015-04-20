@@ -46,7 +46,7 @@ public class user_NewUser extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("users_new.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("int_users_new.jsp");
         rd.forward(request, response);
     }
 

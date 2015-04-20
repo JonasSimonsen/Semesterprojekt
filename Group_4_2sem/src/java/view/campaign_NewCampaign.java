@@ -151,7 +151,7 @@ public class campaign_NewCampaign extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("campaigns_submit.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("ext_campaigns_submit.jsp");
         rd.forward(request, response);
 
     }

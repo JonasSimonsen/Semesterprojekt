@@ -20,7 +20,7 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="">
-                        <a href="index.jsp"><i class="fa fa-user"></i> Administrator</a>
+                        <a href="index.jsp"><i class="fa fa-user"></i> External User</a>
                     </li>
                 </ul>
 
@@ -29,49 +29,21 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            <a href="ext-dashboard.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
-
-                        <li>
-                            <a href="index.jsp"><i class="fa fa-fw fa-bar-chart"></i> Statistics</a>
-                        </li>
-
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#dd-campaigns"><i class="fa fa-fw fa-bullhorn"></i> Campaigns <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="dd-campaigns" class="collapse">
-
                                 <li>
-                                    <a href="campaigns_search.jsp">Search Campaign</a>
+                                    <a href="ext_campaigns_search.jsp">View campaigns</a>
                                 </li>
-
                                 <li>
-                                    <a href="campaigns_submit.jsp">Submit Campaign</a>
+                                    <a href="#">Edit Campaigns</a>
                                 </li>
-
-                                <li>
-                                    <a href="#">Edit Campaign</a>
-                                </li>
-                                
                             </ul>
                         </li>
 
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#dd-users"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="dd-users" class="collapse">
-
-                                <li>
-                                    <a href="#">View Users</a>
-                                </li>
-                                <li>
-                                    <a href="users_new.jsp">New User</a>
-                                </li>
-                                <li>
-                                    <a href="#">Edit User</a>
-                                </li>
-
-
-                            </ul>
-                        </li>
+                       
                     </ul>
                 </div>
 

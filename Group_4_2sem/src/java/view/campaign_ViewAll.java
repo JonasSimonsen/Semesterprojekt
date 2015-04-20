@@ -57,7 +57,7 @@ public class campaign_ViewAll extends HttpServlet {
             s.setAttribute("campList", campaignList);
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("campaigns_search.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("int_campaigns_search.jsp");
         rd.forward(request, response);
 
     }
