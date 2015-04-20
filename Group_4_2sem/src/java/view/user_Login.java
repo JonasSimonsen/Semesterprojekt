@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -36,8 +37,8 @@ public class user_Login extends HttpServlet {
 
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
-
-        if (UserDAO.getUser(UN, PW)) {
+        UserDAO cm = new UserDAO();
+        if (cm.getUser(UN, PW)) {
             RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
             rd.forward(request, response);
 
