@@ -78,7 +78,7 @@ public class UserDAO implements Interface_UserDAO {
         return getUser;                                                         // Returnerer Arraylisten fyldt med all User objekter fra databasen
     }
     
-    public static int getUserType(String username) throws SQLException, ClassNotFoundException{
+    public int getUserType(String username) throws SQLException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection connection = null;

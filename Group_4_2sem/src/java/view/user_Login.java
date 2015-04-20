@@ -41,22 +41,30 @@ public class user_Login extends HttpServlet {
 
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
-        
+
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
         UserDAO cm = new UserDAO();
-        s.setAttribute("username", UN);
-        
+
         try {
             if (cm.getUser(UN, PW)) {
-                RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
-                rd.forward(request, response);
-                
+                int type = cm.getUserType(UN);
+                s.setAttribute("username", UN);
+                s.setAttribute("user_type", type);
+
+                if (type == 1) {
+                    RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
+                    rd.forward(request, response);
+                } else {
+                    RequestDispatcher rd = request.getRequestDispatcher("ext_dashboard.jsp");
+                    rd.forward(request, response);
+                }
+
             } else {
                 out.print("Sorry username or password error");
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.include(request, response);
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
