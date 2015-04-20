@@ -55,7 +55,7 @@ public class user_Login extends HttpServlet {
                 if (type == 1) {
                     RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
                     rd.forward(request, response);
-                } else {
+                } else if (type == 0){
                     RequestDispatcher rd = request.getRequestDispatcher("ext_dashboard.jsp");
                     rd.forward(request, response);
                 }
