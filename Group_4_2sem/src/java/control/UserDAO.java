@@ -77,4 +77,33 @@ public class UserDAO implements Interface_UserDAO {
         }
         return getUser;                                                         // Returnerer Arraylisten fyldt med all User objekter fra databasen
     }
+    
+    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException {
+        ResultSet rs = null;
+        PreparedStatement statement = null;
+        Connection connection = null;
+        User getUser = null;
+        boolean correctLogin = false;
+        String tempUsername = null;
+        String tempPassword = null;
+        try {
+            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
+            String query = "SELECT USERNAME,PASSWORD FROM USERS WHERE USERNAME = ?";                               // Henter alle informationer gemt i USERS table i databasen
+            statement = connection.prepareStatement(query);                           // Opretter forbindelse til databasen for statement
+            statement.setString(1, username);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                tempUsername = rs.getString("USERNAME");
+                tempPassword = rs.getString("PASSWORD");
+            }
+            if (username.equals(tempUsername) && password.equals(tempPassword)){
+                correctLogin = true;
+            }
+        } finally {
+            statement.close();                                                  // Lukker forbindelser
+            connection.close();
+        }
+        return correctLogin;
+    }
 }
