@@ -74,8 +74,34 @@ public class UserDAO implements Interface_UserDAO {
         } finally {
             statement.close();                                                  // Lukker forbindelser
             connection.close();
+            rs.close();
         }
         return getUser;                                                         // Returnerer Arraylisten fyldt med all User objekter fra databasen
+    }
+    
+        public int getUserID(String username) throws SQLException, ClassNotFoundException{
+        ResultSet rs = null;
+        PreparedStatement statement = null;
+        Connection connection = null;
+        int getUserID = 0;
+
+        try {
+            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
+            String query = "SELECT ID FROM USERS WHERE USERNAME = ?";                               // Henter alle informationer gemt i USERS table i databasen
+            statement = connection.prepareStatement(query);                           // Opretter forbindelse til databasen for statement
+            statement.setString(1, username);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                getUserID = rs.getInt("USERTYPE");
+            }
+        } finally {
+            statement.close();                                                  // Lukker forbindelser
+            connection.close();
+            rs.close();
+        }
+        return getUserID;             
+        
     }
     
     public int getUserType(String username) throws SQLException, ClassNotFoundException{
@@ -97,6 +123,7 @@ public class UserDAO implements Interface_UserDAO {
         } finally {
             statement.close();                                                  // Lukker forbindelser
             connection.close();
+            rs.close();
         }
         return getUserType;             
         
@@ -127,6 +154,7 @@ public class UserDAO implements Interface_UserDAO {
         } finally {
             statement.close();                                                  // Lukker forbindelser
             connection.close();
+            rs.close();
         }
         return correctLogin;
     }
