@@ -44,6 +44,7 @@ public class ext_Campaign_ViewAll extends HttpServlet {
         s.setMaxInactiveInterval(30 * 60);
         String UN = s.getAttribute("username").toString();
         
+        System.out.println(UN);
 
         Campaign2 campaign = null;
         CampaignDAO cdao = new CampaignDAO();
@@ -53,6 +54,7 @@ public class ext_Campaign_ViewAll extends HttpServlet {
         
         try {
             int ID = udao.getUserID(UN);
+            System.out.println(ID);
             campaignList = cdao.getCampaignsExternal(ID);
 
         } catch (SQLException sqle) {
