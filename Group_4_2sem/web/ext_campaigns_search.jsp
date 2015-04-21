@@ -50,7 +50,7 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 CAMPAIGNS
-                                <small>Search</small>
+                                <small>My campaigns</small>
                             </h1>
                         </div>
                     </div> 
@@ -59,7 +59,7 @@
                     <!-- Page Content -->
                     <div class="row">
                         <div class="col-md-4">      
-                            <h3 class="text-info">Search for campaign</h3>
+                            <h3 class="text-info">Search your campaigns</h3>
                             <form action="ext_Campaign_ViewCampaign">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="id" placeholder="Enter campaign ID...">
@@ -68,7 +68,7 @@
                                     </span>
                                 </div>
                             </form>
-                            <h3 class="text-info">List all campaigns</h3>          
+                            <h3 class="text-info">List your campaigns</h3>          
                             <form action="ext_Campaign_ViewAll">
                                 <div class="input-group">
                                     <button class="btn btn-default" type="submit">Refresh List</button>

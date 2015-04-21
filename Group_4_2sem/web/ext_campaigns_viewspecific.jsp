@@ -51,10 +51,7 @@
                             <h1 class="page-header">
                                 CAMPAIGN
                                 <small>#${camp.plan_number}</small>
-
                             </h1>
-
-
                         </div>
                     </div> 
                     <!-- /Page Heading -->
@@ -251,8 +248,6 @@
                                                 <td>Venue Address</td>
                                                 <td class="text-right">${camp.venue_address}</td>
                                             </tr>
-
-
                                         </tbody>
                                     </table>  
                                 </div>
@@ -333,6 +328,7 @@
 
                         <div class="col-md-4">
                             <div class="panel panel-default">
+                                
                                 <div class="panel-heading">
                                     <b>Additional Details</b>
                                     <c:choose>
@@ -353,6 +349,7 @@
                                         </c:when>     
                                     </c:choose>
                                 </div>
+                                
                                 <div class="panel-body">
                                     <table class="table table-bordered">
                                         <tbody>
@@ -393,10 +390,6 @@
 
                                         </tbody>
                                     </table> 
-
-
-
-
                                 </div>
                             </div> 
                         </div>
@@ -412,6 +405,7 @@
 
                                         <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
                                             <div class="form-group">
+                                                <p class="text-muted">Upload your proof of execution in a .zip-file.</p>
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
                                                 <input type="file" name="fIlE_UpLoAd-N1C3-F1Le-4-h4X">
                                             </div>              
@@ -422,24 +416,21 @@
 
                                     </c:if>        
 
-                                    <hr>
+                                    
                                     <c:if test="${camp.has_poe == 1}">
 
                                         <form action="campaign_LoadPOE">
                                             <div class="form-group">
+                                                <p class="text-success">POE has been successfully uploaded, and is awaiting confirmation from DELL.</p>
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
-                                                <button class="btn btn-default" action="submit">Load POE</button>
+                                                <button class="btn btn-default" action="submit">Download POE</button>
                                             </div>
                                         </form>
 
                                     </c:if>
-
-
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
 
 

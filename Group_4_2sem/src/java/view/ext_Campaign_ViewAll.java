@@ -38,9 +38,10 @@ public class ext_Campaign_ViewAll extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
+        System.out.println("lllllllllllllllllllll" + s.getAttribute("username"));
 
         Campaign2 campaign = null;
         CampaignDAO cdao = new CampaignDAO();
