@@ -5,13 +5,11 @@
  */
 package view;
 
-import control.UserDAO;
+import control.CampaignDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,13 +17,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Campaign2;
 
 /**
  *
  * @author jonassimonsen
  */
-@WebServlet(name = "user_Login", urlPatterns = {"/user_Login"})
-public class user_Login extends HttpServlet {
+@WebServlet(name = "ext_Campaign_ViewAll", urlPatterns = {"/ext_Campaign_ViewAll"})
+public class ext_Campaign_ViewAll extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,41 +37,28 @@ public class user_Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
 
-        String UN = request.getParameter("username");
-        String PW = request.getParameter("password");
-        UserDAO cm = new UserDAO();
+        Campaign2 campaign = null;
+        CampaignDAO cdao = new CampaignDAO();
+        ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
 
         try {
-            if (cm.getUser(UN, PW)) {
-                int type = cm.getUserType(UN);
-                s.setAttribute("username", UN);
-                s.setAttribute("user_type", type);
+            campaignList = cdao.getCampaigns();
 
-                System.out.println("TYPE IS:" + type);
-                
-                if (type == 1) {
-                    RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
-                    rd.forward(request, response);
-                } else if (type == 0){
-                    RequestDispatcher rd = request.getRequestDispatcher("ext_dashboard.jsp");
-                    rd.forward(request, response);
-                }
-
-            } else {
-                out.print("Sorry username or password error");
-                RequestDispatcher rd = request.getRequestDispatcher("login_failed.jsp");
-                rd.include(request, response);
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            s.setAttribute("campList", campaignList);
         }
+
+        RequestDispatcher rd = request.getRequestDispatcher("ext_campaigns_search.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

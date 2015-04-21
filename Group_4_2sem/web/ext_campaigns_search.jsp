@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-4">      
                             <h3 class="text-info">Search for campaign</h3>
-                            <form action="campaign_ViewCampaign">
+                            <form action="ext_campaign_ViewCampaign">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="id" placeholder="Enter campaign ID...">
                                     <span class="input-group-btn">
@@ -69,7 +69,7 @@
                                 </div>
                             </form>
                             <h3 class="text-info">List all campaigns</h3>          
-                            <form action="campaign_ViewAll">
+                            <form action="ext_campaign_ViewAll">
                                 <div class="input-group">
                                     <button class="btn btn-default" type="submit">Refresh List</button>
                                 </div>
@@ -117,7 +117,7 @@
                                                 </c:choose>
                                             </td>
                                             <td class="col-md-2 text-center">
-                                                <form action="campaign_ViewCampaign">
+                                                <form action="ext_campaign_ViewCampaign">
                                                     <input type="hidden" name="id" value="${p.plan_number}">
                                                     <button type="submit" class="btn btn-link">View Campaign</button>
                                                 </form>
@@ -143,5 +143,4 @@
     </body>
 
 </html>
-
 
