@@ -6,6 +6,7 @@
 package view;
 
 import control.CampaignDAO;
+import control.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -41,14 +42,18 @@ public class ext_Campaign_ViewAll extends HttpServlet {
         
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
-        System.out.println("lllllllllllllllllllll" + s.getAttribute("username"));
+        String UN = s.getAttribute("username").toString();
+        
 
         Campaign2 campaign = null;
         CampaignDAO cdao = new CampaignDAO();
+        UserDAO udao = new UserDAO();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
-
+        
+        
         try {
-            campaignList = cdao.getCampaigns();
+            int ID = udao.getUserID(UN);
+            campaignList = cdao.getCampaignsExternal(ID);
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();
