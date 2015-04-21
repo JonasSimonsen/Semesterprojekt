@@ -21,7 +21,7 @@ import model.Campaign2;
  *
  * @author jonassimonsen
  */
-@WebServlet(name = "ext_campaign_ViewCampaign", urlPatterns = {"/ext_campaign_ViewCampaign"})
+@WebServlet(name = "ext_Campaign_ViewCampaign", urlPatterns = {"/ext_Campaign_ViewCampaign"})
 public class ext_Campaign_ViewCampaign extends HttpServlet {
 
     private int PLANNO;
