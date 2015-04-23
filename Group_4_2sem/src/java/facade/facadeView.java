@@ -7,13 +7,13 @@ import model.*;
 
 public class facadeView {
 
-    ActivityCtrl ActCtrl = new ActivityCtrl();
+    MessageCtrl MsgCtrl = new MessageCtrl();
     CampaignCtrl CampCtrl = new CampaignCtrl();
     PartnerCtrl PartCtrl = new PartnerCtrl();
     UserCtrl UseCtrl = new UserCtrl();
 
-    public void createNewActivity(Activity activity) throws SQLException, ClassNotFoundException {
-        ActCtrl.createNewActivity(activity);
+    public void createNewMessage(Message message) throws SQLException, ClassNotFoundException {
+        MsgCtrl.createNewMessage(message);
     }
 
     public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException {
@@ -82,13 +82,13 @@ public class facadeView {
         return userType;
     }
 
-    public ArrayList<Activity> getActivity() throws SQLException, ClassNotFoundException {
-        ArrayList<Activity> activity = ActCtrl.getActivity();
-        return activity;
+    public ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
+        ArrayList<Message> message = MsgCtrl.getMessages();
+        return message;
     }
 
-    public ArrayList<Activity> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Activity> activity = ActCtrl.getActivity();
-        return activity;
+    public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
+        ArrayList<Message> message = MsgCtrl.getMessages();
+        return message;
     }
 }

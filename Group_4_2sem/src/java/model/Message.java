@@ -1,10 +1,10 @@
 package model;
 
-public class Activity {
+public class Message {
     private String comments, date;
     private int commentID, campNum, ID;
     
-    public Activity (int commentID, String comments, int campNum, String date, int ID){
+    public Message (int commentID, String comments, int campNum, String date, int ID){
         this.commentID = commentID;
         this.comments = comments;
         this.date = date;

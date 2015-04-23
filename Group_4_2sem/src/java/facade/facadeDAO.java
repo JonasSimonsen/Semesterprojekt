@@ -11,10 +11,10 @@ public class facadeDAO {
     Interface_PartnerDAO partnerDAO = new PartnerDAO();
     Interface_UserDAO userDAO = new UserDAO();
     Interface_CampaignDAO campaignDAO = new CampaignDAO();
-    Interface_ActivityDAO activityDAO = new ActivityDAO();
+    Interface_MessageDAO messageDAO = new MessageDAO();
 
-    public void createNewActivity(Activity activity) throws SQLException, ClassNotFoundException {
-        activityDAO.createNewActivity(activity);
+    public void createNewMessage(Message message) throws SQLException, ClassNotFoundException {
+        messageDAO.createNewMessage(message);
     }
 
     public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException {
@@ -83,13 +83,13 @@ public class facadeDAO {
         return camp;
     }
 
-    public ArrayList<Activity> getActivity() throws SQLException, ClassNotFoundException {
-        ArrayList<Activity> activity = activityDAO.getActivity();
-        return activity;
+    public ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
+        ArrayList<Message> message = messageDAO.getMessages();
+        return message;
     }
 
-    public ArrayList<Activity> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Activity> activity = activityDAO.getActivity();
-        return activity;
+    public ArrayList<Message> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
+        ArrayList<Message> message = messageDAO.getSpecificMessage(ID);
+        return message;
     }
 }
