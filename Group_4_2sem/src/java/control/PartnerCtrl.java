@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
-/**
- *
- * @author ZARDOZ
- */
+import facade.facadeDAO;
+import java.sql.SQLException;
+import model.Partner;
+
 public class PartnerCtrl {
-    
+    facadeDAO facade = new facadeDAO();
+    public void createNewPartner(Partner partner) throws SQLException, ClassNotFoundException{
+        facade.createNewPartner(partner);
+    }
 }
