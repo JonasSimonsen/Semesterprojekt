@@ -5,8 +5,8 @@
  */
 package view;
 
-import control.CampaignDAO;
-import control.DatabaseInfo;
+import data.CampaignDAO;
+import data.DatabaseInfo;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -104,6 +104,7 @@ public class campaign_LoadPOE extends HttpServlet {
                 System.out.println("File saved");
             }
             connection.close();
+            result.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {

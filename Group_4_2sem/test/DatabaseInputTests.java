@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import control.UserDAO;
-import control.CampaignDAO;
-import interfaces.*;
-import control.*;
-import static control.CampaignDAO.getSpecificCampaign;
-import static control.CampaignDAO.getSpecificCampaignV2;
-import static control.UserDAO.getUserInfo;
+import data.UserDAO;
+import data.CampaignDAO;
+import static data.CampaignDAO.getSpecificCampaignV2;
+import static data.UserDAO.getUserInfo;
 import java.sql.SQLException;
 import model.Campaign2;
 import model.User;
@@ -19,10 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author ZARDOZ
- */
 public class DatabaseInputTests {
 
     public DatabaseInputTests() {
@@ -56,10 +43,22 @@ public class DatabaseInputTests {
         assertEquals("HELL LLC", camp.getCompany_name());
         cm.deleteCampaign("SATAN");
     }
+
+    @Test
+    public void testPOEStatus() throws SQLException, ClassNotFoundException{
+        CampaignDAO cm = new CampaignDAO();
+        Campaign2 camp = new Campaign2(666,"","SATAN","HELL LLC","","","","","","",5,"","",0,0,0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"",0,0,0,0.0,0.0,"","",0.0,0,0.0,"",0,0);
+        int id = 0;
+        cm.submitNewCampaignV2(camp,id);
+        System.out.println("Before: " +camp.getHas_poe());
+        cm.updatePOEStatus(1, 666);
+        camp = getSpecificCampaignV2("SATAN");
+        System.out.println("After: " +camp.getHas_poe());
+        assertEquals(1,camp.getHas_poe());
+        cm.updatePOEStatus(0, 666);
+        camp = getSpecificCampaignV2("SATAN");
+        assertEquals(0,camp.getHas_poe());
+        cm.deleteCampaign("SATAN");
+    }
     
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

@@ -5,7 +5,7 @@
  */
 package view;
 
-import control.UserDAO;
+import data.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;

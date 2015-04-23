@@ -5,8 +5,8 @@
  */
 package view;
 
-import control.CampaignDAO;
-import control.UserDAO;
+import data.CampaignDAO;
+import data.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

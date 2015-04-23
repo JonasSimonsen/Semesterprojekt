@@ -5,8 +5,8 @@
  */
 package view;
 
-import control.CampaignDAO;
-import control.DatabaseInfo;
+import data.CampaignDAO;
+import data.DatabaseInfo;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
