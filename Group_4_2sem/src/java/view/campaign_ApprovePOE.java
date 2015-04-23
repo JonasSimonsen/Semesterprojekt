@@ -45,7 +45,7 @@ public class campaign_ApprovePOE extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher rd = request.getRequestDispatcher("int_campaigns_viewspecific.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("int_Campaign_ViewCampaign");
         rd.forward(request, response);
     }
 

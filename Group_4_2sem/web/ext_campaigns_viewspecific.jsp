@@ -328,7 +328,7 @@
 
                         <div class="col-md-4">
                             <div class="panel panel-default">
-                                
+
                                 <div class="panel-heading">
                                     <b>Additional Details</b>
                                     <c:choose>
@@ -349,7 +349,7 @@
                                         </c:when>     
                                     </c:choose>
                                 </div>
-                                
+
                                 <div class="panel-body">
                                     <table class="table table-bordered">
                                         <tbody>
@@ -416,7 +416,7 @@
 
                                     </c:if>        
 
-                                    
+
                                     <c:if test="${camp.has_poe == 1}">
 
                                         <form action="campaign_LoadPOE">
@@ -433,8 +433,58 @@
                         </div>
                     </div>
 
+                    <hr>
 
-                     
+                    <div class="row">
+
+
+
+                        <div class="col-lg-12">
+
+                            <h1 class="text-center">Message Board</h1>
+                            <br>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    #1 - Jeffrey McSmacknDope <span class='pull-right'>12-01-2015</span>
+                                </div>
+                                <div class="panel-body">
+                                    <p>blablabla</p>
+                                </div>
+                                
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    #2 - Carlos Cocksmasher <span class='pull-right'>12-01-2015</span>
+                                </div>
+                                <div class="panel-body">
+                                    <p>blablabla</p>
+                                </div>
+                                
+                            </div>
+
+
+                            <form>
+                                <h3>
+                                    Post comment:
+                                </h3>
+                                
+                                <div class="form-group">
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <button class="btn btn-primary">Send</button>
+                                </div>
+                                
+                            </form>  
+                        </div>
+                    </div>
+
+
+
                     <!-- /Page Content -->
 
 
