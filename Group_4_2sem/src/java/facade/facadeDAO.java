@@ -52,28 +52,44 @@ public class facadeDAO {
     public void deleteUser(String name) throws SQLException, ClassNotFoundException {
         userDAO.deleteUser(name);
     }
-    public int getUserID(String username) throws SQLException, ClassNotFoundException{
+
+    public int getUserID(String username) throws SQLException, ClassNotFoundException {
         int userID = userDAO.getUserID(username);
         return userID;
     }
-    public int getUserType(String username) throws SQLException, ClassNotFoundException{
+
+    public int getUserType(String username) throws SQLException, ClassNotFoundException {
         int userType = userDAO.getUserType(username);
         return userType;
     }
-    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException{
+
+    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException {
         boolean user = userDAO.getUser(username, password);
         return user;
     }
-    public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException{
+
+    public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException {
         Campaign2 camp = campaignDAO.getSpecificCampaign(campno);
         return camp;
     }
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException{
+
+    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> camp = campaignDAO.getCampaignsExternal(id);
         return camp;
     }
-    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException{
+
+    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> camp = campaignDAO.getCampaigns();
         return camp;
+    }
+
+    public ArrayList<Activity> getActivity() throws SQLException, ClassNotFoundException {
+        ArrayList<Activity> activity = activityDAO.getActivity();
+        return activity;
+    }
+
+    public ArrayList<Activity> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
+        ArrayList<Activity> activity = activityDAO.getActivity();
+        return activity;
     }
 }

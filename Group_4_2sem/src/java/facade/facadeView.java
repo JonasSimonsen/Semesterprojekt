@@ -81,4 +81,14 @@ public class facadeView {
         int userType = UseCtrl.getUserType(UN);
         return userType;
     }
+
+    public ArrayList<Activity> getActivity() throws SQLException, ClassNotFoundException {
+        ArrayList<Activity> activity = ActCtrl.getActivity();
+        return activity;
+    }
+
+    public ArrayList<Activity> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
+        ArrayList<Activity> activity = ActCtrl.getActivity();
+        return activity;
+    }
 }

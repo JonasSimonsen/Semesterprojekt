@@ -6,6 +6,7 @@
 package interfaces;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Activity;
 
 /**
@@ -13,8 +14,11 @@ import model.Activity;
  * @author Sander
  */
 public interface Interface_ActivityDAO {
-    
+
     public void createNewActivity(Activity activity) throws SQLException, ClassNotFoundException;
-   
-    
+
+    public ArrayList<Activity> getActivity() throws SQLException, ClassNotFoundException;
+
+    public ArrayList<Activity> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException;
+
 }
