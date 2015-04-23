@@ -1,18 +1,35 @@
 package model;
 
-public class Activity {
+public class Message {
     private String comments, date;
-    private int planNo, ID;
+    private int commentID, campNum, ID;
     
-    public Activity (String comments, int planNo, String date, int ID){
+    public Message (int commentID, String comments, int campNum, String date, int ID){
+        this.commentID = commentID;
         this.comments = comments;
         this.date = date;
-        this.planNo = planNo;
+        this.campNum = campNum;
         this.ID = ID;
     }
 
     public String getComments() {
         return comments;
+    }
+
+    public int getCommentID() {
+        return commentID;
+    }
+
+    public void setCommentID(int commentID) {
+        this.commentID = commentID;
+    }
+
+    public int getCampNum() {
+        return campNum;
+    }
+
+    public void setCampNum(int campNum) {
+        this.campNum = campNum;
     }
 
     public void setComments(String comments) {
@@ -25,14 +42,6 @@ public class Activity {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public int getPlanNo() {
-        return planNo;
-    }
-
-    public void setPlanNo(int planNo) {
-        this.planNo = planNo;
     }
 
     public int getID() {

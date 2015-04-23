@@ -11,10 +11,10 @@ public class facadeDAO {
     Interface_PartnerDAO partnerDAO = new PartnerDAO();
     Interface_UserDAO userDAO = new UserDAO();
     Interface_CampaignDAO campaignDAO = new CampaignDAO();
-    Interface_ActivityDAO activityDAO = new ActivityDAO();
+    Interface_MessageDAO messageDAO = new MessageDAO();
 
-    public void createNewActivity(Activity activity) throws SQLException, ClassNotFoundException {
-        activityDAO.createNewActivity(activity);
+    public void createNewMessage(Message message) throws SQLException, ClassNotFoundException {
+        messageDAO.createNewMessage(message);
     }
 
     public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException {
@@ -52,28 +52,44 @@ public class facadeDAO {
     public void deleteUser(String name) throws SQLException, ClassNotFoundException {
         userDAO.deleteUser(name);
     }
-    public int getUserID(String username) throws SQLException, ClassNotFoundException{
+
+    public int getUserID(String username) throws SQLException, ClassNotFoundException {
         int userID = userDAO.getUserID(username);
         return userID;
     }
-    public int getUserType(String username) throws SQLException, ClassNotFoundException{
+
+    public int getUserType(String username) throws SQLException, ClassNotFoundException {
         int userType = userDAO.getUserType(username);
         return userType;
     }
-    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException{
+
+    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException {
         boolean user = userDAO.getUser(username, password);
         return user;
     }
-    public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException{
+
+    public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException {
         Campaign2 camp = campaignDAO.getSpecificCampaign(campno);
         return camp;
     }
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException{
+
+    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> camp = campaignDAO.getCampaignsExternal(id);
         return camp;
     }
-    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException{
+
+    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> camp = campaignDAO.getCampaigns();
         return camp;
+    }
+
+    public ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
+        ArrayList<Message> message = messageDAO.getMessages();
+        return message;
+    }
+
+    public ArrayList<Message> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
+        ArrayList<Message> message = messageDAO.getSpecificMessage(ID);
+        return message;
     }
 }
