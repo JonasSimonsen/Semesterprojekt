@@ -49,8 +49,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                CAMPAIGNS
-                                <small>My campaigns</small>
+                                Campaigns
+                                <small>Overview</small>
                             </h1>
                         </div>
                     </div> 
@@ -66,12 +66,6 @@
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="submit">Go!</button>
                                     </span>
-                                </div>
-                            </form>
-                            <h3 class="text-info">List your campaigns</h3>          
-                            <form action="ext_Campaign_ViewAll">
-                                <div class="input-group">
-                                    <button class="btn btn-default" type="submit">Refresh List</button>
                                 </div>
                             </form>
                         </div>

@@ -471,7 +471,7 @@
                                 </h3>
                                 
                                 <div class="form-group">
-                                    <textarea class="form-control"></textarea>
+                                    <textarea name="msg" class="form-control"></textarea>
                                 </div>
                                 
                                 
