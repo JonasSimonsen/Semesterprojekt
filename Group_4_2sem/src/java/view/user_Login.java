@@ -5,9 +5,8 @@
  */
 package view;
 
-import data.UserDAO;
+import facade.facadeView;
 import java.io.IOException;
-import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -44,11 +43,11 @@ public class user_Login extends HttpServlet {
 
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
-        UserDAO cm = new UserDAO();
+        facadeView facade = new facadeView();
 
         try {
-            if (cm.getUser(UN, PW)) {
-                int type = cm.getUserType(UN);
+            if (facade.getUser(UN, PW)) {
+                int type = facade.getUserType(UN);
                 s.setAttribute("username", UN);
                 s.setAttribute("user_type", type);
 

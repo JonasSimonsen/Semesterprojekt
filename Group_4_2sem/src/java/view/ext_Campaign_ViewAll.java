@@ -5,10 +5,8 @@
  */
 package view;
 
-import data.CampaignDAO;
-import data.UserDAO;
+import facade.facadeView;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -47,15 +45,14 @@ public class ext_Campaign_ViewAll extends HttpServlet {
         System.out.println(UN);
 
         Campaign2 campaign = null;
-        CampaignDAO cdao = new CampaignDAO();
-        UserDAO udao = new UserDAO();
+        facadeView facade = new facadeView();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
         
         
         try {
-            int ID = udao.getUserID(UN);
+            int ID = facade.getUserID(UN);
             System.out.println(ID);
-            campaignList = cdao.getCampaignsExternal(ID);
+            campaignList = facade.getCampaignsExternal(ID);
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();

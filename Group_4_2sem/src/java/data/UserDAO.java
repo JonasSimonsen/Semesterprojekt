@@ -7,8 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 public class UserDAO implements Interface_UserDAO {
 
@@ -79,6 +77,7 @@ public class UserDAO implements Interface_UserDAO {
         return getUser;                                                         // Returnerer Arraylisten fyldt med all User objekter fra databasen
     }
     
+    @Override
         public int getUserID(String username) throws SQLException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -104,6 +103,7 @@ public class UserDAO implements Interface_UserDAO {
         
     }
     
+    @Override
     public int getUserType(String username) throws SQLException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -129,6 +129,7 @@ public class UserDAO implements Interface_UserDAO {
         
     }
     
+    @Override
     public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement statement = null;

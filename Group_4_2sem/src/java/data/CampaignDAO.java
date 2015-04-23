@@ -190,7 +190,8 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
     }
 
-    public static ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
+        @Override
+        public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -213,7 +214,8 @@ public class CampaignDAO implements Interface_CampaignDAO {
         return getCamp;
     }
     
-        public static ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
+        @Override
+        public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -237,7 +239,8 @@ public class CampaignDAO implements Interface_CampaignDAO {
         return getCamp;
     }
 
-    public static Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException {
+        @Override
+        public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
@@ -258,6 +261,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
         return campaign;
     }
+        
         public static Campaign2 getSpecificCampaignV2(String CONTACTNAME) throws SQLException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;

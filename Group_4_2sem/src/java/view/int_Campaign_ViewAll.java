@@ -5,9 +5,8 @@
  */
 package view;
 
-import data.CampaignDAO;
+import facade.facadeView;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -43,11 +42,11 @@ public class int_Campaign_ViewAll extends HttpServlet {
         s.setMaxInactiveInterval(30 * 60);
 
         Campaign2 campaign = null;
-        CampaignDAO cdao = new CampaignDAO();
+        facadeView facade = new facadeView();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
 
         try {
-            campaignList = cdao.getCampaigns();
+            campaignList = facade.getCampaigns();
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();

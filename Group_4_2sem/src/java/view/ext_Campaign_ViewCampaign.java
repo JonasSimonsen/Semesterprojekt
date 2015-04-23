@@ -5,7 +5,7 @@
  */
 package view;
 
-import data.CampaignDAO;
+import facade.facadeView;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -43,9 +43,9 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
 
         PLANNO = Integer.parseInt(request.getParameter("id"));
         Campaign2 campaign = null;
-        CampaignDAO cm = new CampaignDAO();
+        facadeView facade = new facadeView();
         try {
-            campaign = cm.getSpecificCampaign(PLANNO);
+            campaign = facade.getSpecificCampaign(PLANNO);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {

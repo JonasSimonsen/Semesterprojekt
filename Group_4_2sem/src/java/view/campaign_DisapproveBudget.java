@@ -5,9 +5,8 @@
  */
 package view;
 
-import data.CampaignDAO;
+import facade.facadeView;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,10 +38,10 @@ public class campaign_DisapproveBudget extends HttpServlet {
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
         STATUS = "BUDGET DISAPPROVED";
-        CampaignDAO cm = new CampaignDAO();
+        facadeView facade = new facadeView();
 
         try {
-            cm.budgetStatus(STATUS, CAMPNO);
+            facade.budgetStatus(STATUS, CAMPNO);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

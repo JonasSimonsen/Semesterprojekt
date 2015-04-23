@@ -22,4 +22,7 @@ public interface Interface_CampaignDAO {
     public void approveBudget(int campno, double budget) throws SQLException, ClassNotFoundException;
     public void budgetStatus(String status, int campno) throws SQLException, ClassNotFoundException;
     public void updatePOEStatus(int campno, int has_poe) throws SQLException, ClassNotFoundException;
+    public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException;
+    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException;
+    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException;
 }
