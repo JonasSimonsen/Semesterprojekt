@@ -224,7 +224,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "SELECT * FROM CAMPAIGN WHERE USER_ID = *";                         // Finder alle informationer
+            String query = "SELECT * FROM CAMPAIGN WHERE USER_ID = ?";                         // Finder alle informationer
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             prep.setInt(1, id);
             rs = prep.executeQuery();
@@ -234,7 +234,6 @@ public class CampaignDAO implements Interface_CampaignDAO {
         } finally {
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
-            rs.close();
         }
         return getCamp;
     }

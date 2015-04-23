@@ -92,7 +92,7 @@ public class UserDAO implements Interface_UserDAO {
             statement.setString(1, username);
             rs = statement.executeQuery();
             while (rs.next()) {
-                getUserID = rs.getInt("USERTYPE");
+                getUserID = rs.getInt("ID");
             }
         } finally {
             statement.close();                                                  // Lukker forbindelser

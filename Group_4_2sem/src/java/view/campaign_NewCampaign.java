@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Campaign2;
 
 /**
@@ -84,8 +85,11 @@ public class campaign_NewCampaign extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        //tempPlanNumber = Integer.parseInt(request.getParameter("plan_number"));
+        HttpSession s = request.getSession();
+        s.setMaxInactiveInterval(30 * 60);
+        String UN = s.getAttribute("username").toString();
+        
+        
         tempSubmitDate = request.getParameter("submit_date");
         tempContactName = request.getParameter("contact_name");
         tempCompanyName = request.getParameter("company_name");
@@ -146,7 +150,8 @@ public class campaign_NewCampaign extends HttpServlet {
         facadeView facade = new facadeView();
 
         try {
-            facade.submitNewCampaignV2(campaign,tempID);
+            int ID = facade.getUserID(UN);
+            facade.submitNewCampaignV2(campaign,ID);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
