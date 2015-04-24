@@ -3,23 +3,24 @@ package control;
 import DTO.Message;
 import exceptions.DatabaseErrorException;
 import facade.facadeDAO;
+import interfaces.Interface_DAOFacade;
 import java.util.List;
 
 public class MessageCtrl {
 
-    facadeDAO facade = new facadeDAO();
+    Interface_DAOFacade dao = new facadeDAO();
 
     public void createNewMessage(Message message) throws DatabaseErrorException, ClassNotFoundException {
-        facade.createNewMessage(message);
+        dao.createNewMessage(message);
     }
 
     public List<Message> getMessages() throws DatabaseErrorException, ClassNotFoundException {
-        List<Message> message = facade.getMessages();
+        List<Message> message = dao.getMessages();
         return message;
     }
 
     public List<Message> getSpecificMessage(int ID) throws DatabaseErrorException, ClassNotFoundException {
-        List<Message> message = facade.getSpecificMessage(ID);
+        List<Message> message = dao.getSpecificMessage(ID);
         return message;
     }
 }

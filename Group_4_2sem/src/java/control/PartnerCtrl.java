@@ -3,10 +3,11 @@ package control;
 import facade.facadeDAO;
 import DTO.Partner;
 import exceptions.DatabaseErrorException;
+import interfaces.Interface_DAOFacade;
 
 public class PartnerCtrl {
-    facadeDAO facade = new facadeDAO();
+    Interface_DAOFacade dao = new facadeDAO();
     public void createNewPartner(Partner partner) throws DatabaseErrorException, ClassNotFoundException{
-        facade.createNewPartner(partner);
+        dao.createNewPartner(partner);
     }
 }

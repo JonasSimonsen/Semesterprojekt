@@ -7,6 +7,7 @@ package view;
 
 import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
+import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
 import static java.lang.System.out;
 import java.sql.SQLException;
@@ -44,11 +45,11 @@ public class user_Login extends HttpServlet {
 
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
-        facadeCtrl facade = new facadeCtrl();
+        Interface_CtrlFacade ctrl = new facadeCtrl();
 
         try {
-            if (facade.getUser(UN, PW)) {
-                int type = facade.getUserType(UN);
+            if (ctrl.getUser(UN, PW)) {
+                int type = ctrl.getUserType(UN);
                 s.setAttribute("username", UN);
                 s.setAttribute("user_type", type);
 

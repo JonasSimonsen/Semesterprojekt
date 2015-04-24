@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.User;
 import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
+import interfaces.Interface_CtrlFacade;
 
 @WebServlet(name = "user_NewUser", urlPatterns = {"/user_NewUser"})
 public class user_NewUser extends HttpServlet {
@@ -48,11 +49,11 @@ public class user_NewUser extends HttpServlet {
         // Create new user from requested parameters
         User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, type);
 
-        facadeCtrl facade = new facadeCtrl();
+        Interface_CtrlFacade ctrl = new facadeCtrl();
 
         // Pass user object to the data accessor object
         try {
-            facade.createNewUser(user);
+            ctrl.createNewUser(user);
         } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         }

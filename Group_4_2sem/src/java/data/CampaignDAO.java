@@ -1,6 +1,5 @@
 package data;
 
-import interfaces.Interface_CampaignDAO;
 import DTO.Campaign;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,10 +10,11 @@ import java.util.ArrayList;
 import DTO.Campaign2;
 import exceptions.DatabaseErrorException;
 import java.sql.SQLException;
+import java.util.List;
 
-public class CampaignDAO implements Interface_CampaignDAO {
+public class CampaignDAO {
     private ArrayList<Campaign2> getCamp = new ArrayList();
-        @Override
+        
         public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -83,7 +83,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
 
     }
-        @Override
+        
     public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -101,7 +101,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
     }
 
-        @Override
+        
     public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException {
         Statement statement = null;
         Connection connection = null;
@@ -138,7 +138,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
     }
 
-        @Override
+        
     public void approveBudget(int campno, double budget) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -158,7 +158,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
     }
     
-        @Override
+        
         public void budgetStatus(String status, int campno) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -178,7 +178,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
     }
         
-        @Override
+        
         public void updatePOEStatus(int poe_status, int campno) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -201,7 +201,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         }
     }
 
-        @Override
+        
         public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
         getCamp = new ArrayList();
         ResultSet rs = null;
@@ -227,7 +227,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         return getCamp;
     }
     
-        @Override
+        
         public ArrayList<Campaign2> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException {
         getCamp = new ArrayList();
         ResultSet rs = null;
@@ -253,7 +253,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
         return getCamp;
     }
 
-        @Override
+        
         public Campaign2 getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;

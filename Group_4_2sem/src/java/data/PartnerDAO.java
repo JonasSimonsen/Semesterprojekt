@@ -1,6 +1,5 @@
 package data;
 
-import interfaces.Interface_PartnerDAO;
 import DTO.Partner;
 import exceptions.DatabaseErrorException;
 import java.sql.Connection;
@@ -10,9 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class PartnerDAO implements Interface_PartnerDAO {
+public class PartnerDAO {
         private ArrayList<Partner> getPartner = new ArrayList();                        // Opretter Arraylist til at indeholde Partner objekter
-    @Override
     public void createNewPartner(Partner partner) throws DatabaseErrorException, ClassNotFoundException{
         Statement statement = null;
         Connection connection = null;

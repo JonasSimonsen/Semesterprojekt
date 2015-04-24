@@ -7,7 +7,6 @@ package view;
 
 import facade.facadeCtrl;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
 import exceptions.DatabaseErrorException;
+import interfaces.Interface_CtrlFacade;
 
 /**
  *
@@ -148,11 +148,11 @@ public class campaign_NewCampaign extends HttpServlet {
         tempEstimatedRevenueFromProgram = Integer.parseInt(request.getParameter("est_renevue"));
 
         Campaign2 campaign = new Campaign2(tempPlanNumber, tempSubmitDate, tempContactName, tempCompanyName, tempAddress, tempEmail, tempPhone, tempProgramDate, tempStartTime, tempEndTime, tempEstimatedOfAttendess, tempVenueName, tempVenueAddress, tempFaceToFaceEvent, tempTradeshow, tempMultitouchCampaign, tempDoorOpenerCampaign, tempThirdPartyCampaign, tempDirectMail, tempBlitzCampaign, tempProgramDescription, tempDellStorageSC4000Series, tempDellStoragePS4210Series, tempDellStorageSolution, tempFlashAtThePriceOfDisk, tempFluidCacheForSAN, tempDateProtection, tempTheLastGenerationOfDellPowerEdgeServers, tempWindowsServer2003Migration, tempX86ServerTransition, tempPowerEdgeVRTX, tempSoftwareDefinedNetworking, tempUserCentricNetworking, tempCloudClientComputing, tempConvergedInfrastructureHardware, tempDellConvergedBladeDataCenter, tempOptimizedEnteprise, tempPowerEdgeFXArchitecture, tempSoftwareDefinedStorage, tempIsThereASoftwareComponentToYourCampaign, tempSMB, tempLE, tempPUB, tempTotalProjectedCostOfProgram, tempTotalMDFRequestingFromDell, tempPreferredMethodOfReimbursement, tempParticipatingTechnologyPartner, tempTotalTechnologyPartner, tempEstimatedOfOpportunitues, tempEstimatedRevenueFromProgram, "NOT READY",tempHasPOE,tempID);
-        facadeCtrl facade = new facadeCtrl();
+        Interface_CtrlFacade ctrl = new facadeCtrl();
 
         try {
-            int ID = facade.getUserID(UN);
-            facade.submitNewCampaignV2(campaign,ID);
+            int ID = ctrl.getUserID(UN);
+            ctrl.submitNewCampaignV2(campaign,ID);
         } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         }

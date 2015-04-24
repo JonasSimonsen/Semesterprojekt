@@ -1,34 +1,34 @@
 package control;
 
 import facade.facadeDAO;
-import java.sql.SQLException;
 import DTO.User;
 import exceptions.DatabaseErrorException;
+import interfaces.Interface_DAOFacade;
 
 public class UserCtrl {
 
-    facadeDAO facade = new facadeDAO();
+    Interface_DAOFacade dao = new facadeDAO();
 
     public void createNewUser(User user) throws DatabaseErrorException, ClassNotFoundException {
-        facade.createNewUser(user);
+        dao.createNewUser(user);
     }
 
     public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
-        facade.deleteUser(name);
+        dao.deleteUser(name);
     }
 
     public int getUserID(String username) throws DatabaseErrorException, ClassNotFoundException {
-        int userID = facade.getUserID(username);
+        int userID = dao.getUserID(username);
         return userID;
     }
 
     public int getUserType(String username) throws DatabaseErrorException, ClassNotFoundException {
-        int userType = facade.getUserType(username);
+        int userType = dao.getUserType(username);
         return userType;
     }
 
     public boolean getUser(String username, String password) throws DatabaseErrorException, ClassNotFoundException {
-        boolean user = facade.getUser(username, password);
+        boolean user = dao.getUser(username, password);
         return user;
     }
 }

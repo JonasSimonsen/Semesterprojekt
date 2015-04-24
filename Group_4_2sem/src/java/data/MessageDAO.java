@@ -1,6 +1,5 @@
 package data;
 
-import interfaces.Interface_MessageDAO;
 import DTO.Message;
 import exceptions.DatabaseErrorException;
 import java.sql.Connection;
@@ -12,11 +11,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MessageDAO implements Interface_MessageDAO {
+public class MessageDAO {
 
     private List<Message> getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
 
-    @Override
     public void createNewMessage(Message message) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -39,7 +37,6 @@ public class MessageDAO implements Interface_MessageDAO {
         }
     }
 
-    @Override
     public List<Message> getMessages() throws DatabaseErrorException, ClassNotFoundException {
         getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
         ResultSet rs = null;
@@ -62,7 +59,6 @@ public class MessageDAO implements Interface_MessageDAO {
         return getMessages;                                                     // Returnerer Arraylisten med alle Message objekterne igennem metoden
     }
 
-    @Override
     public List<Message> getSpecificMessage(int ID) throws DatabaseErrorException, ClassNotFoundException {
         getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
         ResultSet rs = null;

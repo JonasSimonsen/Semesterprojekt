@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
 import exceptions.DatabaseErrorException;
+import interfaces.Interface_CtrlFacade;
 
 /**
  *
@@ -43,11 +44,11 @@ public class int_Campaign_ViewAll extends HttpServlet {
         s.setMaxInactiveInterval(30 * 60);
 
         Campaign2 campaign = null;
-        facadeCtrl facade = new facadeCtrl();
+        Interface_CtrlFacade ctrl = new facadeCtrl();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
 
         try {
-            campaignList = facade.getCampaigns();
+            campaignList = ctrl.getCampaigns();
 
         } catch (DatabaseErrorException sqle) {
             sqle.printStackTrace();

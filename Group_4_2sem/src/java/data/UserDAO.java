@@ -1,6 +1,5 @@
 package data;
 
-import interfaces.Interface_UserDAO;
 import DTO.User;
 import exceptions.DatabaseErrorException;
 import java.sql.Connection;
@@ -9,9 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO implements Interface_UserDAO {
+public class UserDAO {
 
-    @Override
     public void createNewUser(User user) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -36,7 +34,6 @@ public class UserDAO implements Interface_UserDAO {
         }
     }
 
-    @Override
     public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement statement = null;
         Connection connection = null;                             
@@ -83,7 +80,6 @@ public class UserDAO implements Interface_UserDAO {
         return getUser;                                                         
     }
     
-    @Override
         public int getUserID(String username) throws DatabaseErrorException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -111,7 +107,6 @@ public class UserDAO implements Interface_UserDAO {
         
     }
     
-    @Override
     public int getUserType(String username) throws DatabaseErrorException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -139,7 +134,6 @@ public class UserDAO implements Interface_UserDAO {
         
     }
     
-    @Override
     public boolean getUser(String username, String password) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement statement = null;

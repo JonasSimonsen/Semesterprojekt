@@ -7,8 +7,8 @@ package view;
 
 import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
+import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,10 +39,10 @@ public class campaign_DisapprovePOE extends HttpServlet {
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
         STATUS = "POE DISAPPROVED";
-        facadeCtrl facade = new facadeCtrl();
+        Interface_CtrlFacade ctrl = new facadeCtrl();
 
         try {
-            facade.budgetStatus(STATUS, CAMPNO);
+            ctrl.budgetStatus(STATUS, CAMPNO);
         } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         }

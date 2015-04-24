@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
 import DTO.Message;
 import exceptions.DatabaseErrorException;
+import interfaces.Interface_CtrlFacade;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +50,10 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
         
         PLANNO = Integer.parseInt(request.getParameter("id"));
         Campaign2 campaign = null;
-        facadeCtrl facade = new facadeCtrl();
+        Interface_CtrlFacade ctrl = new facadeCtrl();
         try {
-            msgList = facade.getSpecificMessage(PLANNO);
-            campaign = facade.getSpecificCampaign(PLANNO);
+            msgList = ctrl.getSpecificMessage(PLANNO);
+            campaign = ctrl.getSpecificCampaign(PLANNO);
         } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
