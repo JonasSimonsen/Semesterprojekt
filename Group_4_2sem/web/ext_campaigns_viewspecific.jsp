@@ -444,44 +444,36 @@
                             <h1 class="text-center">Message Board</h1>
                             <br>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    #1 - Jeffrey McSmacknDope <span class='pull-right'>12-01-2015</span>
-                                </div>
-                                <div class="panel-body">
-                                    <p>blablabla</p>
-                                </div>
-                                
-                            </div>
+                            <c:forEach var="p" items="${messages}">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        #${p.commentID} - Jeffrey McSmacknDope <span class='pull-right'>${p.date}</span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>${p.comments}</p>
+                                    </div>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    #2 - Carlos Cocksmasher <span class='pull-right'>12-01-2015</span>
-                                </div>
-                                <div class="panel-body">
-                                    <p>blablabla</p>
-                                </div>
-                                
-                            </div>
+                                </div> 
+                            </c:forEach>
 
 
                             <form action="ext_Message_Post">
                                 <h3>
                                     Post comment:
                                 </h3>
-                                
+
                                 <div class="form-group">
-                                    <input type="hidden" name="username" value="<%= session.getAttribute("username") %>">
+                                    <input type="hidden" name="username" value="<%= session.getAttribute("username")%>">
                                     <input type="hidden" name="camp_number" value="${camp.plan_number}">
-                                    
+
                                     <textarea name="msg" class="form-control"></textarea>
                                 </div>
-                                
-                                
+
+
                                 <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Send</button>
                                 </div>
-                                
+
                             </form>  
                         </div>
                     </div>
