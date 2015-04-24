@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.FacadeCtrl;
+import facade.facadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -38,7 +38,7 @@ public class campaign_DisapproveBudget extends HttpServlet {
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
         STATUS = "BUDGET DISAPPROVED";
-        FacadeCtrl facade = new FacadeCtrl();
+        facadeCtrl facade = new facadeCtrl();
 
         try {
             facade.budgetStatus(STATUS, CAMPNO);

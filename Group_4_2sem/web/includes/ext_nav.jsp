@@ -20,7 +20,11 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="">
-                        <a href="index.jsp"><i class="fa fa-user"></i> <%= session.getAttribute("username") %></a>
+                        <a href="#"><i class="fa fa-user"></i> <%= session.getAttribute("username") %></a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="index.jsp"><i class="fa fa-sign-out"></i> Logout</a>
                     </li>
                 </ul>
 
@@ -35,7 +39,7 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#dd-campaigns"><i class="fa fa-fw fa-bullhorn"></i> Campaigns <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="dd-campaigns" class="collapse">
                                 <li>
-                                    <a href="ext_campaigns_search.jsp">View campaign</a>
+                                    <a href="ext_Campaign_ViewAll">View campaign</a>
                                 </li>
                                 <li>
                                     <a href="ext_campaigns_submit.jsp">Submit Campaign</a>

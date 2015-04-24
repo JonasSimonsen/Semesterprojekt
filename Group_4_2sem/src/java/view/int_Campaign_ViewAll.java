@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.FacadeCtrl;
+import facade.facadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class int_Campaign_ViewAll extends HttpServlet {
         s.setMaxInactiveInterval(30 * 60);
 
         Campaign2 campaign = null;
-        FacadeCtrl facade = new FacadeCtrl();
+        facadeCtrl facade = new facadeCtrl();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
 
         try {

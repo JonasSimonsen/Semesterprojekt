@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.FacadeCtrl;
+import facade.facadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -43,7 +43,7 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
 
         PLANNO = Integer.parseInt(request.getParameter("id"));
         Campaign2 campaign = null;
-        FacadeCtrl facade = new FacadeCtrl();
+        facadeCtrl facade = new facadeCtrl();
         try {
             campaign = facade.getSpecificCampaign(PLANNO);
         } catch (SQLException | ClassNotFoundException e) {

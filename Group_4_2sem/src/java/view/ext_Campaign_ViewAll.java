@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.FacadeCtrl;
+import facade.facadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class ext_Campaign_ViewAll extends HttpServlet {
         System.out.println(UN);
 
         Campaign2 campaign = null;
-        FacadeCtrl facade = new FacadeCtrl();
+        facadeCtrl facade = new facadeCtrl();
         ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
         
         

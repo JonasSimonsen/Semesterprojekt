@@ -39,11 +39,11 @@
                             <ul id="dd-campaigns" class="collapse">
 
                                 <li>
-                                    <a href="int_campaigns_search.jsp">View Campaigns</a>
+                                    <a href="int_Campaign_ViewAll">View Campaigns</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Edit Campaign</a>
+                                    <a href="index.jsp">Edit Campaign</a>
                                 </li>
                                 
                             </ul>

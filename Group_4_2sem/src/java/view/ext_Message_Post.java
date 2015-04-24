@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.FacadeCtrl;
+import facade.facadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
@@ -41,7 +41,7 @@ public class ext_Message_Post extends HttpServlet {
 
         try {
             Date the_date = new Date();
-            FacadeCtrl fview = new FacadeCtrl();
+            facadeCtrl fview = new facadeCtrl();
             int the_userID = fview.getUserID(UN);
             Message msg = new Message(1, the_msg, the_campNO, the_date.toString(), the_userID);
             fview.createNewMessage(msg);
