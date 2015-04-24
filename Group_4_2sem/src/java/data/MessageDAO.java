@@ -8,10 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessageDAO implements Interface_MessageDAO {
 
-    private ArrayList<Message> getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
+    private List<Message> getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
 
     @Override
     public void createNewMessage(Message message) throws SQLException, ClassNotFoundException {
@@ -36,7 +37,7 @@ public class MessageDAO implements Interface_MessageDAO {
     }
 
     @Override
-    public ArrayList<Message> getMessages() throws SQLException, ClassNotFoundException {
+    public List<Message> getMessages() throws SQLException, ClassNotFoundException {
         getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -58,7 +59,7 @@ public class MessageDAO implements Interface_MessageDAO {
     }
 
     @Override
-    public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
+    public List<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
         getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
         ResultSet rs = null;
         PreparedStatement prep = null;

@@ -8,6 +8,7 @@ import DTO.Campaign2;
 import control.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class facadeCtrl {
 
@@ -86,13 +87,13 @@ public class facadeCtrl {
         return userType;
     }
 
-    public ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = MsgCtrl.getMessages();
+    public List<Message> getActivity() throws SQLException, ClassNotFoundException {
+        List<Message> message = MsgCtrl.getMessages();
         return message;
     }
 
-    public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = MsgCtrl.getSpecificMessage(ID);
+    public List<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
+        List<Message> message = MsgCtrl.getSpecificMessage(ID);
         return message;
     }
 }

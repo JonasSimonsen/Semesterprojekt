@@ -447,7 +447,7 @@
                             <c:forEach var="p" items="${messages}">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        #${p.commentID} - ${p.username} <span class='pull-right'>${p.date}</span>
+                                           ${p.username} <span class='pull-right'>${p.date}</span>
                                     </div>
                                     <div class="panel-body">
                                         <p>${p.comments}</p>

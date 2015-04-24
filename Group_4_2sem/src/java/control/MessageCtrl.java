@@ -3,7 +3,7 @@ package control;
 import java.sql.SQLException;
 import DTO.Message;
 import facade.facadeDAO;
-import java.util.ArrayList;
+import java.util.List;
 
 public class MessageCtrl {
 
@@ -13,13 +13,13 @@ public class MessageCtrl {
         facade.createNewMessage(message);
     }
 
-    public ArrayList<Message> getMessages() throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = facade.getMessages();
+    public List<Message> getMessages() throws SQLException, ClassNotFoundException {
+        List<Message> message = facade.getMessages();
         return message;
     }
 
-    public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = facade.getSpecificMessage(ID);
+    public List<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
+        List<Message> message = facade.getSpecificMessage(ID);
         return message;
     }
 }

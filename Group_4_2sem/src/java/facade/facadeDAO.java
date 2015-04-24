@@ -5,6 +5,7 @@ import interfaces.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import DTO.*;
+import java.util.List;
 
 public class facadeDAO {
 
@@ -83,13 +84,13 @@ public class facadeDAO {
         return camp;
     }
 
-    public ArrayList<Message> getMessages() throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = messageDAO.getMessages();
+    public List<Message> getMessages() throws SQLException, ClassNotFoundException {
+        List<Message> message = messageDAO.getMessages();
         return message;
     }
 
-    public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = messageDAO.getSpecificMessage(ID);
+    public List<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
+        List<Message> message = messageDAO.getSpecificMessage(ID);
         return message;
     }
 }

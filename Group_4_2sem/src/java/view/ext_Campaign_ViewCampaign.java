@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
 import DTO.Message;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -40,7 +41,7 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ArrayList<Message> msgList = new ArrayList<>();
+        List<Message> msgList = new ArrayList<>();
         
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
