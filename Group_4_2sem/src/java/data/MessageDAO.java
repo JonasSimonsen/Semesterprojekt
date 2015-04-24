@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MessageDAO implements Interface_MessageDAO {
@@ -82,6 +83,9 @@ public class MessageDAO implements Interface_MessageDAO {
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
         }
+        
+        Collections.sort(getMessages);
+        
         return getMessages;                                                     // Returnerer Arraylisten med alle Message objekterne igennem metoden
     }
 }
