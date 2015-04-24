@@ -7,6 +7,7 @@ package view;
 
 import data.CampaignDAO;
 import data.DatabaseInfo;
+import exceptions.DatabaseErrorException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -131,7 +132,11 @@ public class campaign_SavePOE extends HttpServlet {
                     connection.close();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                } catch (ClassNotFoundException cx) {
+                } catch (DatabaseErrorException ex) {
+                    ex.printStackTrace();
+                }
+                
+                catch (ClassNotFoundException cx) {
                     cx.printStackTrace();
                 }
             }
