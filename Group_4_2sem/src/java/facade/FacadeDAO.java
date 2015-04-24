@@ -77,22 +77,22 @@ public class FacadeDAO {
         return camp;
     }
 
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
+    private ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> camp = campaignDAO.getCampaignsExternal(id);
         return camp;
     }
 
-    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
+    private ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
         ArrayList<Campaign2> camp = campaignDAO.getCampaigns();
         return camp;
     }
 
-    public ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
+    private ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
         ArrayList<Message> message = messageDAO.getMessages();
         return message;
     }
 
-    public ArrayList<Message> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
+    private ArrayList<Message> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
         ArrayList<Message> message = messageDAO.getSpecificMessage(ID);
         return message;
     }
