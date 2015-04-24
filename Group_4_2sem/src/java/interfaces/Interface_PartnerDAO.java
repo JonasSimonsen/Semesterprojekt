@@ -5,8 +5,8 @@
  */
 package interfaces;
 
-import java.sql.SQLException;
 import DTO.Partner;
+import exceptions.DatabaseErrorException;
 
 /**
  *
@@ -14,6 +14,6 @@ import DTO.Partner;
  */
 public interface Interface_PartnerDAO {
     
-    public void createNewPartner(Partner partner) throws SQLException, ClassNotFoundException;
+    public void createNewPartner(Partner partner) throws DatabaseErrorException, ClassNotFoundException;
     
 }

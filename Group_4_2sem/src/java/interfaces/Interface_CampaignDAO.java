@@ -5,10 +5,10 @@
  */
 package interfaces;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import DTO.Campaign;
 import DTO.Campaign2;
+import exceptions.DatabaseErrorException;
 
 /**
  *
@@ -16,13 +16,13 @@ import DTO.Campaign2;
  */
 public interface Interface_CampaignDAO {
     
-    public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException;
-    public void deleteCampaign(String name) throws SQLException, ClassNotFoundException;
-    public void editCampaign(Campaign camp) throws SQLException, ClassNotFoundException;
-    public void approveBudget(int campno, double budget) throws SQLException, ClassNotFoundException;
-    public void budgetStatus(String status, int campno) throws SQLException, ClassNotFoundException;
-    public void updatePOEStatus(int campno, int has_poe) throws SQLException, ClassNotFoundException;
-    public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException;
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException;
-    public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException;
+    public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException;
+    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException;
+    public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException;
+    public void approveBudget(int campno, double budget) throws DatabaseErrorException, ClassNotFoundException;
+    public void budgetStatus(String status, int campno) throws DatabaseErrorException, ClassNotFoundException;
+    public void updatePOEStatus(int campno, int has_poe) throws DatabaseErrorException, ClassNotFoundException;
+    public Campaign2 getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException;
+    public ArrayList<Campaign2> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException;
+    public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException;
 }

@@ -6,15 +6,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import DTO.Campaign2;
+import exceptions.DatabaseErrorException;
+import java.sql.SQLException;
 
 public class CampaignDAO implements Interface_CampaignDAO {
     private ArrayList<Campaign2> getCamp = new ArrayList();
         @Override
-        public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException {
+        public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -75,14 +76,15 @@ public class CampaignDAO implements Interface_CampaignDAO {
             prep.setInt(51, camp.getHas_poe());
             prep.setInt(52, userID);
             prep.executeQuery();
-        } finally {
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
 
     }
         @Override
-    public void deleteCampaign(String name) throws SQLException, ClassNotFoundException {
+    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -92,14 +94,15 @@ public class CampaignDAO implements Interface_CampaignDAO {
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             prep.setString(1, name);
             prep.executeQuery();
-        } finally {
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
 
         @Override
-    public void editCampaign(Campaign camp) throws SQLException, ClassNotFoundException {
+    public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException {
         Statement statement = null;
         Connection connection = null;
         int PLANNO, PNO;
@@ -127,14 +130,16 @@ public class CampaignDAO implements Interface_CampaignDAO {
             String query = "UPDATE PARTNERPLAN SET PNO = " + PNO + ", COUNTRY = '" + COUNTRY + "', DESCRIPTION = '" + DESCRIPTION + "', AUDIENCE = '" + AUDIENCE + "', CURRENCY = '" + CURRENCY + "', COST = " + COST + ", MDFBUDGET = " + MDFBUDGET + ", STATUS = '" + STATUS + "', QUARTER = '" + QUARTER + "', STARTDATE = '" + STARTDATE + "', ENDDATE = '" + ENDDATE + "', OBJECTIVE = '" + OBJECTIVE + "', POE_REQ = '" + POE_REQ + "' WHERE PLANNO = " + PLANNO + ";";
             // Opdaterer column i PARTNERPLAN som passer til PNO som er passeret ind
             statement.executeQuery(query);
-        } finally {
+            
             statement.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
 
         @Override
-    public void approveBudget(int campno, double budget) throws SQLException, ClassNotFoundException {
+    public void approveBudget(int campno, double budget) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -145,14 +150,16 @@ public class CampaignDAO implements Interface_CampaignDAO {
             prep.setDouble(1, budget);
             prep.setInt(2, campno);
             prep.executeQuery();
-        } finally {
+            
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
     
         @Override
-        public void budgetStatus(String status, int campno) throws SQLException, ClassNotFoundException {
+        public void budgetStatus(String status, int campno) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -163,14 +170,16 @@ public class CampaignDAO implements Interface_CampaignDAO {
             prep.setString(1, status);
             prep.setInt(2, campno);
             prep.executeQuery();
-        } finally {
+            
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
         
         @Override
-        public void updatePOEStatus(int poe_status, int campno) throws SQLException, ClassNotFoundException {
+        public void updatePOEStatus(int poe_status, int campno) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -184,14 +193,16 @@ public class CampaignDAO implements Interface_CampaignDAO {
             System.out.println("Campno: " + campno);
             System.out.println("POE Status: " + poe_status);
             prep.executeQuery();
-        } finally {
+            
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
 
         @Override
-        public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
+        public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
         getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -206,16 +217,18 @@ public class CampaignDAO implements Interface_CampaignDAO {
             while (rs.next()) {
                 getCamp.add(new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS"),rs.getInt("HASPOE"),rs.getInt("USER_ID")));
             }
-        } finally {
+            
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
             rs.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return getCamp;
     }
     
         @Override
-        public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
+        public ArrayList<Campaign2> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException {
         getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -231,15 +244,17 @@ public class CampaignDAO implements Interface_CampaignDAO {
             while (rs.next()) {
                 getCamp.add(new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS"),rs.getInt("HASPOE"),rs.getInt("USER_ID")));
             }
-        } finally {
+            
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return getCamp;
     }
 
         @Override
-        public Campaign2 getSpecificCampaign(int campno) throws SQLException, ClassNotFoundException {
+        public Campaign2 getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
@@ -254,14 +269,16 @@ public class CampaignDAO implements Interface_CampaignDAO {
             while (rs.next()) {
                 campaign = new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS"),rs.getInt("HASPOE"),rs.getInt("USER_ID"));
             }
-        } finally {
+            
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return campaign;
     }
         
-        public static Campaign2 getSpecificCampaignV2(String CONTACTNAME) throws SQLException, ClassNotFoundException {
+        public static Campaign2 getSpecificCampaignV2(String CONTACTNAME) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
@@ -276,9 +293,11 @@ public class CampaignDAO implements Interface_CampaignDAO {
             while (rs.next()) {
                 campaign = new Campaign2(rs.getInt("CAMPNO"),rs.getString("SUBMITDATE"),rs.getString("CONTACTNAME"),rs.getString("COMPNAME"),rs.getString("COMPADDR"),rs.getString("CONTACTEMAIL"),rs.getString("CONTACTPHONE"),rs.getString("PROGRAMDATE"),rs.getString("STARTTIME"),rs.getString("ENDTIME"),rs.getInt("ATTENDNUM"),rs.getString("VENUE"),rs.getString("VENUEADDR"),rs.getInt("FTOF"),rs.getInt("TRADESHOW"),rs.getInt("MULTIT"),rs.getInt("DOOROPEN"),rs.getInt("THIRDPART"),rs.getInt("DIRECTMAIL"),rs.getInt("BLITZ"),rs.getString("PROGDESC"),rs.getInt("SC4000"),rs.getInt("PS4210"),rs.getInt("STORAGESOL"),rs.getInt("FLASH"),rs.getInt("FLUIDCAC"),rs.getInt("DATAPROT"),rs.getInt("NEWGEN"),rs.getInt("WIN2003"),rs.getInt("X86SERV"),rs.getInt("VRTX"),rs.getInt("SDN"),rs.getInt("USERCENT"),rs.getInt("CLOUD"),rs.getInt("CONVERG"),rs.getInt("BLADEDATA"),rs.getInt("FUTUREIT"),rs.getInt("POWEREDGE"),rs.getInt("SDS"),rs.getString("CAMPAIGNCOM"),rs.getInt("SMB"),rs.getInt("LE"),rs.getInt("PUB"),rs.getDouble("COST"),rs.getDouble("MDFREQ"),rs.getString("REIMB"),rs.getString("PARTNERS"),rs.getDouble("MDFCONTR"),rs.getInt("OPPORTU"),rs.getDouble("ESTREVENUE"),rs.getString("STATUS"),rs.getInt("HASPOE"),rs.getInt("USER_ID"));
             }
-        } finally {
+            
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return campaign;
     }

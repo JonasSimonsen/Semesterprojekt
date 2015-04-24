@@ -2,6 +2,7 @@ package data;
 
 import interfaces.Interface_UserDAO;
 import DTO.User;
+import exceptions.DatabaseErrorException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 public class UserDAO implements Interface_UserDAO {
 
     @Override
-    public void createNewUser(User user) throws SQLException, ClassNotFoundException {
+    public void createNewUser(User user) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -28,14 +29,15 @@ public class UserDAO implements Interface_UserDAO {
             prep.setString(7, user.getOrganization());
             prep.setInt(8, user.getType());
             prep.executeQuery();
-        } finally {
             prep.close();                                                       // Lukker forbindelser.
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
 
     @Override
-    public void deleteUser(String name) throws SQLException, ClassNotFoundException {
+    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement statement = null;
         Connection connection = null;                             
 
@@ -46,13 +48,14 @@ public class UserDAO implements Interface_UserDAO {
             statement = connection.prepareStatement(query);                     // Opretter forbindelse til til databasen for statement
             statement.setString(1, name);
             statement.executeQuery();
-        } finally {
             statement.close();                                                  // Lukker forbindelser
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
 
-    public static User getUserInfo(String name) throws SQLException, ClassNotFoundException {
+    public static User getUserInfo(String name) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection connection = null;
@@ -69,16 +72,19 @@ public class UserDAO implements Interface_UserDAO {
                 getUser = new User(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("EMAIL"), rs.getInt("PHONENUM"), rs.getString("ORGANIZATION"), rs.getInt("USERTYPE"));
                 
             }
-        } finally {
+            
             statement.close();                                                  // Lukker forbindelser
             connection.close();
             rs.close();
+            
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return getUser;                                                         
     }
     
     @Override
-        public int getUserID(String username) throws SQLException, ClassNotFoundException{
+        public int getUserID(String username) throws DatabaseErrorException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection connection = null;
@@ -94,17 +100,19 @@ public class UserDAO implements Interface_UserDAO {
             while (rs.next()) {
                 getUserID = rs.getInt("ID");
             }
-        } finally {
+            
             statement.close();                                                  // Lukker forbindelser
             connection.close();
             rs.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return getUserID;             
         
     }
     
     @Override
-    public int getUserType(String username) throws SQLException, ClassNotFoundException{
+    public int getUserType(String username) throws DatabaseErrorException, ClassNotFoundException{
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection connection = null;
@@ -120,17 +128,19 @@ public class UserDAO implements Interface_UserDAO {
             while (rs.next()) {
                 getUserType = rs.getInt("USERTYPE");
             }
-        } finally {
+            
             statement.close();                                                  // Lukker forbindelser
             connection.close();
             rs.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return getUserType;             
         
     }
     
     @Override
-    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException {
+    public boolean getUser(String username, String password) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection connection = null;
@@ -152,10 +162,12 @@ public class UserDAO implements Interface_UserDAO {
             if (username.equals(tempUsername) && password.equals(tempPassword)){
                 correctLogin = true;
             }
-        } finally {
+            
             statement.close();                                                  // Lukker forbindelser
             connection.close();
             rs.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return correctLogin;
     }

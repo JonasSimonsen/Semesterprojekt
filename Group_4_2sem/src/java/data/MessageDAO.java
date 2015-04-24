@@ -2,6 +2,7 @@ package data;
 
 import interfaces.Interface_MessageDAO;
 import DTO.Message;
+import exceptions.DatabaseErrorException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ public class MessageDAO implements Interface_MessageDAO {
     private List<Message> getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
 
     @Override
-    public void createNewMessage(Message message) throws SQLException, ClassNotFoundException {
+    public void createNewMessage(Message message) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
 
@@ -31,14 +32,15 @@ public class MessageDAO implements Interface_MessageDAO {
             prep.setInt(4, message.getID());
             prep.setString(5, message.getUsername());
             prep.executeQuery();                                      // Sender queryen ind i databasen
-        } finally {
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
 
     @Override
-    public List<Message> getMessages() throws SQLException, ClassNotFoundException {
+    public List<Message> getMessages() throws DatabaseErrorException, ClassNotFoundException {
         getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -52,15 +54,16 @@ public class MessageDAO implements Interface_MessageDAO {
             while (rs.next()) {
                 getMessages.add(new Message(rs.getInt("COMMENTID"), rs.getString("COMMENTS"), rs.getInt("CAMPNO"), rs.getString("COMMENTDATE"), rs.getInt("ACT_ID"), rs.getString("USERNAME"))); // Tilføjer Message objekter til Arraylisten
             }
-        } finally {
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         return getMessages;                                                     // Returnerer Arraylisten med alle Message objekterne igennem metoden
     }
 
     @Override
-    public List<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
+    public List<Message> getSpecificMessage(int ID) throws DatabaseErrorException, ClassNotFoundException {
         getMessages = new ArrayList();                      // Opretter Arraylist til at indeholde Message objekter
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -79,9 +82,10 @@ public class MessageDAO implements Interface_MessageDAO {
                 test++;
                 getMessages.add(new Message(rs.getInt("COMMENTID"), rs.getString("COMMENTS"), rs.getInt("CAMPNO"), rs.getString("COMMENTDATE"), rs.getInt("ACT_ID"), rs.getString("USERNAME"))); // Tilføjer Message objekter til Arraylisten
             }
-        } finally {
             prep.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         
         Collections.sort(getMessages);

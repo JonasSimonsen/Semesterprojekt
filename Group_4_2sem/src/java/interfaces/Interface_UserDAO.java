@@ -5,8 +5,8 @@
  */
 package interfaces;
 
-import java.sql.SQLException;
 import DTO.User;
+import exceptions.DatabaseErrorException;
 
 /**
  *
@@ -14,9 +14,9 @@ import DTO.User;
  */
 public interface Interface_UserDAO {
     
-    public void createNewUser(User user) throws SQLException, ClassNotFoundException;
-    public void deleteUser(String name) throws SQLException, ClassNotFoundException;
-    public int getUserID(String username) throws SQLException, ClassNotFoundException;
-    public int getUserType(String username) throws SQLException, ClassNotFoundException;
-    public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException;
+    public void createNewUser(User user) throws DatabaseErrorException, ClassNotFoundException;
+    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException;
+    public int getUserID(String username) throws DatabaseErrorException, ClassNotFoundException;
+    public int getUserType(String username) throws DatabaseErrorException, ClassNotFoundException;
+    public boolean getUser(String username, String password) throws DatabaseErrorException, ClassNotFoundException;
 }

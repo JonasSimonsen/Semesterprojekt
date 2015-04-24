@@ -2,6 +2,7 @@ package data;
 
 import interfaces.Interface_PartnerDAO;
 import DTO.Partner;
+import exceptions.DatabaseErrorException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class PartnerDAO implements Interface_PartnerDAO {
         private ArrayList<Partner> getPartner = new ArrayList();                        // Opretter Arraylist til at indeholde Partner objekter
     @Override
-    public void createNewPartner(Partner partner) throws SQLException, ClassNotFoundException{
+    public void createNewPartner(Partner partner) throws DatabaseErrorException, ClassNotFoundException{
         Statement statement = null;
         Connection connection = null;
         int pno = partner.getPNO();
@@ -23,12 +24,13 @@ public class PartnerDAO implements Interface_PartnerDAO {
             statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
             String query = "INSERT INTO PARTNERS (PNO,PARTNER) VALUES (user_seq.nextval,'" + partnerName + "')"; // Tilføjer en ny column til PARTNERS table
             statement.executeQuery(query);
-        } finally {
             statement.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
     }
-    public ArrayList<Partner> getPartner() throws SQLException, ClassNotFoundException{
+    public ArrayList<Partner> getPartner() throws DatabaseErrorException, ClassNotFoundException{
         getPartner = new ArrayList();                        // Opretter Arraylist til at indeholde Partner objekter
         ResultSet rs = null;
         Statement statement = null;
@@ -42,10 +44,12 @@ public class PartnerDAO implements Interface_PartnerDAO {
             while (rs.next()) {
                 getPartner.add(new Partner(rs.getInt("PNO"),rs.getString("PARTNER"))); // Tilføjer Partner objekter til Arraylisten 
             }
-        } finally {
+            
             statement.close();                                                  // Lukker forbindelsen til databasen
             connection.close();
             rs.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
         }
         
         return getPartner;                                                      // Returnerer Arraylisten med alle Activity objekterne igennem metoden
