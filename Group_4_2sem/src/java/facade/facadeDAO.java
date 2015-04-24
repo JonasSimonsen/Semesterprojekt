@@ -4,7 +4,7 @@ import data.*;
 import interfaces.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.*;
+import DTO.*;
 
 public class facadeDAO {
 
