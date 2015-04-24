@@ -1,11 +1,11 @@
 package control;
 
-import facade.FacadeDAO;
+import facade.facadeDAO;
 import java.sql.SQLException;
 import DTO.Partner;
 
 public class PartnerCtrl {
-    FacadeDAO facade = new FacadeDAO();
+    facadeDAO facade = new facadeDAO();
     public void createNewPartner(Partner partner) throws SQLException, ClassNotFoundException{
         facade.createNewPartner(partner);
     }

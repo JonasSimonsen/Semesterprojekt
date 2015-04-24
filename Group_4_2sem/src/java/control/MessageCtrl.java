@@ -2,12 +2,12 @@ package control;
 
 import java.sql.SQLException;
 import DTO.Message;
-import facade.FacadeDAO;
+import facade.facadeDAO;
 import java.util.ArrayList;
 
 public class MessageCtrl {
 
-    FacadeDAO facade = new FacadeDAO();
+    facadeDAO facade = new facadeDAO();
 
     public void createNewMessage(Message message) throws SQLException, ClassNotFoundException {
         facade.createNewMessage(message);
