@@ -403,7 +403,7 @@
 
                                     <c:if test="${camp.has_poe != 1}">
 
-                                        <form action="campaign_SavePOE" method="post" enctype='multipart/form-data'>
+                                        <form action="ext_campaign_SavePOE" method="post" enctype='multipart/form-data'>
                                             <div class="form-group">
                                                 <p class="text-muted">Upload your proof of execution in a .zip-file.</p>
                                                 <input type="hidden" name="id" value="${camp.plan_number}">
