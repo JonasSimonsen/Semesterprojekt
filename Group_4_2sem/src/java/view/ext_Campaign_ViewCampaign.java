@@ -44,8 +44,9 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
         
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
-
+        
         PLANNO = Integer.parseInt(request.getParameter("id"));
+        System.out.println("ID IS ---------------- " + PLANNO);
         Campaign2 campaign = null;
         facadeCtrl facade = new facadeCtrl();
         try {
@@ -56,7 +57,6 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
         } finally {
             s.setAttribute("messages", msgList);
             s.setAttribute("camp", campaign);
-
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("ext_campaigns_viewspecific.jsp");
