@@ -83,12 +83,12 @@ public class facadeDAO {
         return camp;
     }
 
-    public ArrayList<Message> getActivity() throws SQLException, ClassNotFoundException {
+    public ArrayList<Message> getMessages() throws SQLException, ClassNotFoundException {
         ArrayList<Message> message = messageDAO.getMessages();
         return message;
     }
 
-    public ArrayList<Message> getSpecificActivity(int ID) throws SQLException, ClassNotFoundException {
+    public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
         ArrayList<Message> message = messageDAO.getSpecificMessage(ID);
         return message;
     }

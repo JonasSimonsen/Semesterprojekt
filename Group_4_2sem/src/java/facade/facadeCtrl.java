@@ -92,7 +92,7 @@ public class facadeCtrl {
     }
 
     public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = MsgCtrl.getMessages();
+        ArrayList<Message> message = MsgCtrl.getSpecificMessage(ID);
         return message;
     }
 }

@@ -14,12 +14,12 @@ public class MessageCtrl {
     }
 
     public ArrayList<Message> getMessages() throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = facade.getActivity();
+        ArrayList<Message> message = facade.getMessages();
         return message;
     }
 
     public ArrayList<Message> getSpecificMessage(int ID) throws SQLException, ClassNotFoundException {
-        ArrayList<Message> message = facade.getActivity();
+        ArrayList<Message> message = facade.getSpecificMessage(ID);
         return message;
     }
 }
