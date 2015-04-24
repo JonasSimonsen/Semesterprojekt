@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import DTO.Campaign2;
 
 public class CampaignDAO implements Interface_CampaignDAO {
-    
+    private ArrayList<Campaign2> getCamp = new ArrayList();
         @Override
         public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException {
         PreparedStatement prep = null;
@@ -192,7 +192,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
 
         @Override
         public ArrayList<Campaign2> getCampaigns() throws SQLException, ClassNotFoundException {
-        ArrayList<Campaign2> getCamp = new ArrayList();
+        getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
@@ -216,7 +216,7 @@ public class CampaignDAO implements Interface_CampaignDAO {
     
         @Override
         public ArrayList<Campaign2> getCampaignsExternal(int id) throws SQLException, ClassNotFoundException {
-        ArrayList<Campaign2> getCamp = new ArrayList();
+        getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;

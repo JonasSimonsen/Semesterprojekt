@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PartnerDAO implements Interface_PartnerDAO {
+        private ArrayList<Partner> getPartner = new ArrayList();                        // Opretter Arraylist til at indeholde Partner objekter
     @Override
     public void createNewPartner(Partner partner) throws SQLException, ClassNotFoundException{
         Statement statement = null;
@@ -27,8 +28,8 @@ public class PartnerDAO implements Interface_PartnerDAO {
             connection.close();
         }
     }
-    public static ArrayList<Partner> getPartner() throws SQLException, ClassNotFoundException{
-        ArrayList<Partner> getPartner = new ArrayList();                        // Opretter Arraylist til at indeholde Partner objekter
+    public ArrayList<Partner> getPartner() throws SQLException, ClassNotFoundException{
+        getPartner = new ArrayList();                        // Opretter Arraylist til at indeholde Partner objekter
         ResultSet rs = null;
         Statement statement = null;
         Connection connection = null;

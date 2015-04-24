@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
+import DTO.Message;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -38,6 +41,8 @@ public class int_Campaign_ViewCampaign extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        List<Message> msgList = new ArrayList<>();
+
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
 
@@ -45,12 +50,13 @@ public class int_Campaign_ViewCampaign extends HttpServlet {
         Campaign2 campaign = null;
         facadeCtrl facade = new facadeCtrl();
         try {
+            msgList = facade.getSpecificMessage(PLANNO);
             campaign = facade.getSpecificCampaign(PLANNO);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
+            s.setAttribute("messages", msgList);
             s.setAttribute("camp", campaign);
-
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("int_campaigns_viewspecific.jsp");

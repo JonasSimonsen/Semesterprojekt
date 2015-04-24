@@ -67,14 +67,14 @@ public class UserDAO implements Interface_UserDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 getUser = new User(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("EMAIL"), rs.getInt("PHONENUM"), rs.getString("ORGANIZATION"), rs.getInt("USERTYPE"));
-                // Fylder Arraylisten med User objekter fra databasen
+                
             }
         } finally {
             statement.close();                                                  // Lukker forbindelser
             connection.close();
             rs.close();
         }
-        return getUser;                                                         // Returnerer Arraylisten fyldt med all User objekter fra databasen
+        return getUser;                                                         
     }
     
     @Override

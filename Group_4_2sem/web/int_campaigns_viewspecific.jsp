@@ -500,6 +500,50 @@
                             </div>
                         </div>
                     </div> 
+                                            
+                                                                <div class="row">
+
+
+
+                        <div class="col-lg-12">
+
+                            <h1 class="text-center">Message Board</h1>
+                            <br>
+
+                            <c:forEach var="p" items="${messages}">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                           ${p.username} <span class='pull-right'>${p.date}</span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>${p.comments}</p>
+                                    </div>
+
+                                </div> 
+                            </c:forEach>
+
+
+                            <form action="ext_Message_Post">
+                                <h3>
+                                    Post comment:
+                                </h3>
+
+                                <div class="form-group">
+                                    <input type="hidden" name="username" value="<%= session.getAttribute("username")%>">
+                                    <input type="hidden" name="camp_number" value="${camp.plan_number}">
+                                    <input type="hidden" name="id" value="${camp.plan_number}">
+
+                                    <textarea name="msg" class="form-control"></textarea>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Send</button>
+                                </div>
+
+                            </form>  
+                        </div>
+                    </div>
                     <!-- /Page Content -->
 
 
