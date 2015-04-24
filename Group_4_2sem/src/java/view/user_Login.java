@@ -5,6 +5,7 @@
  */
 package view;
 
+import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
 import java.io.IOException;
 import static java.lang.System.out;
@@ -67,10 +68,10 @@ public class user_Login extends HttpServlet {
                 rd.include(request, response);
 
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DatabaseErrorException ex) {
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(user_Login.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 

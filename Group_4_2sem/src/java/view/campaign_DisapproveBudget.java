@@ -5,6 +5,7 @@
  */
 package view;
 
+import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public class campaign_DisapproveBudget extends HttpServlet {
 
         try {
             facade.budgetStatus(STATUS, CAMPNO);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         RequestDispatcher rd = request.getRequestDispatcher("int_Campaign_ViewCampaign");

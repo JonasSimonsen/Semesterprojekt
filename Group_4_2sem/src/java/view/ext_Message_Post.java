@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DTO.Message;
+import exceptions.DatabaseErrorException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -50,7 +51,7 @@ public class ext_Message_Post extends HttpServlet {
             int the_userID = fview.getUserID(UN);
             Message msg = new Message(1, the_msg, the_campNO, the_date.toString(), the_userID, the_username);
             fview.createNewMessage(msg);
-        } catch (SQLException sqle) {
+        } catch (DatabaseErrorException sqle) {
             sqle.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();

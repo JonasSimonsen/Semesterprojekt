@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
 import DTO.Message;
+import exceptions.DatabaseErrorException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class int_Campaign_ViewCampaign extends HttpServlet {
         try {
             msgList = facade.getSpecificMessage(PLANNO);
             campaign = facade.getSpecificCampaign(PLANNO);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             s.setAttribute("messages", msgList);

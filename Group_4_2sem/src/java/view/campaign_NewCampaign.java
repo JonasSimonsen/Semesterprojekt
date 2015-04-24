@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
+import exceptions.DatabaseErrorException;
 
 /**
  *
@@ -152,7 +153,7 @@ public class campaign_NewCampaign extends HttpServlet {
         try {
             int ID = facade.getUserID(UN);
             facade.submitNewCampaignV2(campaign,ID);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

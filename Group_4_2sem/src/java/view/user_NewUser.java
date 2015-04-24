@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DTO.User;
+import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
-import java.sql.SQLException;
 
 @WebServlet(name = "user_NewUser", urlPatterns = {"/user_NewUser"})
 public class user_NewUser extends HttpServlet {
@@ -53,7 +53,7 @@ public class user_NewUser extends HttpServlet {
         // Pass user object to the data accessor object
         try {
             facade.createNewUser(user);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (DatabaseErrorException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

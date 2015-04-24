@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import DTO.Campaign2;
+import exceptions.DatabaseErrorException;
 
 /**
  *
@@ -48,7 +49,7 @@ public class int_Campaign_ViewAll extends HttpServlet {
         try {
             campaignList = facade.getCampaigns();
 
-        } catch (SQLException sqle) {
+        } catch (DatabaseErrorException sqle) {
             sqle.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
