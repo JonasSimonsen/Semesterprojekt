@@ -4,7 +4,7 @@
     Author     : Emil
 --%>
 
-<%@page import="model.Campaign"%>
+<%@page import="DTO.Campaign"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
