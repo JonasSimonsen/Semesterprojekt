@@ -1,7 +1,7 @@
 package data;
 
 import interfaces.Interface_CampaignDAO;
-import model.Campaign;
+import DTO.Campaign;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.Campaign2;
+import DTO.Campaign2;
 
 public class CampaignDAO implements Interface_CampaignDAO {
     

@@ -1,7 +1,7 @@
 package data;
 
 import interfaces.Interface_MessageDAO;
-import model.Message;
+import DTO.Message;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -41,14 +41,14 @@ public class MessageDAO implements Interface_MessageDAO {
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);  // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "SELECT * FROM MESSAGES";                         // Vælger alle informationer i PARTNERPLAN table
-            prep = connection.prepareStatement(query);                           // Opretter forbindelse til til databasen for statement
+            String query = "SELECT * FROM MESSAGES";                            // Vælger alle informationer i PARTNERPLAN table
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             rs = prep.executeQuery();
             while (rs.next()) {
                 getMessages.add(new Message(rs.getInt("COMMENTID"),rs.getString("COMMENTS"),rs.getInt("CAMPNO"),rs.getString("COMMENTDATE"),rs.getInt("ACT_ID"))); // Tilføjer Message objekter til Arraylisten
             }
         } finally {
-            prep.close();                                                  // Lukker forbindelsen til databasen
+            prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
         }
         return getMessages;                                                     // Returnerer Arraylisten med alle Message objekterne igennem metoden
@@ -63,8 +63,8 @@ public class MessageDAO implements Interface_MessageDAO {
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW);  // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "SELECT * FROM MESSAGES WHERE CAMPNO = ?";                         // Vælger alle informationer i PARTNERPLAN table
-            prep = connection.prepareStatement(query);                           // Opretter forbindelse til til databasen for statement
+            String query = "SELECT * FROM MESSAGES WHERE CAMPNO = ?";           // Vælger alle informationer i PARTNERPLAN table
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             prep.setInt(1, ID);
             rs = prep.executeQuery();
             while (rs.next()) {

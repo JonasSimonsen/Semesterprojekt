@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.facadeView;
+import facade.FacadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Campaign2;
+import DTO.Campaign2;
 
 /**
  *
@@ -43,7 +43,7 @@ public class int_Campaign_ViewCampaign extends HttpServlet {
 
         PLANNO = Integer.parseInt(request.getParameter("id"));
         Campaign2 campaign = null;
-        facadeView facade = new facadeView();
+        FacadeCtrl facade = new FacadeCtrl();
         try {
             campaign = facade.getSpecificCampaign(PLANNO);
         } catch (SQLException | ClassNotFoundException e) {

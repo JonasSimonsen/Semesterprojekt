@@ -1,11 +1,15 @@
 package facade;
 
+import DTO.Campaign;
+import DTO.User;
+import DTO.Partner;
+import DTO.Message;
+import DTO.Campaign2;
 import control.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.*;
 
-public class facadeView {
+public class FacadeCtrl {
 
     MessageCtrl MsgCtrl = new MessageCtrl();
     CampaignCtrl CampCtrl = new CampaignCtrl();

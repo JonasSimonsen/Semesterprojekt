@@ -1,7 +1,7 @@
 package data;
 
 import interfaces.Interface_PartnerDAO;
-import model.Partner;
+import DTO.Partner;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

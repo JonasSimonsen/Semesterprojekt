@@ -1,4 +1,4 @@
-package model;
+package DTO;
 
 public class Partner {
     private int PNO;

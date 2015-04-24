@@ -7,8 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.User;
-import facade.facadeView;
+import DTO.User;
+import facade.FacadeCtrl;
 import java.sql.SQLException;
 
 @WebServlet(name = "user_NewUser", urlPatterns = {"/user_NewUser"})
@@ -48,7 +48,7 @@ public class user_NewUser extends HttpServlet {
         // Create new user from requested parameters
         User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, type);
 
-        facadeView facade = new facadeView();
+        FacadeCtrl facade = new FacadeCtrl();
 
         // Pass user object to the data accessor object
         try {

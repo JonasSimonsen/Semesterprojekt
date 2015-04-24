@@ -1,12 +1,12 @@
 package control;
 
-import facade.facadeDAO;
+import facade.FacadeDAO;
 import java.sql.SQLException;
-import model.User;
+import DTO.User;
 
 public class UserCtrl {
 
-    facadeDAO facade = new facadeDAO();
+    FacadeDAO facade = new FacadeDAO();
 
     public void createNewUser(User user) throws SQLException, ClassNotFoundException {
         facade.createNewUser(user);

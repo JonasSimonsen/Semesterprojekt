@@ -1,4 +1,4 @@
-package model;
+package DTO;
 
 public class Message {
     private String comments, date;

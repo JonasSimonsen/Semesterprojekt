@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.facadeView;
+import facade.FacadeCtrl;
 import java.io.IOException;
 import static java.lang.System.out;
 import java.sql.SQLException;
@@ -43,7 +43,7 @@ public class user_Login extends HttpServlet {
 
         String UN = request.getParameter("username");
         String PW = request.getParameter("password");
-        facadeView facade = new facadeView();
+        FacadeCtrl facade = new FacadeCtrl();
 
         try {
             if (facade.getUser(UN, PW)) {

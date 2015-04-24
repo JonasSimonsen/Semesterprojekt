@@ -6,7 +6,7 @@
 package interfaces;
 
 import java.sql.SQLException;
-import model.Partner;
+import DTO.Partner;
 
 /**
  *

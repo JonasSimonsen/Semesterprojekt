@@ -1,7 +1,7 @@
 package data;
 
 import interfaces.Interface_UserDAO;
-import model.User;
+import DTO.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

@@ -1,14 +1,14 @@
 package control;
 
-import facade.facadeDAO;
+import facade.FacadeDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Campaign;
-import model.Campaign2;
+import DTO.Campaign;
+import DTO.Campaign2;
 
 public class CampaignCtrl {
 
-    facadeDAO facade = new facadeDAO();
+    FacadeDAO facade = new FacadeDAO();
 
     public void submitNewCampaignV2(Campaign2 camp, int userID) throws SQLException, ClassNotFoundException {
         facade.submitNewCampaignV2(camp, userID);

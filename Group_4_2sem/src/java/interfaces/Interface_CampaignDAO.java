@@ -7,8 +7,8 @@ package interfaces;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Campaign;
-import model.Campaign2;
+import DTO.Campaign;
+import DTO.Campaign2;
 
 /**
  *

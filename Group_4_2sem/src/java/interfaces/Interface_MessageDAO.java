@@ -2,7 +2,7 @@ package interfaces;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Message;
+import DTO.Message;
 
 public interface Interface_MessageDAO {
 

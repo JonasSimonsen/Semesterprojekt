@@ -5,7 +5,7 @@
  */
 package view;
 
-import facade.facadeView;
+import facade.FacadeCtrl;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -38,7 +38,7 @@ public class campaign_DisapprovePOE extends HttpServlet {
             throws ServletException, IOException {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
         STATUS = "POE DISAPPROVED";
-        facadeView facade = new facadeView();
+        FacadeCtrl facade = new FacadeCtrl();
 
         try {
             facade.budgetStatus(STATUS, CAMPNO);
