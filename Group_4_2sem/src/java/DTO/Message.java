@@ -1,19 +1,28 @@
 package DTO;
 
 public class Message {
-    private String comments, date;
+    private String comments, date, username;
     private int commentID, campNum, ID;
     
-    public Message (int commentID, String comments, int campNum, String date, int ID){
+    public Message (int commentID, String comments, int campNum, String date, int ID, String username){
         this.commentID = commentID;
         this.comments = comments;
         this.date = date;
         this.campNum = campNum;
         this.ID = ID;
+        this.username = username;
     }
 
     public String getComments() {
         return comments;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getCommentID() {

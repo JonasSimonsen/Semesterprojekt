@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DTO.Message;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,6 +37,9 @@ public class ext_Message_Post extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        HttpSession s = request.getSession();
+        s.setMaxInactiveInterval(30 * 60);
+        String the_username = (String) s.getAttribute("username");
         String UN = request.getParameter("username");
         int the_campNO = Integer.parseInt(request.getParameter("camp_number"));
         String the_msg = request.getParameter("msg");
@@ -43,12 +48,15 @@ public class ext_Message_Post extends HttpServlet {
             Date the_date = new Date();
             facadeCtrl fview = new facadeCtrl();
             int the_userID = fview.getUserID(UN);
-            Message msg = new Message(1, the_msg, the_campNO, the_date.toString(), the_userID);
+            Message msg = new Message(1, the_msg, the_campNO, the_date.toString(), the_userID, the_username);
             fview.createNewMessage(msg);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher("ext_Campaign_ViewCampaign.jsp");
+            rd.forward(request, response);
         }
 
     }
