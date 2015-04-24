@@ -447,7 +447,7 @@
                             <c:forEach var="p" items="${messages}">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        #${p.commentID} - Jeffrey McSmacknDope <span class='pull-right'>${p.date}</span>
+                                        #${p.commentID} - ${p.username} <span class='pull-right'>${p.date}</span>
                                     </div>
                                     <div class="panel-body">
                                         <p>${p.comments}</p>
@@ -465,6 +465,7 @@
                                 <div class="form-group">
                                     <input type="hidden" name="username" value="<%= session.getAttribute("username")%>">
                                     <input type="hidden" name="camp_number" value="${camp.plan_number}">
+                                    <input type="hidden" name="id" value="${camp.plan_number}">
 
                                     <textarea name="msg" class="form-control"></textarea>
                                 </div>

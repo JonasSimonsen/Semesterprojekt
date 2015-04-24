@@ -55,7 +55,7 @@ public class ext_Message_Post extends HttpServlet {
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("ext_Campaign_ViewCampaign.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("ext_Campaign_ViewCampaign");
             rd.forward(request, response);
         }
 
