@@ -471,7 +471,10 @@
                                 </h3>
                                 
                                 <div class="form-group">
-                                    <textarea class="form-control"></textarea>
+                                    <input type="hidden" name="username" value="<%= session.getAttribute("username") %>">
+                                    <input type="hidden" name="camp_number" value="${camp.plan_number}">
+                                    
+                                    <textarea name="msg" class="form-control"></textarea>
                                 </div>
                                 
                                 

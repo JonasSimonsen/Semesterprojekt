@@ -49,8 +49,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                CAMPAIGNS
-                                <small>Search</small>
+                                Campaigns
+                                <small>Overview</small>
                             </h1>
                         </div>
                     </div> 
@@ -58,20 +58,14 @@
 
                     <!-- Page Content -->
                     <div class="row">
-                        <div class="col-md-4">      
-                            <h3 class="text-info">Search for campaign</h3>
+                        <div class="col-lg-3">      
+                            <p class="text-info"><b>Search</b></p>
                             <form action="int_Campaign_ViewCampaign">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="id" placeholder="Enter campaign ID...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="submit">Go!</button>
                                     </span>
-                                </div>
-                            </form>
-                            <h3 class="text-info">List all campaigns</h3>          
-                            <form action="int_Campaign_ViewAll">
-                                <div class="input-group">
-                                    <button class="btn btn-default" type="submit">Refresh List</button>
                                 </div>
                             </form>
                         </div>
