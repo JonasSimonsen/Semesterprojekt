@@ -465,7 +465,7 @@
                             </div>
 
 
-                            <form>
+                            <form action="ext_Message_Post">
                                 <h3>
                                     Post comment:
                                 </h3>
@@ -479,7 +479,7 @@
                                 
                                 
                                 <div class="form-group">
-                                    <button class="btn btn-primary">Send</button>
+                                    <button class="btn btn-primary" type="submit">Send</button>
                                 </div>
                                 
                             </form>  
