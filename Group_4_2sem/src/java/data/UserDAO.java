@@ -7,9 +7,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDAO {
 
+    ArrayList<User> getUser = new ArrayList();
+    
     public void createNewUser(User user) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -164,5 +167,29 @@ public class UserDAO {
             throw new DatabaseErrorException("Error in Database");
         }
         return correctLogin;
+    }
+            public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException {
+        getUser = new ArrayList();
+        ResultSet rs = null;
+        PreparedStatement prep = null;
+        Connection connection = null;
+
+        try {
+            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
+            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
+            String query = "SELECT * FROM USERS";                         // Finder alle informationer
+            prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
+            rs = prep.executeQuery();
+            while (rs.next()) {
+                getUser.add(new User(rs.getInt("ID"),rs.getString("USERNAME"),rs.getString("PASSWORD"),rs.getString("FIRSTNAME"),rs.getString("LASTNAME"),rs.getString("EMAIL"),rs.getInt("PHONENUM"),rs.getString("ORGANIZATION"),rs.getInt("USERTYPE")));
+            }
+            
+            prep.close();                                                  // Lukker forbindelsen til databasen
+            connection.close();
+            rs.close();
+        } catch (SQLException ex) {
+            throw new DatabaseErrorException("Error in Database");
+        }
+        return getUser;
     }
 }
