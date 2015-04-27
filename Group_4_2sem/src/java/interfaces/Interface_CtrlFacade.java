@@ -55,4 +55,6 @@ public interface Interface_CtrlFacade {
     public List<Message> getMessages() throws DatabaseErrorException, ClassNotFoundException;
 
     public List<Message> getSpecificMessage(int ID) throws DatabaseErrorException, ClassNotFoundException;
+    
+    public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException;
 }

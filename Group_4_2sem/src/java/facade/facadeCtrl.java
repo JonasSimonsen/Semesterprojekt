@@ -115,4 +115,10 @@ public class facadeCtrl implements Interface_CtrlFacade {
         List<Message> message = MsgCtrl.getSpecificMessage(ID);
         return message;
     }
+    
+    @Override
+    public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException {
+        ArrayList<User> user = UseCtrl.getUsers();
+        return user;
+    }
 }

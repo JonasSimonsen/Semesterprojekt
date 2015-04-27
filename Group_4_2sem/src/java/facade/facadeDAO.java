@@ -112,4 +112,10 @@ public class facadeDAO implements Interface_DAOFacade {
         List<Message> message = messageDAO.getSpecificMessage(ID);
         return message;
     }
+    
+    @Override
+    public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException {
+        ArrayList<User> user = userDAO.getUsers();
+        return user;
+    }
 }
