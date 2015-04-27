@@ -39,12 +39,11 @@ public class user_NewUser extends HttpServlet {
         tempInternal = request.getParameter("user-type-internal");
         tempExternal = request.getParameter("user-type-external");
         
-        if (tempInternal == "1") {
+        if ("1".equals(tempInternal)) {
             type = 1;
-        } else if (tempExternal == "1") {
+        } else if ("1".equals(tempExternal)) {
             type = 0;
         }
-        
 
         // Create new user from requested parameters
         User user = new User(1, tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail, tempPhoneNumber, tempOrganization, type);

@@ -34,6 +34,7 @@ public class DatabaseInputTests {
         ctrl.createNewUser(user);
         User getUser = getUserInfo("SATAN");
         assertEquals(40404040, getUser.getPhoneNum());
+        int userID = getUser.getPartnerId();
         ctrl.deleteUser(666);
     }
 
@@ -55,11 +56,31 @@ public class DatabaseInputTests {
         int id = 0;
         ctrl.submitNewCampaignV2(camp, id);
         assertEquals(0, camp.getHas_poe());
-        ctrl.updatePOEStatus(1, 666);
-        Campaign2 camp2 = new Campaign2(666, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        Campaign2 camp2 = new Campaign2(666, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 1, 666);
         ctrl.submitNewCampaignV2(camp2, id);
-        assertEquals(1, camp.getHas_poe());
+        assertEquals(1, camp2.getHas_poe());
         ctrl.deleteCampaign(666);
     }
+    
+    @Test
+    public void testLoginFalse() throws ClassNotFoundException, DatabaseErrorException {
+        ctrl = new facadeCtrl();
+        User user = new User(666, "SATAN", "XYZZY", " ", " ", " ", 40404040, " ", 1);
+        ctrl.createNewUser(user);
+        User userTest = getUserInfo("SATAN");
+        assertEquals(40404040, userTest.getPhoneNum());
+        assertFalse(ctrl.getUser("SATAN", "XYZZY"));
+        ctrl.deleteUser(666);
+    }
 
+    @Test
+    public void testLoginTrue() throws ClassNotFoundException, DatabaseErrorException {
+        ctrl = new facadeCtrl();
+        User user = new User(666, "SATAN", "XYZZY", " ", " ", " ", 40404040, " ", 0);
+        ctrl.createNewUser(user);
+        User userTest = getUserInfo("SATAN");
+        assertEquals(40404040, userTest.getPhoneNum());
+        assertTrue(ctrl.getUser("SATAN", "XYZZY"));
+        ctrl.deleteUser(666);
+    }
 }

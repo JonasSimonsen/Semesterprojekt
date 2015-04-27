@@ -28,6 +28,7 @@ public class UserDAO {
             prep.setString(5, user.getEmail());
             prep.setInt(6, user.getPhoneNum());
             prep.setString(7, user.getOrganization());
+            System.out.println(user.getType());
             prep.setInt(8, user.getType());
             prep.executeQuery();
             prep.close();                                                       // Lukker forbindelser.
@@ -164,7 +165,7 @@ public class UserDAO {
             connection.close();
             rs.close();
         } catch (SQLException ex) {
-            throw new DatabaseErrorException("Error in Database");
+            ex.printStackTrace();
         }
         return correctLogin;
     }
