@@ -14,8 +14,8 @@ public class UserCtrl {
         dao.createNewUser(user);
     }
 
-    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
-        dao.deleteUser(name);
+    public void deleteUser(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        dao.deleteUser(ID);
     }
 
     public int getUserID(String username) throws DatabaseErrorException, ClassNotFoundException {

@@ -29,8 +29,8 @@ public class facadeCtrl implements Interface_CtrlFacade {
     }
 
     @Override
-    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException {
-        CampCtrl.deleteCampaign(name);
+    public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        CampCtrl.deleteCampaign(ID);
     }
 
     @Override
@@ -64,8 +64,8 @@ public class facadeCtrl implements Interface_CtrlFacade {
     }
 
     @Override
-    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
-        UseCtrl.deleteUser(name);
+    public void deleteUser(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        UseCtrl.deleteUser(ID);
     }
 
     @Override

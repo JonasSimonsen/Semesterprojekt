@@ -24,7 +24,7 @@ public interface Interface_DAOFacade {
 
     public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException;
 
-    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException;
+    public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException;
 
     public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException;
 
@@ -38,7 +38,7 @@ public interface Interface_DAOFacade {
 
     public void createNewUser(User user) throws DatabaseErrorException, ClassNotFoundException;
 
-    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException;
+    public void deleteUser(int ID) throws DatabaseErrorException, ClassNotFoundException;
 
     public int getUserID(String username) throws DatabaseErrorException, ClassNotFoundException;
 

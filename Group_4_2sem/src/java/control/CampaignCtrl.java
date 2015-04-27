@@ -15,8 +15,8 @@ public class CampaignCtrl {
         dao.submitNewCampaignV2(camp, userID);
     }
 
-    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException {
-        dao.deleteCampaign(name);
+    public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        dao.deleteCampaign(ID);
     }
 
     public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException {

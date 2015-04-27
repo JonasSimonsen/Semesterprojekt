@@ -26,8 +26,8 @@ public class facadeDAO implements Interface_DAOFacade {
     }
 
     @Override
-    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException {
-        campaignDAO.deleteCampaign(name);
+    public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        campaignDAO.deleteCampaign(ID);
     }
 
     @Override
@@ -61,8 +61,8 @@ public class facadeDAO implements Interface_DAOFacade {
     }
 
     @Override
-    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
-        userDAO.deleteUser(name);
+    public void deleteUser(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        userDAO.deleteUser(ID);
     }
 
     @Override

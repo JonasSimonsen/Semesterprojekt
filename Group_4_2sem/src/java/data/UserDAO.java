@@ -37,16 +37,16 @@ public class UserDAO {
         }
     }
     
-    public void deleteUser(String name) throws DatabaseErrorException, ClassNotFoundException {
+    public void deleteUser(int ID) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement statement = null;
         Connection connection = null;        
         
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "DELETE FROM USERS WHERE USERNAME=?";                      // Sletter den column hvor ID'et matcher det ID som er passeret ind i metoden.
+            String query = "DELETE FROM USERS WHERE ID=?";                      // Sletter den column hvor ID'et matcher det ID som er passeret ind i metoden.
             statement = connection.prepareStatement(query);                     // Opretter forbindelse til til databasen for statement
-            statement.setString(1, name);
+            statement.setInt(1, ID);
             statement.executeQuery();
             statement.close();                                                  // Lukker forbindelser
             connection.close();

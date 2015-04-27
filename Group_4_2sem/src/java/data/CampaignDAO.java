@@ -84,15 +84,15 @@ public class CampaignDAO {
 
     }
         
-    public void deleteCampaign(String name) throws DatabaseErrorException, ClassNotFoundException {
+    public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            String query = "DELETE FROM CAMPAIGN WHERE CONTACTNAME = ?";          // Sletter column hvor PLANNO passer til den indtastede PLANNO
+            String query = "DELETE FROM CAMPAIGN WHERE USER_ID = (SELECT USER_ID FROM USERS WHERE USER_ID=?)";          // Sletter column hvor PLANNO passer til den indtastede PLANNO
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
-            prep.setString(1, name);
+            prep.setInt(1, ID);
             prep.executeQuery();
             prep.close();                                                       // Lukker forbindelsen til databasen
             connection.close();
