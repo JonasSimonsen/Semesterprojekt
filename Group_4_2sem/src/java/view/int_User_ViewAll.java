@@ -61,7 +61,7 @@ public class int_User_ViewAll extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher("int_users_search.jsp");
         rd.forward(request, response);
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

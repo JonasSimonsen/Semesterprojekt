@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,32 +54,44 @@
                         </div>
                     </div> 
                     <!-- /Page Heading -->
-                    
+
                     <!-- Page Content -->
-                     <div class="row" style="margin-top: 40px;">
+                    <div class="row" style="margin-top: 40px;">
                         <div class="col-md-12">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <th class="text-center">User ID</th>
                                 <th class="text-center">Username</th>
                                 <th class="text-center">First Name</th>
-                                <th class="text-center">Last Name</th>
                                 <th class="text-center">E-mail</th>
+                                <th class="text-center">Phone</th>
                                 <th class="text-center">Organization</th>
+                                <th class="text-center">Type</th>
                                 <th class="text-center"></th>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="p" items="${campList}">
+                                    <c:forEach var="p" items="${userList}">
                                         <tr>
-                                            <td class="col-md-1 text-center"><b>#${p.partnerID}</b></td>
-                                            <td class="col-md-2 text-center">${p.userName}</td>
-                                            <td class="col-md-2 text-center">${p.firstName}</td>
-                                            <td class="col-md-2 text-center">${p.lastName}</td>
+                                            <td class="col-md-1 text-center"><b>#${p.partnerId}</b></td> 
+                                            <td class="col-md-1 text-center">${p.userName}</td>
+                                            <td class="col-md-2 text-center">${p.firstName} ${p.lastName}</td>
+                                            <td class="col-md-2 text-center">${p.email}</td>
+                                            <td class="col-md-2 text-center">${p.phoneNum}</td>
                                             <td class="col-md-2 text-center">${p.organization}</td>
-                                            <td class="col-md-1 text-center">${p.type}</td>
+                                            <td class="col-md-1 text-center">
+
+                                                <c:choose>
+                                                    <c:when test="${p.type == '1'}">
+                                                        Internal
+                                                    </c:when>
+                                                    <c:when test="${p.type == '0'}">
+                                                        External
+                                                    </c:when>
+                                                </c:choose>
+                                            </td>
                                             <td class="col-md-2 text-center">
                                                 <form action="ext_Campaign_ViewCampaign">
-                                                    <input type="hidden" name="id" value="${p.partnerID}">
+                                                    <input type="hidden" name="id" value="${p.partnerId}">
                                                     <button type="submit" class="btn btn-link">Remove</button>
                                                 </form>
                                             </td>

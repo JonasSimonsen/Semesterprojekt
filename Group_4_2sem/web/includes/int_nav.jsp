@@ -54,7 +54,7 @@
                             <ul id="dd-users" class="collapse">
 
                                 <li>
-                                    <a href="#">View Users</a>
+                                    <a href="int_User_ViewAll">View Users</a>
                                 </li>
                                 <li>
                                     <a href="int_users_new.jsp">New User</a>
