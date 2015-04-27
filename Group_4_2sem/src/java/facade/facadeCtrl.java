@@ -94,7 +94,7 @@ public class facadeCtrl implements Interface_CtrlFacade {
 
     @Override
     public boolean getUser(String UN, String PW) throws DatabaseErrorException, ClassNotFoundException {
-        boolean user = UseCtrl.getUser(PW, PW);
+        boolean user = UseCtrl.getUser(UN, PW);
         return user;
     }
 

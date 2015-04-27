@@ -47,13 +47,12 @@ public class user_Login extends HttpServlet {
         String PW = request.getParameter("password");
         Interface_CtrlFacade ctrl = new facadeCtrl();
 
+        
         try {
             if (ctrl.getUser(UN, PW)) {
                 int type = ctrl.getUserType(UN);
                 s.setAttribute("username", UN);
                 s.setAttribute("user_type", type);
-
-                System.out.println("TYPE IS:" + type);
                 
                 if (type == 1) {
                     RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
