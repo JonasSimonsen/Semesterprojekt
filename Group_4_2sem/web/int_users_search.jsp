@@ -90,7 +90,7 @@
                                                 </c:choose>
                                             </td>
                                             <td class="col-md-2 text-center">
-                                                <form action="ext_Campaign_ViewCampaign">
+                                                <form action="int_User_RemoveUser">
                                                     <input type="hidden" name="id" value="${p.partnerId}">
                                                     <button type="submit" class="btn btn-link">Remove</button>
                                                 </form>

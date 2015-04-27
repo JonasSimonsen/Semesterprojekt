@@ -35,15 +35,11 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#dd-campaigns"><i class="fa fa-fw fa-bullhorn"></i> Campaigns <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#dd-campaigns"><i class="fa fa-fw fa-bullhorn"></i> MDF <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="dd-campaigns" class="collapse">
 
                                 <li>
                                     <a href="int_Campaign_ViewAll">View Campaigns</a>
-                                </li>
-
-                                <li>
-                                    <a href="index.jsp">Edit Campaign</a>
                                 </li>
                                 
                             </ul>
@@ -59,11 +55,7 @@
                                 <li>
                                     <a href="int_users_new.jsp">New User</a>
                                 </li>
-                                <li>
-                                    <a href="#">Edit User</a>
-                                </li>
-
-
+                                
                             </ul>
                         </li>
                     </ul>
