@@ -5,7 +5,8 @@
  */
 package view;
 
-import data.CampaignDAO;
+import facade.facadeCtrl;
+import interfaces.Interface_CtrlFacade;
 import data.DatabaseInfo;
 import exceptions.DatabaseErrorException;
 import java.io.IOException;
@@ -127,8 +128,8 @@ public class ext_campaign_SavePOE extends HttpServlet {
             if (connection != null) {
                 // closes the database connection
                 try {
-                    CampaignDAO cdao = new CampaignDAO();
-                    cdao.updatePOEStatus(1, CAMPNO);
+                    Interface_CtrlFacade ctrl = new facadeCtrl();
+                    ctrl.updatePOEStatus(1, CAMPNO);
                     connection.close();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
