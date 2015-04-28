@@ -153,16 +153,13 @@ public class UserDAO {
             statement = connection.prepareStatement(query);                           // Opretter forbindelse til databasen for statement
             statement.setString(1, username);
             rs = statement.executeQuery();
-            System.out.println("Username: " + username + " --  Password : " + password);
             while (rs.next()) {
                 tempUsername = rs.getString("USERNAME");
                 tempPassword = rs.getString("PASSWORD");
-                System.out.println("Username: " + tempUsername + " --  Password : " + tempPassword);
             }
             if (username.equals(tempUsername) && password.equals(tempPassword)) {
                 correctLogin = true;
             }
-            
             statement.close();                                                  // Lukker forbindelser
             connection.close();
             rs.close();
