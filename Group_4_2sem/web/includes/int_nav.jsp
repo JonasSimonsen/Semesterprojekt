@@ -13,14 +13,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp">MDF Processing Tool</a>
+                    <a class="navbar-brand" href="int_dashboard.jsp">MDF Processing Tool</a>
                 </div>
 
 
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="">
-                        <a href="index.jsp"><i class="fa fa-user"></i> <%= session.getAttribute("username") %></a>
+                        <a href="#"><i class="fa fa-user"></i> <%= session.getAttribute("username") %></a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="index.jsp"><i class="fa fa-sign-out"></i> Logout</a>
                     </li>
                     
                     

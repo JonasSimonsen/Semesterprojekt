@@ -5,13 +5,11 @@
  */
 package view;
 
-import DTO.Campaign2;
 import DTO.User;
 import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
 import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

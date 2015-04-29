@@ -7,7 +7,6 @@ package view;
 
 import facade.facadeCtrl;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
