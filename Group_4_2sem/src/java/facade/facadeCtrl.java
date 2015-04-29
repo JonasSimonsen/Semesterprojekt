@@ -8,8 +8,12 @@ import DTO.Campaign2;
 import control.*;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
 public class facadeCtrl implements Interface_CtrlFacade {
 
@@ -115,10 +119,21 @@ public class facadeCtrl implements Interface_CtrlFacade {
         List<Message> message = MsgCtrl.getSpecificMessage(ID);
         return message;
     }
-    
+
     @Override
     public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException {
         ArrayList<User> user = UseCtrl.getUsers();
         return user;
+    }
+
+    @Override
+    public void savePOE(InputStream input, int campno) throws DatabaseErrorException, ClassNotFoundException{
+        CampCtrl.savePOE(input, campno);
+    }
+
+    @Override
+    public OutputStream loadPOE(int campno, ServletContext context, HttpServletResponse response) throws DatabaseErrorException, ClassNotFoundException{
+        OutputStream output = CampCtrl.loadPOE(campno, context, response);
+        return output;
     }
 }

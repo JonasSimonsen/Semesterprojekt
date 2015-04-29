@@ -6,6 +6,10 @@ import DTO.Campaign2;
 import exceptions.DatabaseErrorException;
 import facade.facadeDAO;
 import interfaces.Interface_DAOFacade;
+import java.io.InputStream;
+import java.io.OutputStream;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
 public class CampaignCtrl {
 
@@ -48,5 +52,14 @@ public class CampaignCtrl {
     public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
         ArrayList<Campaign2> camp = dao.getCampaigns();
         return camp;
+    }
+    
+    public void savePOE(InputStream input, int campno) throws DatabaseErrorException, ClassNotFoundException{
+        dao.savePOE(input, campno);
+    }
+
+    public OutputStream loadPOE(int campno, ServletContext context, HttpServletResponse response) throws DatabaseErrorException, ClassNotFoundException{
+        OutputStream output = dao.loadPOE(campno, context, response);
+        return output;
     }
 }

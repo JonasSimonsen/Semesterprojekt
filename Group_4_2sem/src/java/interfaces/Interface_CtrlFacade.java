@@ -11,8 +11,12 @@ import DTO.Message;
 import DTO.Partner;
 import DTO.User;
 import exceptions.DatabaseErrorException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -57,4 +61,8 @@ public interface Interface_CtrlFacade {
     public List<Message> getSpecificMessage(int ID) throws DatabaseErrorException, ClassNotFoundException;
     
     public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException;
+    
+    public void savePOE(InputStream input, int campno) throws DatabaseErrorException, ClassNotFoundException;
+
+    public OutputStream loadPOE(int campno, ServletContext context, HttpServletResponse response) throws DatabaseErrorException, ClassNotFoundException;
 }

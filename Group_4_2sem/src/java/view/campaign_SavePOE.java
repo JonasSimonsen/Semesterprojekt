@@ -7,17 +7,11 @@ package view;
 
 import facade.facadeCtrl;
 import interfaces.Interface_CtrlFacade;
-import data.DatabaseInfo;
 import exceptions.DatabaseErrorException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -79,73 +73,30 @@ public class campaign_SavePOE extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int CAMPNO = Integer.parseInt(request.getParameter("id")); // Retrieves <input type="text" name="description">
-        Part filePart = request.getPart("fIlE_UpLoAd-N1C3-F1Le-4-h4X"); // Retrieves <input type="file" name="file">
-        String fileName = filePart.getSubmittedFileName();
-        InputStream fileContent = filePart.getInputStream();
-        int ZIPNO = 0;
-
-        InputStream inputStream = null; // input stream of the upload file
-
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-        }
-
-        Connection connection = null; // connection to the database
-        String message = null;  // message will be sent back to client
-
         try {
-            // connects to the database
-            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
-            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-
+            int CAMPNO = Integer.parseInt(request.getParameter("id")); // Retrieves <input type="text" name="description">
+            Part filePart = request.getPart("fIlE_UpLoAd-N1C3-F1Le-4-h4X"); // Retrieves <input type="file" name="file">
+            String fileName = filePart.getSubmittedFileName();
+            InputStream fileContent = filePart.getInputStream();
+            Interface_CtrlFacade ctrl = new facadeCtrl();
+            int ZIPNO = 0;
             
-            int PLANNO = Integer.parseInt(request.getParameter("id"));
-
-            // constructs SQL statement
-            String query = "INSERT INTO CAMPSTORAGE (ZIPNO, ZIPFILE, CAMPNO) values (user_seq.nextval, ?, (SELECT CAMPNO FROM CAMPAIGN WHERE CAMPNO=?))";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setBlob(1, inputStream);
-            statement.setInt(2, PLANNO);
-
-            // sends the statement to the database server
-            int row = statement.executeUpdate();
-            if (row > 0) {
-                message = "File uploaded and saved into database";
+            InputStream inputStream = null; // input stream of the upload file
+            
+            if (filePart != null) {
+                // prints out some information for debugging
+                System.out.println(filePart.getName());
+                System.out.println(filePart.getSize());
+                System.out.println(filePart.getContentType());
+                
+                // obtains input stream of the upload file
+                inputStream = filePart.getInputStream();
             }
-        } catch (SQLException ex) {
-            message = "ERROR: " + ex.getMessage();
-            ex.printStackTrace();
+            ctrl.savePOE(inputStream, CAMPNO);
+        } catch (DatabaseErrorException ex) {
+            Logger.getLogger(campaign_SavePOE.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(campaign_SavePOE.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (connection != null) {
-                // closes the database connection
-                try {
-                    Interface_CtrlFacade ctrl = new facadeCtrl();
-                    ctrl.updatePOEStatus(1, CAMPNO);
-                    connection.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                } catch (DatabaseErrorException ex) {
-                    ex.printStackTrace();
-                }
-                
-                catch (ClassNotFoundException cx) {
-                    cx.printStackTrace();
-                }
-            }
-            // sets the message in request scope
-            request.setAttribute("Message", message);
-
-            RequestDispatcher rd = request.getRequestDispatcher("int_campaigns_viewspecific.jsp");
-            rd.forward(request, response);
         }
     }
 

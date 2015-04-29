@@ -108,4 +108,36 @@ public class DatabaseInputTests {
         ctrl.deleteUser(userID);
         ctrl.deleteCampaign(userID);
     }
+    
+    @Test
+    public void testBudgetDisapprove() throws DatabaseErrorException, ClassNotFoundException {
+        ctrl = new facadeCtrl();
+        Campaign2 camp = new Campaign2(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        int id = 0;
+        ctrl.submitNewCampaignV2(camp, id);
+        int CAMPNO = ctrl.getUserID("SATAN");
+        String STATUS = "BUDGET DISAPPROVED";
+        ctrl.budgetStatus(STATUS, CAMPNO);
+        camp = getSpecificCampaignV2("SATAN");
+        assertEquals("BUDGET DISAPPROVED", camp.getStatus());
+        int userID = ctrl.getUserID("SATAN");
+        ctrl.deleteUser(userID);
+        ctrl.deleteCampaign(userID);
+   }
+    
+    @Test
+    public void testBudgetApprove() throws DatabaseErrorException, ClassNotFoundException {
+        ctrl = new facadeCtrl();
+        Campaign2 camp = new Campaign2(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        int id = 0;
+        ctrl.submitNewCampaignV2(camp, id);
+        int CAMPNO = ctrl.getUserID("SATAN");
+        String STATUS = "BUDGET APPROVED";
+        ctrl.budgetStatus(STATUS, CAMPNO);
+        camp = getSpecificCampaignV2("SATAN");
+        assertEquals("BUDGET APPROVED", camp.getStatus());
+        int userID = ctrl.getUserID("SATAN");
+        ctrl.deleteUser(userID);
+        ctrl.deleteCampaign(userID);
+   }
 }

@@ -5,7 +5,11 @@ import interfaces.*;
 import java.util.ArrayList;
 import DTO.*;
 import exceptions.DatabaseErrorException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
 public class facadeDAO implements Interface_DAOFacade {
 
@@ -117,5 +121,16 @@ public class facadeDAO implements Interface_DAOFacade {
     public ArrayList<User> getUsers() throws DatabaseErrorException, ClassNotFoundException {
         ArrayList<User> user = userDAO.getUsers();
         return user;
+    }
+    
+    @Override
+    public void savePOE(InputStream input, int campno) throws DatabaseErrorException, ClassNotFoundException {
+        campaignDAO.savePOE(input, campno);
+    }
+
+    @Override
+    public OutputStream loadPOE(int campno, ServletContext context, HttpServletResponse response) throws DatabaseErrorException, ClassNotFoundException {
+       OutputStream output = campaignDAO.loadPOE(campno, context, response);
+       return output;
     }
 }
