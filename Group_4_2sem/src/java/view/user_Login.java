@@ -65,10 +65,7 @@ public class user_Login extends HttpServlet {
                 rd.include(request, response);
 
             }
-        } catch (DatabaseErrorException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
         }
     }
 

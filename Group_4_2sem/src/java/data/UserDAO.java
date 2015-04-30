@@ -164,7 +164,7 @@ public class UserDAO {
             connection.close();
             rs.close();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            throw new DatabaseErrorException("Error in Database");
         }
         return correctLogin;
     }

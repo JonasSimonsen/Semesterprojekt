@@ -7,7 +7,6 @@ package view;
 
 import facade.facadeCtrl;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,12 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DTO.Campaign2;
+import DTO.Campaign;
 import DTO.Message;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,18 +45,18 @@ public class ext_Campaign_ViewCampaign extends HttpServlet {
             throws ServletException, IOException {
 
         List<Message> msgList = new ArrayList<>();
-        
+
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
-        
+
         PLANNO = Integer.parseInt(request.getParameter("id"));
-        Campaign2 campaign = null;
+        Campaign campaign = null;
         Interface_CtrlFacade ctrl = new facadeCtrl();
         try {
             msgList = ctrl.getSpecificMessage(PLANNO);
             campaign = ctrl.getSpecificCampaign(PLANNO);
-        } catch (DatabaseErrorException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
+            Logger.getLogger(ext_Campaign_ViewCampaign.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             s.setAttribute("messages", msgList);
             s.setAttribute("camp", campaign);

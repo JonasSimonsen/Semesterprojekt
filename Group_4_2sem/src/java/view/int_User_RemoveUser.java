@@ -9,6 +9,8 @@ import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
 import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,9 +43,9 @@ public class int_User_RemoveUser extends HttpServlet {
         try {
             ctrl.deleteUser(userID);
         } catch (DatabaseErrorException | ClassNotFoundException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(int_User_RemoveUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         RequestDispatcher rd = request.getRequestDispatcher("int_User_ViewAll");
         rd.forward(request, response);
 

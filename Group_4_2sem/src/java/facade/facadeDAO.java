@@ -25,7 +25,7 @@ public class facadeDAO implements Interface_DAOFacade {
     }
 
     @Override
-    public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
+    public void submitNewCampaign(Campaign camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
         campaignDAO.submitNewCampaignV2(camp, userID);
     }
 
@@ -34,10 +34,6 @@ public class facadeDAO implements Interface_DAOFacade {
         campaignDAO.deleteCampaign(ID);
     }
 
-    @Override
-    public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException {
-        campaignDAO.editCampaign(camp);
-    }
 
     @Override
     public void approveBudget(int campno, double budget) throws DatabaseErrorException, ClassNotFoundException {
@@ -88,20 +84,20 @@ public class facadeDAO implements Interface_DAOFacade {
     }
 
     @Override
-    public Campaign2 getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException {
-        Campaign2 camp = campaignDAO.getSpecificCampaign(campno);
+    public Campaign getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException {
+        Campaign camp = campaignDAO.getSpecificCampaign(campno);
         return camp;
     }
 
     @Override
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException {
-        ArrayList<Campaign2> camp = campaignDAO.getCampaignsExternal(id);
+    public ArrayList<Campaign> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException {
+        ArrayList<Campaign> camp = campaignDAO.getCampaignsExternal(id);
         return camp;
     }
 
     @Override
-    public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
-        ArrayList<Campaign2> camp = campaignDAO.getCampaigns();
+    public ArrayList<Campaign> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
+        ArrayList<Campaign> camp = campaignDAO.getCampaigns();
         return camp;
     }
 

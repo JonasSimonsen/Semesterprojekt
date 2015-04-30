@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.Message;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -51,10 +53,8 @@ public class ext_Message_Post extends HttpServlet {
             int the_userID = ctrl.getUserID(UN);
             Message msg = new Message(1, the_msg, the_campNO, the_date.toString(), the_userID, the_username);
             ctrl.createNewMessage(msg);
-        } catch (DatabaseErrorException sqle) {
-            sqle.printStackTrace();
-        } catch (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace();
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
+            Logger.getLogger(ext_Message_Post.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher("ext_Campaign_ViewCampaign");
             rd.forward(request, response);

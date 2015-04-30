@@ -1,22 +1,18 @@
 package data;
 
-import DTO.Campaign;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import DTO.Campaign2;
+import DTO.Campaign;
 import exceptions.DatabaseErrorException;
-import facade.facadeCtrl;
-import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -26,9 +22,9 @@ import view.campaign_SavePOE;
 
 public class CampaignDAO {
 
-    private ArrayList<Campaign2> getCamp = new ArrayList();
+    private ArrayList<Campaign> getCamp = new ArrayList();
 
-    public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
+    public void submitNewCampaignV2(Campaign camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
         try {
@@ -114,42 +110,6 @@ public class CampaignDAO {
         }
     }
 
-    public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException {
-        Statement statement = null;
-        Connection connection = null;
-        int PLANNO, PNO;
-        double COST, MDFBUDGET;
-        String COUNTRY, DESCRIPTION, AUDIENCE, CURRENCY, STATUS, QUARTER, STARTDATE, ENDDATE, OBJECTIVE, POE_REQ;
-        PLANNO = camp.getPlanNumber();
-        PNO = camp.getPartnerNumber();
-        COST = camp.getCost();
-        MDFBUDGET = camp.getMdfBudget();
-        COUNTRY = camp.getCountry();
-        DESCRIPTION = camp.getDescription();
-        AUDIENCE = camp.getAudience();
-        CURRENCY = camp.getCurrency();
-        STATUS = camp.getStatus();
-        QUARTER = camp.getQuarter();
-        STARTDATE = camp.getStartDate();
-        ENDDATE = camp.getEndDate();
-        OBJECTIVE = camp.getObjective();
-        POE_REQ = camp.getPoeRequirement();                                     // Variabler som henter values fra Campaign objektet passeret igennem servletten.
-
-        try {
-            Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
-            connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
-            statement = connection.createStatement();                           // Opretter forbindelse til til databasen for statement
-            String query = "UPDATE PARTNERPLAN SET PNO = " + PNO + ", COUNTRY = '" + COUNTRY + "', DESCRIPTION = '" + DESCRIPTION + "', AUDIENCE = '" + AUDIENCE + "', CURRENCY = '" + CURRENCY + "', COST = " + COST + ", MDFBUDGET = " + MDFBUDGET + ", STATUS = '" + STATUS + "', QUARTER = '" + QUARTER + "', STARTDATE = '" + STARTDATE + "', ENDDATE = '" + ENDDATE + "', OBJECTIVE = '" + OBJECTIVE + "', POE_REQ = '" + POE_REQ + "' WHERE PLANNO = " + PLANNO + ";";
-            // Opdaterer column i PARTNERPLAN som passer til PNO som er passeret ind
-            statement.executeQuery(query);
-
-            statement.close();                                                  // Lukker forbindelsen til databasen
-            connection.close();
-        } catch (SQLException ex) {
-            throw new DatabaseErrorException("Error in Database");
-        }
-    }
-
     public void approveBudget(int campno, double budget) throws DatabaseErrorException, ClassNotFoundException {
         PreparedStatement prep = null;
         Connection connection = null;
@@ -210,7 +170,7 @@ public class CampaignDAO {
         }
     }
 
-    public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
+    public ArrayList<Campaign> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
         getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -223,7 +183,7 @@ public class CampaignDAO {
             prep = connection.prepareStatement(query);                          // Opretter forbindelse til til databasen for statement
             rs = prep.executeQuery();
             while (rs.next()) {
-                getCamp.add(new Campaign2(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID")));
+                getCamp.add(new Campaign(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID")));
             }
 
             prep.close();                                                  // Lukker forbindelsen til databasen
@@ -235,7 +195,7 @@ public class CampaignDAO {
         return getCamp;
     }
 
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException {
+    public ArrayList<Campaign> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException {
         getCamp = new ArrayList();
         ResultSet rs = null;
         PreparedStatement prep = null;
@@ -249,7 +209,7 @@ public class CampaignDAO {
             prep.setInt(1, id);
             rs = prep.executeQuery();
             while (rs.next()) {
-                getCamp.add(new Campaign2(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID")));
+                getCamp.add(new Campaign(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID")));
             }
 
             prep.close();                                                  // Lukker forbindelsen til databasen
@@ -260,11 +220,11 @@ public class CampaignDAO {
         return getCamp;
     }
 
-    public Campaign2 getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException {
+    public Campaign getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
-        Campaign2 campaign = null;
+        Campaign campaign = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
@@ -273,7 +233,7 @@ public class CampaignDAO {
             prep.setInt(1, campno);
             rs = prep.executeQuery();
             while (rs.next()) {
-                campaign = new Campaign2(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID"));
+                campaign = new Campaign(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID"));
             }
 
             prep.close();                                                       // Lukker forbindelsen til databasen
@@ -284,11 +244,11 @@ public class CampaignDAO {
         return campaign;
     }
 
-    public static Campaign2 getSpecificCampaignV2(String CONTACTNAME) throws DatabaseErrorException, ClassNotFoundException {
+    public static Campaign getSpecificCampaign(String CONTACTNAME) throws DatabaseErrorException, ClassNotFoundException {
         ResultSet rs = null;
         PreparedStatement prep = null;
         Connection connection = null;
-        Campaign2 campaign = null;
+        Campaign campaign = null;
         try {
             Class.forName(DatabaseInfo.driver);                                 // Henter database driveren.
             connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.ID, DatabaseInfo.PW); // Opretter forbindelse til databasen med info fra DB klassen
@@ -297,7 +257,7 @@ public class CampaignDAO {
             prep.setString(1, CONTACTNAME);
             rs = prep.executeQuery();
             while (rs.next()) {
-                campaign = new Campaign2(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID"));
+                campaign = new Campaign(rs.getInt("CAMPNO"), rs.getString("SUBMITDATE"), rs.getString("CONTACTNAME"), rs.getString("COMPNAME"), rs.getString("COMPADDR"), rs.getString("CONTACTEMAIL"), rs.getString("CONTACTPHONE"), rs.getString("PROGRAMDATE"), rs.getString("STARTTIME"), rs.getString("ENDTIME"), rs.getInt("ATTENDNUM"), rs.getString("VENUE"), rs.getString("VENUEADDR"), rs.getInt("FTOF"), rs.getInt("TRADESHOW"), rs.getInt("MULTIT"), rs.getInt("DOOROPEN"), rs.getInt("THIRDPART"), rs.getInt("DIRECTMAIL"), rs.getInt("BLITZ"), rs.getString("PROGDESC"), rs.getInt("SC4000"), rs.getInt("PS4210"), rs.getInt("STORAGESOL"), rs.getInt("FLASH"), rs.getInt("FLUIDCAC"), rs.getInt("DATAPROT"), rs.getInt("NEWGEN"), rs.getInt("WIN2003"), rs.getInt("X86SERV"), rs.getInt("VRTX"), rs.getInt("SDN"), rs.getInt("USERCENT"), rs.getInt("CLOUD"), rs.getInt("CONVERG"), rs.getInt("BLADEDATA"), rs.getInt("FUTUREIT"), rs.getInt("POWEREDGE"), rs.getInt("SDS"), rs.getString("CAMPAIGNCOM"), rs.getInt("SMB"), rs.getInt("LE"), rs.getInt("PUB"), rs.getDouble("COST"), rs.getDouble("MDFREQ"), rs.getString("REIMB"), rs.getString("PARTNERS"), rs.getDouble("MDFCONTR"), rs.getInt("OPPORTU"), rs.getDouble("ESTREVENUE"), rs.getString("STATUS"), rs.getInt("HASPOE"), rs.getInt("USER_ID"));
             }
 
             prep.close();                                                       // Lukker forbindelsen til databasen
@@ -325,8 +285,6 @@ public class CampaignDAO {
             connection.close();
         } catch (SQLException ex) {
             throw new DatabaseErrorException("Error in Database");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(campaign_SavePOE.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
                 try {
                     updatePOEStatus(1, campno);

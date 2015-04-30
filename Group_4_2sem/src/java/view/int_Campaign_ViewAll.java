@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DTO.Campaign2;
+import DTO.Campaign;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,18 +44,15 @@ public class int_Campaign_ViewAll extends HttpServlet {
         HttpSession s = request.getSession();
         s.setMaxInactiveInterval(30 * 60);
 
-        Campaign2 campaign = null;
+        Campaign campaign = null;
         Interface_CtrlFacade ctrl = new facadeCtrl();
-        ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
+        ArrayList<Campaign> campaignList = new ArrayList<Campaign>();
 
         try {
-            campaignList = ctrl.getCampaigns();
-
-        } catch (DatabaseErrorException sqle) {
-            sqle.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+                campaignList = ctrl.getCampaigns();
+            } catch (DatabaseErrorException | ClassNotFoundException ex) {
+                Logger.getLogger(int_Campaign_ViewAll.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
             s.setAttribute("campList", campaignList);
         }
 

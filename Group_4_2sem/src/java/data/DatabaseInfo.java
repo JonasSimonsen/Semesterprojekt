@@ -1,7 +1,5 @@
 package data;
 
-import java.sql.Connection;
-
 public class DatabaseInfo {
 
     public static String driver = "oracle.jdbc.driver.OracleDriver";

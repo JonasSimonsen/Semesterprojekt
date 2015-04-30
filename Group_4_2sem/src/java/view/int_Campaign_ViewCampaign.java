@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DTO.Campaign2;
+import DTO.Campaign;
 import DTO.Message;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,14 +50,14 @@ public class int_Campaign_ViewCampaign extends HttpServlet {
         s.setMaxInactiveInterval(30 * 60);
 
         PLANNO = Integer.parseInt(request.getParameter("id"));
-        Campaign2 campaign = null;
+        Campaign campaign = null;
         Interface_CtrlFacade ctrl = new facadeCtrl();
         try {
             msgList = ctrl.getSpecificMessage(PLANNO);
-            campaign = ctrl.getSpecificCampaign(PLANNO);
-        } catch (DatabaseErrorException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+                campaign = ctrl.getSpecificCampaign(PLANNO);
+            } catch (DatabaseErrorException | ClassNotFoundException ex) {
+                Logger.getLogger(int_Campaign_ViewCampaign.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
             s.setAttribute("messages", msgList);
             s.setAttribute("camp", campaign);
         }

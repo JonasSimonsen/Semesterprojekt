@@ -44,7 +44,6 @@ public class campaign_ApproveBudget extends HttpServlet {
         try {
             ctrl.budgetStatus(STATUS, CAMPNO);
         } catch (DatabaseErrorException | ClassNotFoundException e) {
-            e.printStackTrace();
         }
         RequestDispatcher rd = request.getRequestDispatcher("int_Campaign_ViewCampaign");
         rd.forward(request, response);

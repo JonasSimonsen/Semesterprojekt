@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DTO.Campaign2;
+import DTO.Campaign;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +27,7 @@ import interfaces.Interface_CtrlFacade;
 @WebServlet(name = "campaign_NewCampaign", urlPatterns = {"/campaign_NewCampaign"})
 public class campaign_NewCampaign extends HttpServlet {
 
-    private int tempPlanNumber = 1;
+    private final int tempPlanNumber = 1;
     private String tempSubmitDate;
     private String tempContactName;
     private String tempCompanyName;
@@ -80,7 +82,7 @@ public class campaign_NewCampaign extends HttpServlet {
     private double tempTotalTechnologyPartner;
     private int tempEstimatedOfOpportunitues;
     private int tempEstimatedRevenueFromProgram;
-    private int tempHasPOE = 0;
+    private final int tempHasPOE = 0;
     
     private int tempID;
 
@@ -147,15 +149,15 @@ public class campaign_NewCampaign extends HttpServlet {
         tempEstimatedOfOpportunitues = Integer.parseInt(request.getParameter("opportunities"));
         tempEstimatedRevenueFromProgram = Integer.parseInt(request.getParameter("est_renevue"));
 
-        Campaign2 campaign = new Campaign2(tempPlanNumber, tempSubmitDate, tempContactName, tempCompanyName, tempAddress, tempEmail, tempPhone, tempProgramDate, tempStartTime, tempEndTime, tempEstimatedOfAttendess, tempVenueName, tempVenueAddress, tempFaceToFaceEvent, tempTradeshow, tempMultitouchCampaign, tempDoorOpenerCampaign, tempThirdPartyCampaign, tempDirectMail, tempBlitzCampaign, tempProgramDescription, tempDellStorageSC4000Series, tempDellStoragePS4210Series, tempDellStorageSolution, tempFlashAtThePriceOfDisk, tempFluidCacheForSAN, tempDateProtection, tempTheLastGenerationOfDellPowerEdgeServers, tempWindowsServer2003Migration, tempX86ServerTransition, tempPowerEdgeVRTX, tempSoftwareDefinedNetworking, tempUserCentricNetworking, tempCloudClientComputing, tempConvergedInfrastructureHardware, tempDellConvergedBladeDataCenter, tempOptimizedEnteprise, tempPowerEdgeFXArchitecture, tempSoftwareDefinedStorage, tempIsThereASoftwareComponentToYourCampaign, tempSMB, tempLE, tempPUB, tempTotalProjectedCostOfProgram, tempTotalMDFRequestingFromDell, tempPreferredMethodOfReimbursement, tempParticipatingTechnologyPartner, tempTotalTechnologyPartner, tempEstimatedOfOpportunitues, tempEstimatedRevenueFromProgram, "NOT READY",tempHasPOE,tempID);
+        Campaign campaign = new Campaign(tempPlanNumber, tempSubmitDate, tempContactName, tempCompanyName, tempAddress, tempEmail, tempPhone, tempProgramDate, tempStartTime, tempEndTime, tempEstimatedOfAttendess, tempVenueName, tempVenueAddress, tempFaceToFaceEvent, tempTradeshow, tempMultitouchCampaign, tempDoorOpenerCampaign, tempThirdPartyCampaign, tempDirectMail, tempBlitzCampaign, tempProgramDescription, tempDellStorageSC4000Series, tempDellStoragePS4210Series, tempDellStorageSolution, tempFlashAtThePriceOfDisk, tempFluidCacheForSAN, tempDateProtection, tempTheLastGenerationOfDellPowerEdgeServers, tempWindowsServer2003Migration, tempX86ServerTransition, tempPowerEdgeVRTX, tempSoftwareDefinedNetworking, tempUserCentricNetworking, tempCloudClientComputing, tempConvergedInfrastructureHardware, tempDellConvergedBladeDataCenter, tempOptimizedEnteprise, tempPowerEdgeFXArchitecture, tempSoftwareDefinedStorage, tempIsThereASoftwareComponentToYourCampaign, tempSMB, tempLE, tempPUB, tempTotalProjectedCostOfProgram, tempTotalMDFRequestingFromDell, tempPreferredMethodOfReimbursement, tempParticipatingTechnologyPartner, tempTotalTechnologyPartner, tempEstimatedOfOpportunitues, tempEstimatedRevenueFromProgram, "NOT READY",tempHasPOE,tempID);
         Interface_CtrlFacade ctrl = new facadeCtrl();
 
         try {
             int ID = ctrl.getUserID(UN);
-            ctrl.submitNewCampaignV2(campaign,ID);
-        } catch (DatabaseErrorException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+                ctrl.submitNewCampaignV2(campaign,ID);
+            } catch (DatabaseErrorException | ClassNotFoundException ex) {
+                Logger.getLogger(campaign_NewCampaign.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         RequestDispatcher rd = request.getRequestDispatcher("ext_campaigns_submit.jsp");
         rd.forward(request, response);

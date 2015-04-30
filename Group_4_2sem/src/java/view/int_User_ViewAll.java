@@ -11,6 +11,8 @@ import facade.facadeCtrl;
 import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,13 +49,10 @@ public class int_User_ViewAll extends HttpServlet {
         ArrayList<User> userList = new ArrayList<User>();
 
         try {
-            userList = ctrl.getUsers();
-
-        } catch (DatabaseErrorException sqle) {
-            sqle.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+                userList = ctrl.getUsers();
+            } catch (DatabaseErrorException | ClassNotFoundException ex) {
+                Logger.getLogger(int_User_ViewAll.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
             s.setAttribute("userList", userList);
         }
 

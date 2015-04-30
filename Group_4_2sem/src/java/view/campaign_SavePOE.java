@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -80,24 +81,24 @@ public class campaign_SavePOE extends HttpServlet {
             InputStream fileContent = filePart.getInputStream();
             Interface_CtrlFacade ctrl = new facadeCtrl();
             int ZIPNO = 0;
-            
+
             InputStream inputStream = null; // input stream of the upload file
-            
+
             if (filePart != null) {
                 // prints out some information for debugging
                 System.out.println(filePart.getName());
                 System.out.println(filePart.getSize());
                 System.out.println(filePart.getContentType());
-                
+
                 // obtains input stream of the upload file
                 inputStream = filePart.getInputStream();
             }
             ctrl.savePOE(inputStream, CAMPNO);
-        } catch (DatabaseErrorException ex) {
-            Logger.getLogger(campaign_SavePOE.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
             Logger.getLogger(campaign_SavePOE.class.getName()).log(Level.SEVERE, null, ex);
         }
+        RequestDispatcher rd = request.getRequestDispatcher("ext_Campaign_ViewCampaign");
+        rd.forward(request, response);
     }
 
     /**

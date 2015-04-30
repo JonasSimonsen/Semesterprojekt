@@ -60,12 +60,10 @@ public class campaign_LoadPOE extends HttpServlet {
             ServletContext context = getServletContext();
 
             ctrl.loadPOE(uploadId, context, response);
-            
-        } catch (DatabaseErrorException ex) {
-            Logger.getLogger(campaign_LoadPOE.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
             Logger.getLogger(campaign_LoadPOE.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     /**

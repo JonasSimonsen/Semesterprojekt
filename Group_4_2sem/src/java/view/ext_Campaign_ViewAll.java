@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DTO.Campaign2;
+import DTO.Campaign;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,21 +47,18 @@ public class ext_Campaign_ViewAll extends HttpServlet {
         
         System.out.println(UN);
 
-        Campaign2 campaign = null;
+        Campaign campaign = null;
         Interface_CtrlFacade ctrl = new facadeCtrl();
-        ArrayList<Campaign2> campaignList = new ArrayList<Campaign2>();
+        ArrayList<Campaign> campaignList = new ArrayList<Campaign>();
         
         
         try {
             int ID = ctrl.getUserID(UN);
             System.out.println(ID);
-            campaignList = ctrl.getCampaignsExternal(ID);
-
-        } catch (DatabaseErrorException sqle) {
-            sqle.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+                campaignList = ctrl.getCampaignsExternal(ID);
+            } catch (DatabaseErrorException | ClassNotFoundException ex) {
+                Logger.getLogger(ext_Campaign_ViewAll.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
             s.setAttribute("campList", campaignList);
         }
 

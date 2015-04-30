@@ -1,10 +1,9 @@
 package facade;
 
-import DTO.Campaign;
 import DTO.User;
 import DTO.Partner;
 import DTO.Message;
-import DTO.Campaign2;
+import DTO.Campaign;
 import control.*;
 import exceptions.DatabaseErrorException;
 import interfaces.Interface_CtrlFacade;
@@ -28,18 +27,13 @@ public class facadeCtrl implements Interface_CtrlFacade {
     }
 
     @Override
-    public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
-        CampCtrl.submitNewCampaignV2(camp, userID);
+    public void submitNewCampaignV2(Campaign camp, int userID) throws DatabaseErrorException, ClassNotFoundException {
+        CampCtrl.submitNewCampaign(camp, userID);
     }
 
     @Override
     public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException {
         CampCtrl.deleteCampaign(ID);
-    }
-
-    @Override
-    public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException {
-        CampCtrl.editCampaign(camp);
     }
 
     @Override
@@ -79,20 +73,20 @@ public class facadeCtrl implements Interface_CtrlFacade {
     }
 
     @Override
-    public ArrayList<Campaign2> getCampaignsExternal(int ID) throws DatabaseErrorException, ClassNotFoundException {
-        ArrayList<Campaign2> camp = CampCtrl.getCampaignsExternal(ID);
+    public ArrayList<Campaign> getCampaignsExternal(int ID) throws DatabaseErrorException, ClassNotFoundException {
+        ArrayList<Campaign> camp = CampCtrl.getCampaignsExternal(ID);
         return camp;
     }
 
     @Override
-    public Campaign2 getSpecificCampaign(int PLANNO) throws DatabaseErrorException, ClassNotFoundException {
-        Campaign2 camp = CampCtrl.getSpecificCampaign(PLANNO);
+    public Campaign getSpecificCampaign(int PLANNO) throws DatabaseErrorException, ClassNotFoundException {
+        Campaign camp = CampCtrl.getSpecificCampaign(PLANNO);
         return camp;
     }
 
     @Override
-    public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
-        ArrayList<Campaign2> camp = CampCtrl.getCampaigns();
+    public ArrayList<Campaign> getCampaigns() throws DatabaseErrorException, ClassNotFoundException {
+        ArrayList<Campaign> camp = CampCtrl.getCampaigns();
         return camp;
     }
 

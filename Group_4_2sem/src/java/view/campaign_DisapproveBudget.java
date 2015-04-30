@@ -9,6 +9,8 @@ import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
 import interfaces.Interface_CtrlFacade;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,10 +42,11 @@ public class campaign_DisapproveBudget extends HttpServlet {
         CAMPNO = Integer.parseInt(request.getParameter("id"));
         STATUS = "BUDGET DISAPPROVED";
         Interface_CtrlFacade ctrl = new facadeCtrl();
+
         try {
             ctrl.budgetStatus(STATUS, CAMPNO);
-        } catch (DatabaseErrorException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
+            Logger.getLogger(campaign_DisapproveBudget.class.getName()).log(Level.SEVERE, null, ex);
         }
         RequestDispatcher rd = request.getRequestDispatcher("int_Campaign_ViewCampaign");
         rd.forward(request, response);

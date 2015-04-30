@@ -1,7 +1,7 @@
 
-import static data.CampaignDAO.getSpecificCampaignV2;
+import static data.CampaignDAO.getSpecificCampaign;
 import static data.UserDAO.getUserInfo;
-import DTO.Campaign2;
+import DTO.Campaign;
 import DTO.Message;
 import DTO.User;
 import exceptions.DatabaseErrorException;
@@ -44,10 +44,10 @@ public class DatabaseInputTests {
     @Test
     public void testCampaignEntry() throws DatabaseErrorException, ClassNotFoundException {
         ctrl = new facadeCtrl();
-        Campaign2 camp = new Campaign2(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        Campaign camp = new Campaign(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
         int id = 0;
         ctrl.submitNewCampaignV2(camp, id);
-        camp = getSpecificCampaignV2("SATAN");
+        camp = getSpecificCampaign("SATAN");
         assertEquals("HELL LLC", camp.getCompany_name());
         int userID = ctrl.getUserID("SATAN");
         ctrl.deleteUser(userID);
@@ -57,11 +57,11 @@ public class DatabaseInputTests {
     @Test
     public void testPOEStatus() throws ClassNotFoundException, DatabaseErrorException {
         ctrl = new facadeCtrl();
-        Campaign2 camp = new Campaign2(666, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        Campaign camp = new Campaign(666, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
         int id = 0;
         ctrl.submitNewCampaignV2(camp, id);
         assertEquals(0, camp.getHas_poe());
-        Campaign2 camp2 = new Campaign2(666, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 1, 666);
+        Campaign camp2 = new Campaign(666, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 1, 666);
         ctrl.submitNewCampaignV2(camp2, id);
         assertEquals(1, camp2.getHas_poe());
         int userID = ctrl.getUserID("SATAN");
@@ -93,10 +93,10 @@ public class DatabaseInputTests {
     public void testCommentEntry() throws DatabaseErrorException, ClassNotFoundException {
         List<Message> msgList = new ArrayList<>();
         ctrl = new facadeCtrl();
-        Campaign2 camp = new Campaign2(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        Campaign camp = new Campaign(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
         int id = 0;
         ctrl.submitNewCampaignV2(camp, id);
-        camp = getSpecificCampaignV2("SATAN");
+        camp = getSpecificCampaign("SATAN");
         assertEquals("HELL LLC", camp.getCompany_name());
         Message msg = new Message(1, "TEST", 666, "1966-66-66", 666, "SATAN");
         ctrl.createNewMessage(msg);
@@ -112,13 +112,13 @@ public class DatabaseInputTests {
     @Test
     public void testBudgetDisapprove() throws DatabaseErrorException, ClassNotFoundException {
         ctrl = new facadeCtrl();
-        Campaign2 camp = new Campaign2(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        Campaign camp = new Campaign(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
         int id = 0;
         ctrl.submitNewCampaignV2(camp, id);
         int CAMPNO = ctrl.getUserID("SATAN");
         String STATUS = "BUDGET DISAPPROVED";
         ctrl.budgetStatus(STATUS, CAMPNO);
-        camp = getSpecificCampaignV2("SATAN");
+        camp = getSpecificCampaign("SATAN");
         assertEquals("BUDGET DISAPPROVED", camp.getStatus());
         int userID = ctrl.getUserID("SATAN");
         ctrl.deleteUser(userID);
@@ -128,13 +128,13 @@ public class DatabaseInputTests {
     @Test
     public void testBudgetApprove() throws DatabaseErrorException, ClassNotFoundException {
         ctrl = new facadeCtrl();
-        Campaign2 camp = new Campaign2(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
+        Campaign camp = new Campaign(1, "", "SATAN", "HELL LLC", "", "", "", "", "", "", 5, "", "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0.0, 0.0, "", "", 0.0, 0, 0.0, "", 0, 666);
         int id = 0;
         ctrl.submitNewCampaignV2(camp, id);
         int CAMPNO = ctrl.getUserID("SATAN");
         String STATUS = "BUDGET APPROVED";
         ctrl.budgetStatus(STATUS, CAMPNO);
-        camp = getSpecificCampaignV2("SATAN");
+        camp = getSpecificCampaign("SATAN");
         assertEquals("BUDGET APPROVED", camp.getStatus());
         int userID = ctrl.getUserID("SATAN");
         ctrl.deleteUser(userID);

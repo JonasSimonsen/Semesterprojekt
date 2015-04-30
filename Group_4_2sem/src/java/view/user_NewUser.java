@@ -11,6 +11,8 @@ import DTO.User;
 import exceptions.DatabaseErrorException;
 import facade.facadeCtrl;
 import interfaces.Interface_CtrlFacade;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "user_NewUser", urlPatterns = {"/user_NewUser"})
 public class user_NewUser extends HttpServlet {
@@ -38,7 +40,7 @@ public class user_NewUser extends HttpServlet {
         tempOrganization = request.getParameter("organization");
         tempInternal = request.getParameter("user-type-internal");
         tempExternal = request.getParameter("user-type-external");
-        
+
         if ("1".equals(tempInternal)) {
             type = 1;
         } else if ("1".equals(tempExternal)) {
@@ -53,8 +55,8 @@ public class user_NewUser extends HttpServlet {
         // Pass user object to the data accessor object
         try {
             ctrl.createNewUser(user);
-        } catch (DatabaseErrorException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (DatabaseErrorException | ClassNotFoundException ex) {
+            Logger.getLogger(user_NewUser.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("int_users_new.jsp");
@@ -62,7 +64,6 @@ public class user_NewUser extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -6,7 +6,6 @@
 package interfaces;
 
 import DTO.Campaign;
-import DTO.Campaign2;
 import DTO.Message;
 import DTO.Partner;
 import DTO.User;
@@ -26,11 +25,9 @@ public interface Interface_CtrlFacade {
 
     public void createNewMessage(Message message) throws DatabaseErrorException, ClassNotFoundException;
 
-    public void submitNewCampaignV2(Campaign2 camp, int userID) throws DatabaseErrorException, ClassNotFoundException;
+    public void submitNewCampaignV2(Campaign camp, int userID) throws DatabaseErrorException, ClassNotFoundException;
 
     public void deleteCampaign(int ID) throws DatabaseErrorException, ClassNotFoundException;
-
-    public void editCampaign(Campaign camp) throws DatabaseErrorException, ClassNotFoundException;
 
     public void approveBudget(int campno, double budget) throws DatabaseErrorException, ClassNotFoundException;
 
@@ -50,11 +47,11 @@ public interface Interface_CtrlFacade {
 
     public boolean getUser(String username, String password) throws DatabaseErrorException, ClassNotFoundException;
     
-    public Campaign2 getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException;
+    public Campaign getSpecificCampaign(int campno) throws DatabaseErrorException, ClassNotFoundException;
     
-    public ArrayList<Campaign2> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException;
+    public ArrayList<Campaign> getCampaignsExternal(int id) throws DatabaseErrorException, ClassNotFoundException;
     
-    public ArrayList<Campaign2> getCampaigns() throws DatabaseErrorException, ClassNotFoundException;
+    public ArrayList<Campaign> getCampaigns() throws DatabaseErrorException, ClassNotFoundException;
 
     public List<Message> getMessages() throws DatabaseErrorException, ClassNotFoundException;
 
