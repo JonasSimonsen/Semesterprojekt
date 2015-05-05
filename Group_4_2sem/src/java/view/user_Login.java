@@ -44,17 +44,16 @@ public class user_Login extends HttpServlet {
         String PW = request.getParameter("password");
         Interface_CtrlFacade ctrl = new facadeCtrl();
 
-        
         try {
             if (ctrl.getUser(UN, PW)) {
                 int type = ctrl.getUserType(UN);
                 s.setAttribute("username", UN);
                 s.setAttribute("user_type", type);
-                
+
                 if (type == 1) {
                     RequestDispatcher rd = request.getRequestDispatcher("int_dashboard.jsp");
                     rd.forward(request, response);
-                } else if (type == 0){
+                } else if (type == 0) {
                     RequestDispatcher rd = request.getRequestDispatcher("ext_dashboard.jsp");
                     rd.forward(request, response);
                 }
@@ -62,7 +61,7 @@ public class user_Login extends HttpServlet {
             } else {
                 out.print("Sorry username or password error");
                 RequestDispatcher rd = request.getRequestDispatcher("login_failed.jsp");
-                rd.include(request, response);
+                rd.forward(request, response);
 
             }
         } catch (DatabaseErrorException | ClassNotFoundException ex) {

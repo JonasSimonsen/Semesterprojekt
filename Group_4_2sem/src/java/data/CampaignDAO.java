@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import DTO.Campaign;
 import exceptions.DatabaseErrorException;
@@ -18,7 +17,6 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import view.campaign_LoadPOE;
-import view.campaign_SavePOE;
 
 public class CampaignDAO {
 
